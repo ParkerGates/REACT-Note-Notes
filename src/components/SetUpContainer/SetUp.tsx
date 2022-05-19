@@ -1,7 +1,7 @@
-import { useState } from "react";
-import SetUpPage1 from "../SetUpContainerPages/Page1/Page1";
-import SetUpPage2 from "../SetUpContainerPages/Page2/Page2";
-import SetUpPage3 from "../SetUpContainerPages/Page3/Page3";
+ import { useState } from "react";
+import SetUpPage1 from "./SetUpContainerPages/Page1/Page1";
+import SetUpPage2 from "./SetUpContainerPages/Page2/Page2";
+import SetUpPage3 from "./SetUpContainerPages/Page3/Page3";
 
 export default function SetUpContainer() {
     let [currentPage, setCurrentPage] = useState(1);
