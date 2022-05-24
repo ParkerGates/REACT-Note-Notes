@@ -1,6 +1,8 @@
 import { useState, useContext} from 'react';
 import { useScore, ScoreContext } from '../context/context';
 import FlashcardGame from "../classes/FlashcardGame";
+import FlashcardImage from "../components/FlashcardComponents/FlashcardImage/FlashcardImage";
+import FlashcardOptions from "../components/FlashcardComponents/FlashcardOptions/FlashcardOptions";
 
 export default function Flashcards() {
     const [gameState, setGameState] = useState<"no-game"|"pre-game"|"game"|"post-game">("no-game");
@@ -36,14 +38,24 @@ export default function Flashcards() {
                     <button onClick={startGameCountdown}>Start</button>
                 </div>
             }
+
             { "pre-game" === gameState &&
                 <div>
                     <h3>{countdown}</h3>
                 </div>
             }
-            { "game" === gameState && 
-                "lez go"
+
+            { "game" === gameState &&
+                <div>
+                    <div>
+                        <FlashcardImage />
+                    </div>
+                    <div>
+                        <FlashcardOptions />
+                    </div>
+                </div> 
             }
+            
             { "post-game" === gameState &&
                 "sigh hawaii"
             }
