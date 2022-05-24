@@ -17,10 +17,9 @@ export default class FlashcardGame {
 
 
     public getNote = (): any => {
-        console.log(this.keySetName)
 
         const note = this.keySetNotes[Math.floor(Math.random() * this.keySetNotes.length)];
-        
+        console.log(this.randomProbability())
         const payload = {
             find: note,
             options: this.createOptionsArray(this.keySetNotes.indexOf(note), this.keySetNotes)
@@ -55,7 +54,6 @@ export default class FlashcardGame {
         }
 
         const selectionOptions = shuffle(noteRange.slice(minIndex, maxIndex));
-
         return selectionOptions;
     }
 
@@ -72,6 +70,11 @@ export default class FlashcardGame {
             case "lowest":
                 return [0,12];  //note range index
         }
+    }
+
+    private randomProbability() {
+        let rand = Math.floor(Math.random() * this.probabilityNumber);
+        return rand;
     }
 
 

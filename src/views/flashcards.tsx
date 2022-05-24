@@ -6,9 +6,13 @@ export default function Flashcards() {
     const [gameState, setGameState] = useState<"no-game"|"pre-game"|"game"|"post-game">("no-game");
     const [countdown, setCountDown] = useState<number>(3);
     
-    //let test = new FlashcardGame("treble");
-    //const data = useContext(ScoreContext)
+    let test = new FlashcardGame("treble");
+    const data = useContext(ScoreContext)
     //console.log(data.scoreState.noteData);
+    test.countProbabilityPool(data.scoreState.noteData)
+    test.getNote()
+    test.getNote()
+    test.getNote()
     
     const startGameCountdown = () => {
         setGameState("pre-game");
@@ -24,7 +28,6 @@ export default function Flashcards() {
             });
         }, 1000);
     }
-
 
 
     return(
