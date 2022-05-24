@@ -7,24 +7,24 @@ interface Props {
 }
 
 //Context
-const ScoreContext = React.createContext("");
-
-//Context for Class Components
-const ScoreConsumer = ScoreContext.Consumer;
-export {ScoreContext, ScoreConsumer}
+const ScoreContext = React.createContext<any>({});
+export {ScoreContext}
 
 export function useScore() {
     return useContext(ScoreContext);
 }
 
-const initialState = noteData;
+const initialState = {
+    probabilityPool: 0,
+    noteData: noteData
+};
 
 const reducer = (state:any , action:any) => {
     switch(action.type) {
         case "test1":
-            return state;
-        case "test2":
-            return state;
+            console.log(state)
+            return {...state, probabilityPool: 5}
+        
         case "reset":
             return initialState;
         default:
@@ -36,7 +36,7 @@ export default function AppContext(props: Props) {
     const [noteScore, dispatch] = useReducer(reducer, initialState);
 
     return(
-        <ScoreContext.Provider value={"a"}>
+        <ScoreContext.Provider value={{scoreState: noteScore, scoreDispatch: dispatch}}>
             {props.children}
         </ScoreContext.Provider>
     );

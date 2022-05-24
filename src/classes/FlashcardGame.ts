@@ -2,21 +2,22 @@ import { allKeys } from '../context/data';
 import shuffle from "../utilities/shuffleArray";
 
 export default class FlashcardGame {
-    private keySet:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
+    private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
     private keySetIndexRange: number[];
     private keySetNotes: string[];
     private allNotes = allKeys
+    private probabilityNumber = 0;
 
 
-    constructor(keySet: "treble" | "bass" | "upperTreble" | "lowest" | "highest") {
-        this.keySet = keySet;
-        this.keySetIndexRange = this.noteRange(keySet)
+    constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest") {
+        this.keySetName = keySetName;
+        this.keySetIndexRange = this.noteRange(keySetName)
         this.keySetNotes = this.allNotes.slice(this.keySetIndexRange[0],this.keySetIndexRange[1] + 1)
     }
 
 
     public getNote = (): any => {
-        console.log(this.keySet)
+        console.log(this.keySetName)
 
         const note = this.keySetNotes[Math.floor(Math.random() * this.keySetNotes.length)];
         
@@ -36,7 +37,8 @@ export default class FlashcardGame {
 
 
 
-
+    //Private Utility Methods
+    //==================================================================
     private createOptionsArray(selectedIndex: number, noteRange: string[]): string[] {
         const optionAmount = 5;
         const randomOffset = Math.floor(Math.random() * optionAmount) + 1
@@ -72,7 +74,17 @@ export default class FlashcardGame {
         }
     }
 
-    public initProbabilityPool() {
 
+    //Public Utility Methods
+    //==================================================================
+    public countProbabilityPool(noteData: any) {
+        let probabilityNumber = 0;
+
+        for (let i = 0; i < this.keySetNotes.length; i++) {
+            probabilityNumber += noteData[this.keySetNotes[i]].score
+        }
+
+        this.probabilityNumber = probabilityNumber
+        return probabilityNumber
     }
 }
