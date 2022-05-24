@@ -24,21 +24,3 @@ function App() {
 }
 
 export default App;
-
-function View1() {
-  return(
-    <div>View1</div>
-  );
-}
-
-function View2() {
-  return(
-    <div>View2</div>
-  );
-}
-
-function View3() {
-  return(
-    <div>View3</div>
-  );
-}
