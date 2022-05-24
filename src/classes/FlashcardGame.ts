@@ -16,14 +16,14 @@ export default class FlashcardGame {
     }
 
 
-    public getNote = (): any => {
+    public getNote = (noteData: any): any => {
+        const chosenNote = this.findNoteFromRandom(noteData, this.randomProbability());
 
-        const note = this.keySetNotes[Math.floor(Math.random() * this.keySetNotes.length)];
-        console.log(this.randomProbability())
         const payload = {
-            find: note,
-            options: this.createOptionsArray(this.keySetNotes.indexOf(note), this.keySetNotes)
+            find: chosenNote,
+            options: this.createOptionsArray(this.keySetNotes.indexOf(chosenNote))
         }
+        console.log(payload);
         return payload;
     }
 
@@ -35,10 +35,9 @@ export default class FlashcardGame {
 
 
 
-
     //Private Utility Methods
     //==================================================================
-    private createOptionsArray(selectedIndex: number, noteRange: string[]): string[] {
+    private createOptionsArray(selectedIndex: number): string[] {
         const optionAmount = 5;
         const randomOffset = Math.floor(Math.random() * optionAmount) + 1
         let maxIndex = selectedIndex + randomOffset;
@@ -48,14 +47,15 @@ export default class FlashcardGame {
             maxIndex = optionAmount
             minIndex = 0;
         }
-        else if (maxIndex > noteRange.length) {
-            minIndex = noteRange.length - optionAmount
-            maxIndex = noteRange.length
+        else if (maxIndex > this.keySetNotes.length) {
+            minIndex = this.keySetNotes.length - optionAmount
+            maxIndex = this.keySetNotes.length
         }
 
-        const selectionOptions = shuffle(noteRange.slice(minIndex, maxIndex));
+        const selectionOptions = shuffle(this.keySetNotes.slice(minIndex, maxIndex));
         return selectionOptions;
     }
+
 
     private noteRange(range: "treble" | "bass" | "upperTreble" | "lowest" | "highest"): number[] {
         switch (range) {
@@ -72,10 +72,28 @@ export default class FlashcardGame {
         }
     }
 
+
     private randomProbability() {
         let rand = Math.floor(Math.random() * this.probabilityNumber);
         return rand;
     }
+
+
+    private findNoteFromRandom(noteData: any, randNum: number): string {
+        let findNum = randNum;
+
+        for (let i = 0; i < this.keySetNotes.length; i++) {
+            findNum -= noteData[this.keySetNotes[i]].score;
+    
+            if (findNum <= 0) {
+                console.log(randNum);
+                return this.keySetNotes[i];
+            }
+        }
+        return ""
+    }
+
+
 
 
     //Public Utility Methods

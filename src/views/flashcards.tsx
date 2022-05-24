@@ -10,9 +10,7 @@ export default function Flashcards() {
     const data = useContext(ScoreContext)
     //console.log(data.scoreState.noteData);
     test.countProbabilityPool(data.scoreState.noteData)
-    test.getNote()
-    test.getNote()
-    test.getNote()
+    test.getNote(data.scoreState.noteData);
     
     const startGameCountdown = () => {
         setGameState("pre-game");
