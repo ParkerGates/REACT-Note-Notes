@@ -1,6 +1,5 @@
 import { timingSafeEqual } from 'crypto';
 import { useEffect, useState } from 'react';
-import { Timers2 } from '../classes/Timers';
 import useTimer from 'easytimer-react-hook';
 
 export default function Home() {
