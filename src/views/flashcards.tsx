@@ -7,26 +7,42 @@ import FlashcardOptions from "../components/FlashcardComponents/FlashcardOptions
 export default function Flashcards() {
     const [gameState, setGameState] = useState<"no-game"|"pre-game"|"game"|"post-game">("no-game");
     const [countdown, setCountDown] = useState<number>(3);
+
+    const [cardPayload, setCardPayload] = useState<any>(null);
+    const [isCardChosen, setIsCardChosen] = useState<boolean>(false);
+    const data = useScore()
+
+    const game = new FlashcardGame("treble");
+    game.countProbabilityPool(data.scoreState.noteData);
     
-    let test = new FlashcardGame("treble");
-    const data = useContext(ScoreContext)
-    //console.log(data.scoreState.noteData);
-    test.countProbabilityPool(data.scoreState.noteData)
-    test.getNote(data.scoreState.noteData);
-    
+
     const startGameCountdown = () => {
         setGameState("pre-game");
         const countDownInterval = setInterval(() => {
 
             setCountDown((prevState) => {
                 if (prevState <= 1) {
-                    clearInterval(countDownInterval);
                     setGameState("game");
+                    setCardPayload(game.getNote(data.scoreState.noteData));
+                    clearInterval(countDownInterval);
                     return prevState;
                 }
                 return prevState - 1
             });
         }, 1000);
+    }
+
+
+    const selectOption = (right: string, selected: string) => {
+        if (isCardChosen === false) {
+            setIsCardChosen(true);
+            if (right === selected) {
+                console.log("Right:", right, selected);
+            }
+            else {
+                console.log("Wrong: ", right, selected);
+            }
+        }
     }
 
 
@@ -39,23 +55,26 @@ export default function Flashcards() {
                 </div>
             }
 
+
             { "pre-game" === gameState &&
                 <div>
                     <h3>{countdown}</h3>
                 </div>
             }
 
+
             { "game" === gameState &&
                 <div>
                     <div>
-                        <FlashcardImage />
+                        <FlashcardImage image={cardPayload.find}/>
                     </div>
                     <div>
-                        <FlashcardOptions />
+                        <FlashcardOptions find={cardPayload.find} options={cardPayload.options} selectOption={selectOption}/>
                     </div>
                 </div> 
             }
             
+
             { "post-game" === gameState &&
                 "sigh hawaii"
             }

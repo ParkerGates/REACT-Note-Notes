@@ -1,13 +1,24 @@
+import { numberInput } from "../../../utilities/inputTypes";
 
-export default function FlashcardOptions() {
+interface Props {
+    find: string;
+    options: string[];
+    selectOption: (right: string, selected: string) => void;
+}
+
+export default function FlashcardOptions({find, options, selectOption}: Props) {
+
+
+        numberInput(options);
+
 
     return (
         <div>
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
+            {options.map((option) => {
+                return (
+                    <button id={option} key={option} onClick={() => {selectOption(find,option)}}>{option}</button>
+                );
+            })}
         </div>
     );
 }

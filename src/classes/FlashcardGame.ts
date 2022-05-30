@@ -23,7 +23,6 @@ export default class FlashcardGame {
             find: chosenNote,
             options: this.createOptionsArray(this.keySetNotes.indexOf(chosenNote))
         }
-        console.log(payload);
         return payload;
     }
 
@@ -86,7 +85,6 @@ export default class FlashcardGame {
             findNum -= noteData[this.keySetNotes[i]].score;
     
             if (findNum <= 0) {
-                console.log(randNum);
                 return this.keySetNotes[i];
             }
         }
