@@ -1,5 +1,8 @@
+import { iNoteData, iSingleNoteData } from '../interfaces/interfaces';
 import { allKeys } from '../context/data';
+import { clamp } from "../utilities/utilities";
 import shuffle from "../utilities/shuffleArray";
+import TimeQueue from '../utilities/timeQueue';
 
 export default class FlashcardGame {
     private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
@@ -16,8 +19,8 @@ export default class FlashcardGame {
     }
 
 
-    public getNote = (noteData: any): any => {
-        const chosenNote = this.findNoteFromRandom(noteData, this.randomProbability());
+    public getNote = (iNoteData: iNoteData): any => {
+        const chosenNote = this.findNoteFromRandom(iNoteData, this.randomProbability());
 
         const payload = {
             find: chosenNote,
@@ -27,14 +30,31 @@ export default class FlashcardGame {
     }
 
 
-    public updateNote(note: string) {
-        console.log("Update Note")
+    static updateNoteData(note: string, correct: boolean, time: number, prior: iSingleNoteData) {
+        const updatedNoteData: iSingleNoteData = {
+            note: note,
+            acc: correct === true ? clamp(prior.acc + 1, 1, 19) : clamp(prior.acc - 1, 1, 19),
+            dataSize: prior.dataSize >= 20 ? 20 : prior.dataSize + 1,
+            time: TimeQueue.enqueue(prior.time, time),
+            avgTime: 0,
+            score: 0
+        }
+        updatedNoteData.avgTime = Number(TimeQueue.timeAverage(updatedNoteData.time).toFixed(1));
+
+        //Calc Accuracy & Time Score
+        let accScore = Number( (Math.sqrt((100 - ((updatedNoteData.acc / updatedNoteData.dataSize) * 100))) / 2).toFixed(1));
+        accScore = updatedNoteData.dataSize < 10 ? 4 : accScore;    //Wait till dataset is 10 before slimming calculations
+
+        const timeScore = Number((updatedNoteData.avgTime / 2).toFixed(1));
+        
+        updatedNoteData.score = accScore + timeScore;
+        return updatedNoteData;
     }
 
 
 
 
-    //Private Utility Methods
+    //Setup Methods
     //==================================================================
     private createOptionsArray(selectedIndex: number): string[] {
         const optionAmount = 5;
@@ -72,17 +92,22 @@ export default class FlashcardGame {
     }
 
 
+
+
+    //Helper Methods
+    //==================================================================
     private randomProbability() {
-        let rand = Math.floor(Math.random() * this.probabilityNumber);
+        let rand = Number((Math.random() * this.probabilityNumber).toFixed(1));
+        console.log("rand:", rand);
         return rand;
     }
 
 
-    private findNoteFromRandom(noteData: any, randNum: number): string {
+    private findNoteFromRandom(iNoteData: iNoteData, randNum: number): string {
         let findNum = randNum;
 
-        for (let i = 0; i < this.keySetNotes.length; i++) {
-            findNum -= noteData[this.keySetNotes[i]].score;
+        for (let i:number = 0; i < this.keySetNotes.length; i++) {
+            findNum -= iNoteData[this.keySetNotes[i]].score;
     
             if (findNum <= 0) {
                 return this.keySetNotes[i];
@@ -92,15 +117,15 @@ export default class FlashcardGame {
     }
 
 
-
+ 
 
     //Public Utility Methods
     //==================================================================
-    public countProbabilityPool(noteData: any) {
+    public countProbabilityPool(iNoteData: iNoteData) {
         let probabilityNumber = 0;
 
         for (let i = 0; i < this.keySetNotes.length; i++) {
-            probabilityNumber += noteData[this.keySetNotes[i]].score
+            probabilityNumber += iNoteData[this.keySetNotes[i]].score
         }
 
         this.probabilityNumber = probabilityNumber

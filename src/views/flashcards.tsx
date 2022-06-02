@@ -16,6 +16,7 @@ export default function Flashcards() {
 
     const game = new FlashcardGame("treble");
     game.countProbabilityPool(data.scoreState.noteData);
+    //data.scoreDispatch();
     
 
     const startGameCountdown = () => {
@@ -38,16 +39,14 @@ export default function Flashcards() {
     const selectOption = (right: string, selected: string) => {
         if (isCardChosen === false) {
             setIsCardChosen(true);
-
             let cardTime = {...timer.getTotalTimeValues()};
             timer.stop()
-            console.log(cardTime.secondTenths, isTargetAchived);
 
             if (right === selected) {
-                console.log("Right:", right, selected);
+                data.scoreDispatch({type: "update-data", note: selected, correct: true, time: cardTime.secondTenths});
             }
             else {
-                console.log("Wrong: ", right, selected);
+                data.scoreDispatch({type: "update-data", note: selected, correct: false, time: cardTime.secondTenths});
             }
         }
     }
