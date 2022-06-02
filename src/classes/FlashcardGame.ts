@@ -8,14 +8,15 @@ export default class FlashcardGame {
     private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
     private keySetIndexRange: number[];
     private keySetNotes: string[];
-    private allNotes = allKeys
-    private probabilityNumber = 0;
+    private allNotes = allKeys;
+    public probabilityNumber: number;
 
 
     constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest") {
         this.keySetName = keySetName;
-        this.keySetIndexRange = this.noteRange(keySetName)
-        this.keySetNotes = this.allNotes.slice(this.keySetIndexRange[0],this.keySetIndexRange[1] + 1)
+        this.keySetIndexRange = this.noteRange(keySetName);
+        this.keySetNotes = this.allNotes.slice(this.keySetIndexRange[0],this.keySetIndexRange[1] + 1);
+        this.probabilityNumber = 0
     }
 
 
@@ -30,7 +31,7 @@ export default class FlashcardGame {
     }
 
 
-    static updateNoteData(note: string, correct: boolean, time: number, prior: iSingleNoteData) {
+    static updateNoteData(note: string, correct: boolean, time: number, prior: iSingleNoteData): iSingleNoteData {
         const updatedNoteData: iSingleNoteData = {
             note: note,
             acc: correct === true ? clamp(prior.acc + 1, 1, 19) : clamp(prior.acc - 1, 1, 19),
@@ -96,9 +97,8 @@ export default class FlashcardGame {
 
     //Helper Methods
     //==================================================================
-    private randomProbability() {
+    private randomProbability(): number {
         let rand = Number((Math.random() * this.probabilityNumber).toFixed(1));
-        console.log("rand:", rand);
         return rand;
     }
 
@@ -121,14 +121,14 @@ export default class FlashcardGame {
 
     //Public Utility Methods
     //==================================================================
-    public countProbabilityPool(iNoteData: iNoteData) {
+    public countProbabilityPool(iNoteData: iNoteData): number {
         let probabilityNumber = 0;
 
         for (let i = 0; i < this.keySetNotes.length; i++) {
             probabilityNumber += iNoteData[this.keySetNotes[i]].score
         }
 
-        this.probabilityNumber = probabilityNumber
+        this.probabilityNumber = probabilityNumber;
         return probabilityNumber
     }
 }
