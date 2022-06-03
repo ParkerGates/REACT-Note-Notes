@@ -114,7 +114,7 @@ export default function Flashcards() {
             
 
             { "post-game" === gameState &&
-                "sigh hawaii"
+                "post game"
             }
 
         </div>
