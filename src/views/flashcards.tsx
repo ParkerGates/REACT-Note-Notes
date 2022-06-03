@@ -16,7 +16,7 @@ export default function Flashcards() {
  
     const game = new FlashcardGame("treble");
  
-    const startGameCountdown = () => {
+    const startGameCountdown = ():void => {
         setGameState("pre-game");
  
         const countDownInterval = setInterval(() => {
@@ -34,7 +34,7 @@ export default function Flashcards() {
     }
  
  
-    const nextCard = () => {
+    const nextCard = ():void  => {
         game.probabilityNumber = data.scoreState.probabilityPool;
         setIsCardChosen(false);
         setCardPayload(game.getNote(data.scoreState.noteData));
@@ -42,7 +42,7 @@ export default function Flashcards() {
     }
  
  
-    const selectOption = (right: string, selected: string) => {
+    const selectOption = (right: string, selected: string):void => {
         if (isCardChosen === false) {
             setIsCardChosen(true);
  
@@ -66,7 +66,7 @@ export default function Flashcards() {
     }
  
  
-    const waitOnAnswerDisplay = (right: string, wrong:string = "") => {
+    const waitOnAnswerDisplay = (right: string, wrong:string = ""):void => {
         const displayAnswer = setTimeout(() => {
             if (wrong !== "") {
                 document.getElementById(wrong).style.backgroundColor = "";
