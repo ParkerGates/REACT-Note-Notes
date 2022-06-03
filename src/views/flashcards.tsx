@@ -34,21 +34,6 @@ export default function Flashcards() {
     }
 
 
-    const selectOption = (right: string, selected: string) => {
-        if (isCardChosen === false) {
-            setIsCardChosen(true);
-            let cardTime = {...timer.getTotalTimeValues()};
-            timer.stop()
-
-            if (right === selected) {
-                data.scoreDispatch({type: "update-data", note: selected, correct: true, time: cardTime.secondTenths});
-            }
-            else {
-                data.scoreDispatch({type: "update-data", note: selected, correct: false, time: cardTime.secondTenths});
-            }
-        }
-    }
-
     const nextCard = () => {
         game.probabilityNumber = data.scoreState.probabilityPool;
         setIsCardChosen(false);
@@ -56,6 +41,43 @@ export default function Flashcards() {
         timer.start({ startValues: [0,0,0,0,0], target: {seconds: 5}, precision: 'secondTenths'});
     }
 
+
+    const selectOption = (right: string, selected: string) => {
+        if (isCardChosen === false) {
+            setIsCardChosen(true);
+
+            let cardTime = {...timer.getTotalTimeValues()};
+            timer.stop()
+
+            if (right === selected) {
+                data.scoreDispatch({type: "update-data", note: selected, correct: true, time: cardTime.secondTenths});
+
+                document.getElementById(selected).style.backgroundColor = "green";
+                waitOnAnswerDisplay(selected);
+            }
+            else {
+                data.scoreDispatch({type: "update-data", note: selected, correct: false, time: cardTime.secondTenths});
+
+                document.getElementById(right).style.backgroundColor = "green";
+                document.getElementById(selected).style.backgroundColor = "red";
+                waitOnAnswerDisplay(right, selected);
+            }
+        }
+    }
+
+
+    const waitOnAnswerDisplay = (right: string, wrong:string = "") => {
+        const displayAnswer = setTimeout(() => {
+            if (wrong !== "") {
+                document.getElementById(wrong).style.backgroundColor = "";
+            }
+            document.getElementById(right).style.backgroundColor = "";
+
+            nextCard();
+        }, 1500);
+    }
+
+    
     useEffect(() => {
         game.countProbabilityPool(data.scoreState.noteData);
         data.scoreDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
@@ -95,7 +117,6 @@ export default function Flashcards() {
                 "sigh hawaii"
             }
 
-            <button onClick={nextCard}>Next Card</button>
         </div>
     );
 }
