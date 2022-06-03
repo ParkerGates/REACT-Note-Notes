@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useScore } from '../context/context';
 import useTimer from 'easytimer-react-hook';
 import FlashcardGame from "../classes/FlashcardGame";
@@ -15,11 +15,10 @@ export default function Flashcards() {
     const data = useScore()
 
     const game = new FlashcardGame("treble");
-    game.countProbabilityPool(data.scoreState.noteData);
-    
 
     const startGameCountdown = () => {
         setGameState("pre-game");
+
         const countDownInterval = setInterval(() => {
 
             setCountDown((prevState) => {
@@ -38,25 +37,29 @@ export default function Flashcards() {
     const selectOption = (right: string, selected: string) => {
         if (isCardChosen === false) {
             setIsCardChosen(true);
-
             let cardTime = {...timer.getTotalTimeValues()};
             timer.stop()
-            console.log(cardTime.secondTenths, isTargetAchived);
 
             if (right === selected) {
-                console.log("Right:", right, selected);
+                data.scoreDispatch({type: "update-data", note: selected, correct: true, time: cardTime.secondTenths});
             }
             else {
-                console.log("Wrong: ", right, selected);
+                data.scoreDispatch({type: "update-data", note: selected, correct: false, time: cardTime.secondTenths});
             }
         }
     }
 
     const nextCard = () => {
+        game.probabilityNumber = data.scoreState.probabilityPool;
         setIsCardChosen(false);
         setCardPayload(game.getNote(data.scoreState.noteData));
         timer.start({ startValues: [0,0,0,0,0], target: {seconds: 5}, precision: 'secondTenths'});
     }
+
+    useEffect(() => {
+        game.countProbabilityPool(data.scoreState.noteData);
+        data.scoreDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
+    }, [])
 
 
     return(
