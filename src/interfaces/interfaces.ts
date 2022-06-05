@@ -27,3 +27,8 @@ export interface iContextState {
     probabilityPool: number;
     noteData: iNoteData;
 }
+
+export interface iFlashcardNotePayload {
+    find: string;
+    options: string[];
+}

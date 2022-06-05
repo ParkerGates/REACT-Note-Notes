@@ -1,4 +1,4 @@
-import { iNoteData, iSingleNoteData } from '../interfaces/interfaces';
+import { iNoteData, iSingleNoteData, iFlashcardNotePayload } from '../interfaces/interfaces';
 import { allKeys } from '../context/data';
 import { clamp } from "../utilities/utilities";
 import shuffle from "../utilities/shuffleArray";
@@ -6,24 +6,22 @@ import TimeQueue from '../utilities/timeQueue';
 
 export default class FlashcardGame {
     private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
-    private keySetIndexRange: number[];
     private keySetNotes: string[];
-    private allNotes = allKeys;
     public probabilityNumber: number;
+    private allNotes: string[] = allKeys;
 
 
     constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest") {
         this.keySetName = keySetName;
-        this.keySetIndexRange = this.noteRange(keySetName);
-        this.keySetNotes = this.allNotes.slice(this.keySetIndexRange[0],this.keySetIndexRange[1] + 1);
+        this.keySetNotes = FlashcardGame.noteRange(keySetName, this.allNotes);
         this.probabilityNumber = 0
     }
 
 
-    public getNote = (iNoteData: iNoteData): any => {
-        const chosenNote = this.findNoteFromRandom(iNoteData, this.randomProbability());
+    public getNote = (iNoteData: iNoteData): iFlashcardNotePayload => {
+        const chosenNote: string = this.findNoteFromProbabilityNum(iNoteData, this.randomProbability());
 
-        const payload = {
+        const payload: iFlashcardNotePayload = {
             find: chosenNote,
             options: this.createOptionsArray(this.keySetNotes.indexOf(chosenNote))
         }
@@ -40,13 +38,13 @@ export default class FlashcardGame {
             avgTime: 0,
             score: 0
         }
-        updatedNoteData.avgTime = Number(TimeQueue.timeAverage(updatedNoteData.time).toFixed(1));
+        updatedNoteData.avgTime = TimeQueue.timeAverage(updatedNoteData.time);
 
         //Calc Accuracy & Time Score
-        let accScore = Number( (Math.sqrt((100 - ((updatedNoteData.acc / updatedNoteData.dataSize) * 100))) / 2).toFixed(1));
+        let accScore: number = Number( (Math.sqrt((100 - ((updatedNoteData.acc / updatedNoteData.dataSize) * 100))) / 2).toFixed(1));
         accScore = updatedNoteData.dataSize < 10 ? 4 : accScore;    //Wait till dataset is 10 before slimming calculations
 
-        const timeScore = Number((updatedNoteData.avgTime / 2).toFixed(1));
+        const timeScore: number = Number((updatedNoteData.avgTime / 2).toFixed(1));
         
         updatedNoteData.score = accScore + timeScore;
         return updatedNoteData;
@@ -58,10 +56,10 @@ export default class FlashcardGame {
     //Setup Methods
     //==================================================================
     private createOptionsArray(selectedIndex: number): string[] {
-        const optionAmount = 5;
-        const randomOffset = Math.floor(Math.random() * optionAmount) + 1
-        let maxIndex = selectedIndex + randomOffset;
-        let minIndex = selectedIndex - (5 - randomOffset);
+        const optionAmount: number = 5;
+        const randomOffset: number = Math.floor(Math.random() * optionAmount) + 1
+        let maxIndex: number = selectedIndex + randomOffset;
+        let minIndex: number = selectedIndex - (optionAmount - randomOffset);
 
         if (minIndex < 0) {
             maxIndex = optionAmount
@@ -77,18 +75,18 @@ export default class FlashcardGame {
     }
 
 
-    private noteRange(range: "treble" | "bass" | "upperTreble" | "lowest" | "highest"): number[] {
+    static noteRange(range: "treble" | "bass" | "upperTreble" | "lowest" | "highest", allNotes: string[]): string[] {
         switch (range) {
             case "highest":
-                return [45,51]; //note range index
+                return allNotes.slice(45,52); //note range index
             case "upperTreble":
-                return [34,44]; //note range index
+                return allNotes.slice(34,45); //note range index
             case "treble":
-                return [23,33]; //note range index
+                return allNotes.slice(23,34); //note range index
             case "bass":
-                return [13,23]; //note range index
+                return allNotes.slice(13,24); //note range index
             case "lowest":
-                return [0,12];  //note range index
+                return allNotes.slice(0,13); //note range index
         }
     }
 
@@ -97,14 +95,8 @@ export default class FlashcardGame {
 
     //Helper Methods
     //==================================================================
-    private randomProbability(): number {
-        let rand = Number((Math.random() * this.probabilityNumber).toFixed(1));
-        return rand;
-    }
-
-
-    private findNoteFromRandom(iNoteData: iNoteData, randNum: number): string {
-        let findNum = randNum;
+    private findNoteFromProbabilityNum(iNoteData: iNoteData, randNum: number): string {
+        let findNum: number = randNum;
 
         for (let i:number = 0; i < this.keySetNotes.length; i++) {
             findNum -= iNoteData[this.keySetNotes[i]].score;
@@ -114,6 +106,12 @@ export default class FlashcardGame {
             }
         }
         return ""
+    }
+
+
+    private randomProbability(): number {
+        let rand: number = Number((Math.random() * this.probabilityNumber).toFixed(1));
+        return rand;
     }
 
 
