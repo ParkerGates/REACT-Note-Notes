@@ -18,7 +18,7 @@ export default class TimeQueue {
         total += arr[i];
       }
 
-      return total / arr.length;
+      return Number((total / arr.length).toFixed(1))
     }
   
   }
