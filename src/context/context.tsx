@@ -6,19 +6,19 @@ interface Props {
     children: JSX.Element;
 }
 
-const ScoreContext = React.createContext<any>({});
-export {ScoreContext}
+const ContextData = React.createContext<any>({});
+export { ContextData }
 
-export function useScore() {
-    return useContext(ScoreContext);
+export function useContextData() {
+    return useContext(ContextData);
 }
 
 export default function AppContext(props: Props) {
     const [noteScore, dispatch] = useReducer(reducer, initialState);
 
     return(
-        <ScoreContext.Provider value={{scoreState: noteScore, scoreDispatch: dispatch}}>
+        <ContextData.Provider value={{contextState: noteScore, contextDispatch: dispatch}}>
             {props.children}
-        </ScoreContext.Provider>
+        </ContextData.Provider>
     );
 }

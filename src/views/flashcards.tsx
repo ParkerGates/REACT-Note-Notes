@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useScore } from '../context/context';
+import { useContextData } from '../context/context';
 import useTimer from 'easytimer-react-hook';
 import { iFlashcardNotePayload } from '../interfaces/interfaces';
 import FlashcardGame from "../classes/FlashcardGame";
@@ -14,7 +14,7 @@ export default function Flashcards() {
  
     const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});
     const [isCardChosen, setIsCardChosen] = useState<boolean>(false);
-    const contextData = useScore();
+    const contextData = useContextData();
  
     const game = new FlashcardGame("treble");
  
@@ -37,9 +37,9 @@ export default function Flashcards() {
  
  
     const nextCard = ():void  => {
-        game.probabilityNumber = contextData.scoreState.probabilityPool;
+        game.probabilityNumber = contextData.contextState.probabilityPool;
         setIsCardChosen(false);
-        setCardPayload(game.getNote(contextData.scoreState.noteData));
+        setCardPayload(game.getNote(contextData.contextState.noteData));
         timer.start({ startValues: [0,0,0,0,0], target: {seconds: 5}, precision: 'secondTenths'});
     }
  
@@ -52,13 +52,13 @@ export default function Flashcards() {
             timer.stop();
 
             if (correctIndex === selectedIndex) {
-                contextData.scoreDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: true, time: cardTime.secondTenths});
+                contextData.contextDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: true, time: cardTime.secondTenths});
  
                 document.getElementById(selectedIndex).style.backgroundColor = "green";
                 waitOnAnswerBeforeNextCard(selectedIndex);
             }
             else {
-                contextData.scoreDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: false, time: cardTime.secondTenths});
+                contextData.contextDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: false, time: cardTime.secondTenths});
  
                 document.getElementById(correctIndex).style.backgroundColor = "green";
                 document.getElementById(selectedIndex).style.backgroundColor = "red";
@@ -81,8 +81,8 @@ export default function Flashcards() {
  
    
     useEffect(() => {
-        game.countProbabilityPool(contextData.scoreState.noteData);
-        contextData.scoreDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
+        game.countProbabilityPool(contextData.contextState.noteData);
+        contextData.contextDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
     }, [])
 
  

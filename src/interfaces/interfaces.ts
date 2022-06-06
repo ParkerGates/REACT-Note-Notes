@@ -24,6 +24,8 @@ export interface iNoteData {
 }
 
 export interface iContextState {
+    defaultGameSettings: iGameSettings | null;
+    gameSettings: iGameSettings | null;
     probabilityPool: number;
     noteData: iNoteData;
 }
@@ -31,4 +33,19 @@ export interface iContextState {
 export interface iFlashcardNotePayload {
     find: string;
     options: string[];
+}
+
+export interface iGameSettings {
+    note: "treble" | "bass" | "upperTreble" | "lowest" | "highest" | "";
+    gameType: {type:"limitless"} | {type:"timed"} | {type:"set", amount: number} | {type: null};
+    cardType: "all" | "trouble cards" | "";
+    inputType: "mouse-click" | "number-keys" | "hover-wheel" | "";
+}
+
+export interface iNoteScoreInfo {
+    mastery: number;
+    averageAcc: number;
+    averageTime: number;
+    bestToWorse: any[];
+    WorseAmount: number;
 }
