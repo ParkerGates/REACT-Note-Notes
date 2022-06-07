@@ -1,6 +1,6 @@
 import { iNoteData, iSingleNoteData, iFlashcardNotePayload } from '../interfaces/interfaces';
 import { allKeys } from '../context/data';
-import { clamp } from "../utilities/utilities";
+import { clamp, calcAccuracyScore, calcTimeScore } from "../utilities/utilities";
 import shuffle from "../utilities/shuffleArray";
 import TimeQueue from '../utilities/timeQueue';
 
@@ -8,12 +8,11 @@ export default class FlashcardGame {
     private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
     private keySetNotes: string[];
     public probabilityNumber: number;
-    private allNotes: string[] = allKeys;
 
 
     constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest") {
         this.keySetName = keySetName;
-        this.keySetNotes = FlashcardGame.noteRange(keySetName, this.allNotes);
+        this.keySetNotes = FlashcardGame.noteRange(keySetName);
         this.probabilityNumber = 0
     }
 
@@ -41,11 +40,9 @@ export default class FlashcardGame {
         updatedNoteData.avgTime = TimeQueue.timeAverage(updatedNoteData.time);
 
         //Calc Accuracy & Time Score
-        let accScore: number = Number( (Math.sqrt((100 - ((updatedNoteData.acc / updatedNoteData.dataSize) * 100))) / 2).toFixed(1));
-        accScore = updatedNoteData.dataSize < 10 ? 4 : accScore;    //Wait till dataset is 10 before slimming calculations
+        let accScore: number = calcAccuracyScore(updatedNoteData.acc,updatedNoteData.dataSize);
+        const timeScore: number = calcTimeScore(updatedNoteData.avgTime);
 
-        const timeScore: number = Number((updatedNoteData.avgTime / 2).toFixed(1));
-        
         updatedNoteData.score = accScore + timeScore;
         return updatedNoteData;
     }
@@ -75,18 +72,18 @@ export default class FlashcardGame {
     }
 
 
-    static noteRange(range: "treble" | "bass" | "upperTreble" | "lowest" | "highest", allNotes: string[]): string[] {
+    static noteRange(range: "treble" | "bass" | "upperTreble" | "lowest" | "highest"): string[] {
         switch (range) {
             case "highest":
-                return allNotes.slice(45,52); //note range index
+                return allKeys.slice(45,52); //note range index
             case "upperTreble":
-                return allNotes.slice(34,45); //note range index
+                return allKeys.slice(34,45); //note range index
             case "treble":
-                return allNotes.slice(23,34); //note range index
+                return allKeys.slice(23,34); //note range index
             case "bass":
-                return allNotes.slice(13,24); //note range index
+                return allKeys.slice(13,24); //note range index
             case "lowest":
-                return allNotes.slice(0,13); //note range index
+                return allKeys.slice(0,13); //note range index
         }
     }
 

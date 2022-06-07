@@ -4,6 +4,8 @@ import SetUpPage1 from "../components/SetUpContainerPages/Page1/Page1";
 import SetUpPage2 from "../components/SetUpContainerPages/Page2/Page2";
 import SetUpPage3 from "../components/SetUpContainerPages/Page3/Page3";
 import { iGameSettings, iNoteScoreInfo } from "../interfaces/interfaces";
+import "./css/setup.css";
+import "../App.css";
 
 export default function Setup() {
     const data = useContextData();
@@ -50,9 +52,12 @@ export default function Setup() {
             {currentPage === 1 && <SetUpPage1 />}
             {currentPage === 2 && <SetUpPage2 />}
             {currentPage === 3 && <SetUpPage3 />}
-            <div>
-                <button disabled={disableNavBtn("back", currentPage)} onClick={()=>{pageNav("back")}}>back</button>
-                <button disabled={disableNavBtn("forward", currentPage)} onClick={()=>{pageNav("forward")}}>forward</button>
+            
+            <div className="displayFlexCenter">
+                <div className="displayInlineBlock">
+                    <button disabled={disableNavBtn("back", currentPage)} onClick={()=>{pageNav("back")}}>back</button>
+                    <button disabled={disableNavBtn("forward", currentPage)} onClick={()=>{pageNav("forward")}}>forward</button>
+                </div>
             </div>
         </div>
     );
