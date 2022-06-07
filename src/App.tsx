@@ -8,10 +8,12 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="setup">Setup</Link>
-        <Link to="flashcards">Flashcards</Link>
+      <nav className="displayFlexCenter">
+        <div className="displayInlineBlock">
+          <Link to="/">Home</Link>
+          <Link to="setup">Setup</Link>
+          <Link to="flashcards">Flashcards</Link>
+        </div>
       </nav>
 
       <Routes>

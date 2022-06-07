@@ -58,7 +58,7 @@ export default function Flashcards() {
                 waitOnAnswerBeforeNextCard(selectedIndex);
             }
             else {
-                contextData.contextDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: false, time: cardTime.secondTenths});
+                contextData.contextDispatch({type: "update-data", note: cardPayload.options[correctIndex], correct: false, time: cardTime.secondTenths});
  
                 document.getElementById(correctIndex).style.backgroundColor = "green";
                 document.getElementById(selectedIndex).style.backgroundColor = "red";
