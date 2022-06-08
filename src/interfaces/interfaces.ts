@@ -1,8 +1,8 @@
 export interface iSingleNoteData {
     note: string;
     acc: number;
-    dataSize: number;
-    time: number[];
+    dataSize?: number;
+    time?: number[];
     avgTime: number;
     score: number;
 }
@@ -42,10 +42,9 @@ export interface iGameSettings {
     inputType: "mouse-click" | "number-keys" | "hover-wheel" | "";
 }
 
-export interface iNoteScoreInfo {
-    mastery: number;
-    averageAcc: number;
-    averageTime: number;
-    bestToWorse: any[];
-    WorseAmount: number;
+export interface iKeysetScoreInfo {
+    masteryLvl: number,
+    avgAccuracy: number,
+    avgTime: number,
+    orderByScore: iSingleNoteData[],
 }

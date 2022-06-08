@@ -1,8 +1,14 @@
 import FlashcardGame from "../../../classes/FlashcardGame";
 import { useContextData } from "../../../context/context";
+import { iKeysetScoreInfo, iSingleNoteData } from "../../../interfaces/interfaces";
 import "./css/Page1.css";
 
-export default function SetUpPage1() {
+interface Props {
+    onNoteInfoChange: Function;
+    pageNav: Function;
+}
+
+export default function SetUpPage1({onNoteInfoChange, pageNav}: Props) {
     const contextData = useContextData(); 
 
     const setKeysetInfo = (keyset: "treble" | "bass" | "upperTreble" | "lowest" | "highest") => {
@@ -10,23 +16,39 @@ export default function SetUpPage1() {
         const maxScore = 10.3 * keysetArray.length; //10.3 is worse possible score
         const minScore = 1.9 * keysetArray.length;  //1.9 is score given with 85% accuracy and an average time of 1.2 seconds
 
-        let avAccAddUp = 0;    //max:6.6  min:0.3
-        let avTimeAddUp = 0;   //max:3.6  1s:0.7  .5s:0.4
-        let avScoreAddUp = 0   //min1s:1  max:10.2
+        let avgAccAddUp = 0, avgTimeAddUp = 0, avgScoreAddUp = 0;    //Acc: max:6.6|min:0.3  Time:max:3.6|1s:0.7|.5s:0.4  Score:min1s:1|max:10.2
+        let noteByScore: iSingleNoteData[] = [];
 
         for (let i = 0; i < keysetArray.length; i++) {
-            avAccAddUp += (contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize)
-            avTimeAddUp += contextData.contextState.noteData[keysetArray[i]].avgTime;
-            avScoreAddUp += contextData.contextState.noteData[keysetArray[i]].score;
+            avgAccAddUp += (contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize)
+            avgTimeAddUp += contextData.contextState.noteData[keysetArray[i]].avgTime;
+            avgScoreAddUp += contextData.contextState.noteData[keysetArray[i]].score;
+            noteByScore.push({
+                note: contextData.contextState.noteData[keysetArray[i]].note,
+                acc:Math.ceil((contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize) * 100),
+                avgTime: contextData.contextState.noteData[keysetArray[i]].avgTime,
+                score: contextData.contextState.noteData[keysetArray[i]].score
+            });
         }
 
-        avAccAddUp = Math.ceil((avAccAddUp / keysetArray.length) * 100);
-        avTimeAddUp = Number((avTimeAddUp / keysetArray.length).toFixed(1));
+        avgAccAddUp = Math.ceil((avgAccAddUp / keysetArray.length) * 100);
+        avgTimeAddUp = Number((avgTimeAddUp / keysetArray.length).toFixed(1));
+        
+        let avgScorePercentage = Math.ceil((avgScoreAddUp - minScore) / (maxScore - minScore) * 100);
+        avgScorePercentage = avgScorePercentage > 100 ? 100 : avgScorePercentage;
+        noteByScore.sort((a, b) => a.score - b.score);
 
-        //avAcc 1 = 85%    avTime 0.9 = 1.2s    avScore = 1.9    maxScore = 10.3
-        let avScorePercentage = Math.ceil((avScoreAddUp - minScore) / (maxScore - minScore) * 100);
-        avScorePercentage = avScorePercentage > 100 ? 100 : avScorePercentage;
+        const keysetInfo: iKeysetScoreInfo = {
+            masteryLvl: avgScorePercentage,
+            avgAccuracy: avgAccAddUp,
+            avgTime: avgTimeAddUp,
+            orderByScore: noteByScore,
+        }
+        
+        onNoteInfoChange(keysetInfo);
+        pageNav("forward");
     }
+
 
     return (
         <div className="keySetBtnContainer">
