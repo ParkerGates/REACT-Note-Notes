@@ -1,6 +1,11 @@
+import { iKeysetScoreInfo } from '../../../interfaces/interfaces';
 import './css/Page2.css';
 
-export default function SetUpPage2() {
+interface Props {
+    keysetInfo: iKeysetScoreInfo;
+}
+
+export default function SetUpPage2({keysetInfo}: Props) {
 
     return (
         <div>
