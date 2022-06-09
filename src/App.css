@@ -6,3 +6,11 @@
 .displayInlineBlock {
   display: inline-block;
 }
+
+.positionRelative {
+  position: relative;
+}
+
+.textAlignCenter {
+  text-align: center;
+}

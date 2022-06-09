@@ -13,11 +13,6 @@ export default function Setup() {
     const [gameData, setGameData] = useState<iGameSettings>(data.contextState.defaultGameSettings);
     const [keysetInfo, setKeysetInfo] = useState<iKeysetScoreInfo>({masteryLvl:0, avgAccuracy: 0, avgTime: 0, orderByScore: []});
 
-    const [page1, setPage1] = useState(null);
-    const [page2, setPage2] = useState(null);
-    const [page3, setPage3] = useState(null);
-
-
     let pageNav = (direction: "forward" | "back") => {
         const newPage = direction === "forward" ? currentPage + 1 : currentPage - 1;
         setCurrentPage(newPage);
@@ -35,30 +30,11 @@ export default function Setup() {
     }
 
 
-    const disableNavBtn = (btnType: "forward" | "back", currentPage: number) => {
-        switch (btnType) {
-            case "forward":
-                if (currentPage === 3) { return true}
-                else { return false}
-            case "back":
-                if (currentPage === 1) { return true}
-                else { return false}
-        }
-    }
-
-
     return(
         <div>
             {currentPage === 1 && <SetUpPage1 onNoteInfoChange={setKeysetInfo} pageNav={pageNav}/>}
-            {currentPage === 2 && <SetUpPage2 keysetInfo={keysetInfo}/>}
+            {currentPage === 2 && <SetUpPage2 keysetInfo={keysetInfo} pageNav={pageNav}/>}
             {currentPage === 3 && <SetUpPage3 />}
-            
-            <div className="displayFlexCenter">
-                <div className="displayInlineBlock">
-                    <button disabled={disableNavBtn("back", currentPage)} onClick={()=>{pageNav("back")}}>back</button>
-                    <button disabled={disableNavBtn("forward", currentPage)} onClick={()=>{pageNav("forward")}}>forward</button>
-                </div>
-            </div>
         </div>
     );
 }
