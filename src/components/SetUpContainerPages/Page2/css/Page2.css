@@ -1,0 +1,60 @@
+.scoreDisplayBox {
+    display: inline-block;
+    width: 35px;
+    height: 25px;
+
+    text-align: center;
+    line-height: 25px;
+
+    border: 1px solid salmon;
+}
+.scoreDisplayBoxContainer {
+    text-align: center;
+}
+
+
+.singleNoteScoreInfoContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+}
+
+
+.configTestBtnContainer {
+    position: absolute;
+    right: 10px;
+}
+
+
+.page2Block {
+    margin: 0px 0px 10px;
+}
+
+.MasteryAverageTextBox {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+}
+.MasteryAverageText {
+    width: 150px;
+}
+.MasteryAverageContainer {
+    display: inline-block;
+    margin: 10px;
+}
+
+
+.backBtn {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+
+    background-color: white;
+    font-weight: bold;
+}
+
+
+.moreTestingRequired {
+    text-align: center;
+    font-size: 1.5rem;
+}

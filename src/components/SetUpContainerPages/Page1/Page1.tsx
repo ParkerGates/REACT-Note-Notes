@@ -20,15 +20,23 @@ export default function SetUpPage1({onNoteInfoChange, pageNav}: Props) {
         let noteByScore: iSingleNoteData[] = [];
 
         for (let i = 0; i < keysetArray.length; i++) {
-            avgAccAddUp += (contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize)
-            avgTimeAddUp += contextData.contextState.noteData[keysetArray[i]].avgTime;
-            avgScoreAddUp += contextData.contextState.noteData[keysetArray[i]].score;
-            noteByScore.push({
-                note: contextData.contextState.noteData[keysetArray[i]].note,
-                acc:Math.ceil((contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize) * 100),
-                avgTime: contextData.contextState.noteData[keysetArray[i]].avgTime,
-                score: contextData.contextState.noteData[keysetArray[i]].score
-            });
+            if (contextData.contextState.noteData[keysetArray[i]].dataSize >= 1) {
+                avgAccAddUp += (contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize)
+                avgTimeAddUp += contextData.contextState.noteData[keysetArray[i]].avgTime;
+                avgScoreAddUp += contextData.contextState.noteData[keysetArray[i]].score;
+                
+                noteByScore.push({
+                    note: contextData.contextState.noteData[keysetArray[i]].note,
+                    acc:Math.ceil((contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize) * 100),
+                    avgTime: contextData.contextState.noteData[keysetArray[i]].avgTime,
+                    score: contextData.contextState.noteData[keysetArray[i]].score
+                });
+            }
+            else {
+                onNoteInfoChange({masteryLvl: 0, avgAccuracy: 0, avgTime: 0, orderByScore: []});
+                pageNav("forward");
+                return;
+            }
         }
 
         avgAccAddUp = Math.ceil((avgAccAddUp / keysetArray.length) * 100);
@@ -43,7 +51,7 @@ export default function SetUpPage1({onNoteInfoChange, pageNav}: Props) {
             avgAccuracy: avgAccAddUp,
             avgTime: avgTimeAddUp,
             orderByScore: noteByScore,
-        }
+        };
         
         onNoteInfoChange(keysetInfo);
         pageNav("forward");
