@@ -5,9 +5,10 @@ import '../../../App.css';
 interface Props {
     keysetInfo: iKeysetScoreInfo;
     pageNav: (direction: "forward" | "back") => void;
+    launchGame: () => void;
 }
 
-export default function SetUpPage2({keysetInfo, pageNav}: Props) {
+export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
 
     return (
         <div className="page2Container positionRelative">
@@ -54,7 +55,7 @@ export default function SetUpPage2({keysetInfo, pageNav}: Props) {
             <div className="positionRelative">
                 <div className="configTestBtnContainer">
                     <button onClick={()=>{pageNav("forward")}}>Config</button>
-                    <button>Test</button>
+                    <button onClick={launchGame}>Test</button>
                 </div>
             </div>
 
