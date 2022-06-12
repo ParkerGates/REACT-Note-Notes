@@ -5,13 +5,17 @@ import "./css/Page1.css";
 
 interface Props {
     onNoteInfoChange: Function;
+    onGameDataChange: Function;
     pageNav: Function;
 }
 
-export default function SetUpPage1({onNoteInfoChange, pageNav}: Props) {
+export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}: Props) {
     const contextData = useContextData(); 
+    
 
     const setKeysetInfo = (keyset: "treble" | "bass" | "upperTreble" | "lowest" | "highest") => {
+        onGameDataChange({keyset:keyset, gameType:{type: null},cardType:"",inputType:""})
+
         const keysetArray = FlashcardGame.noteRange(keyset);
         const maxScore = 10.3 * keysetArray.length; //10.3 is worse possible score
         const minScore = 1.9 * keysetArray.length;  //1.9 is score given with 85% accuracy and an average time of 1.2 seconds
