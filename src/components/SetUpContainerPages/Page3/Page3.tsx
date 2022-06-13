@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useContextData } from "../../../context/context";
 import { iGameSettings } from '../../../interfaces/interfaces';
 import './css/Page3.css';
@@ -17,29 +17,36 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
         gameType: contextData.contextState.defaultGameSettings.gameType.type,
         optionAmount: contextData.contextState.defaultGameSettings.optionAmount,
         cardType: contextData.contextState.defaultGameSettings.cardType,
-        inputType: contextData.contextState.defaultGameSettings.inputType
+        inputType: contextData.contextState.defaultGameSettings.inputType,
+        gameInfoChanged: null
     });
 
     const setSettingOption = (catagory:string, type:string) => {
         switch (catagory) {
             case "GameType":
                 setGameInfo({...gameInfo, gameType:{type:type}});
-                setBtnState({...btnState, gameType:type});
+                setBtnState({...btnState, gameType:type, gameInfoChanged:true});
                 break;
             case "OptionAmount":
                 setGameInfo({...gameInfo, optionAmount:type});
-                setBtnState({...btnState, optionAmount:type});
+                setBtnState({...btnState, optionAmount:type, gameInfoChanged:true});
                 break;
             case "CardType":
                 setGameInfo({...gameInfo, cardType:type});
-                setBtnState({...btnState, cardType:type});
+                setBtnState({...btnState, cardType:type, gameInfoChanged:true});
                 break;
             case "InputType":
                 setGameInfo({...gameInfo, inputType:type});
-                setBtnState({...btnState, inputType:type});
+                setBtnState({...btnState, inputType:type, gameInfoChanged:true});
                 break;
         }
     }
+
+    const saveAsDefault = () => {
+        setBtnState({...btnState, gameInfoChanged:false});
+        contextData.contextDispatch({type:"update-default-game-settings", gameSettings:gameInfo});
+    }
+
 
 
 
@@ -85,8 +92,16 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
 
             <div className="positionRelative">
                 <div className="configTestBtnContainer">
-                    <label>Set final as default</label>
-                    <input type="checkbox" />
+                    <span>                        
+                        { btnState.gameInfoChanged === null && ""}
+                        { btnState.gameInfoChanged === false && <>saved</> }
+                        { btnState.gameInfoChanged === true && 
+                            <>
+                                <label>Set final as default</label>
+                                <button onClick={saveAsDefault}>+</button>
+                            </>
+                        }
+                    </span>
                     <button onClick={launchGame}>Test</button>
                 </div>
             </div>
