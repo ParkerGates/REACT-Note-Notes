@@ -24,25 +24,11 @@ export default function Setup() {
     const pageNav = (direction: "forward" | "back") => {
         const newPage = direction === "forward" ? currentPage + 1 : currentPage - 1;
         setCurrentPage(newPage);
-
-        // switch (newPage) {
-        //     case 0 | 3 | 4:
-        //         return null; 
-        //     case 1:
-        //         setPage2(null);
-        //         break;
-        //     case 2:
-        //         setPage3(null)
-        //         break;
-        // }
     }
 
     const launchGame = () => {
-        console.log(gameData);
-        
-
-        //data.contextDispatch({type:"update-game-settings", gameSettings:gameData});
-        //navigate("/flashcards", {replace: true});  
+        data.contextDispatch({type:"update-game-settings", gameSettings:gameData});
+        navigate("/flashcards", {replace: true});  
     }
 
 
