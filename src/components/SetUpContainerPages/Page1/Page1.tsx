@@ -1,16 +1,15 @@
 import FlashcardGame from "../../../classes/FlashcardGame";
 import { useContextData } from "../../../context/context";
-import { iGameSettings, iKeysetScoreInfo, iSingleNoteData } from "../../../interfaces/interfaces";
+import { iKeysetScoreInfo, iSingleNoteData } from "../../../interfaces/interfaces";
 import "./css/Page1.css";
 
 interface Props {
-    gameData: iGameSettings;
     onNoteInfoChange: Function;
     onGameDataChange: Function;
     pageNav: Function;
 }
 
-export default function SetUpPage1({onNoteInfoChange, gameData, onGameDataChange, pageNav}: Props) {
+export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}: Props) {
     const contextData = useContextData(); 
     
     const setKeysetInfo = (keyset: "treble" | "bass" | "upperTreble" | "lowest" | "highest") => {

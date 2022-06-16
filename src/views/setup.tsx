@@ -14,7 +14,7 @@ export default function Setup() {
     const [currentPage, setCurrentPage] = useState(1);
     const [gameData, setGameData] = useState<iGameSettings>({
         keyset: "",
-        gameType: {type: data.contextState.defaultGameSettings.gameType.type},
+        gameType: {type: data.contextState.defaultGameSettings.gameType.type, action:data.contextState.defaultGameSettings.gameType.type},
         optionAmount: data.contextState.defaultGameSettings.optionAmount,
         cardType: data.contextState.defaultGameSettings.cardType,
         inputType: data.contextState.defaultGameSettings.inputType
@@ -34,7 +34,7 @@ export default function Setup() {
 
     return(
         <div>
-            {currentPage === 1 && <SetUpPage1 onNoteInfoChange={setKeysetInfo} gameData={gameData} onGameDataChange={setGameData} pageNav={pageNav}/>}
+            {currentPage === 1 && <SetUpPage1 onNoteInfoChange={setKeysetInfo} onGameDataChange={setGameData} pageNav={pageNav}/>}
             {currentPage === 2 && <SetUpPage2 keysetInfo={keysetInfo} pageNav={pageNav} launchGame={launchGame}/>}
             {currentPage === 3 && <SetUpPage3 gameInfo={gameData} setGameInfo={setGameData} pageNav={pageNav} launchGame={launchGame}/>}
         </div>

@@ -3,6 +3,7 @@ import { useContextData } from "../../../context/context";
 import { iGameSettings } from '../../../interfaces/interfaces';
 import './css/Page3.css';
 import '../Page2/css/Page2.css';
+import { getNameOfJSDocTypedef } from 'typescript';
 
 interface Props {
     gameInfo: iGameSettings;
@@ -20,11 +21,14 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
         inputType: contextData.contextState.defaultGameSettings.inputType,
         gameInfoChanged: null
     });
+    const [limitedGameCount, setLimitedGameCount] = useState<number>(5);
+    const [timedGameCount, setTimedGameCount] = useState<number>(20);
+
 
     const setSettingOption = (catagory:string, type:string) => {
         switch (catagory) {
             case "GameType":
-                setGameInfo({...gameInfo, gameType:{type:type}});
+                setGameInfo({...gameInfo, gameType:{type:type, action:gameTypeDefaultActionIndex(type)}});
                 setBtnState({...btnState, gameType:type, gameInfoChanged:true});
                 break;
             case "OptionAmount":
@@ -42,11 +46,64 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
         }
     }
 
+
     const saveAsDefault = () => {
         setBtnState({...btnState, gameInfoChanged:false});
         contextData.contextDispatch({type:"update-default-game-settings", gameSettings:gameInfo});
     }
 
+
+    const setCardIncrement = (action: "increment" | "decrement") => {
+        switch (action) {
+            case "increment":
+                if (limitedGameCount < 100) {
+                    setGameInfo({...gameInfo, gameType:{...gameInfo.gameType, action: limitedGameCount + 10}});
+                    setLimitedGameCount(limitedGameCount + 10);
+                }
+                return;
+            case "decrement":
+                if (limitedGameCount > 10) {
+                    setGameInfo({...gameInfo, gameType:{...gameInfo.gameType, action: limitedGameCount - 10}});
+                    setLimitedGameCount(limitedGameCount - 10);
+                }
+                return;
+        }
+    }
+
+
+    const setTimeIncrement = (action: "increment" | "decrement") => {
+        switch (action) {
+            case "increment":
+                if (timedGameCount < 10) {
+                    setGameInfo({...gameInfo, gameType:{...gameInfo.gameType, action: timedGameCount + 1}});
+                    setTimedGameCount(timedGameCount + 1);
+                }
+                    return;
+            case "decrement":
+                if (timedGameCount > 1) {
+                    setGameInfo({...gameInfo, gameType:{...gameInfo.gameType, action: timedGameCount - 1}});
+                    setTimedGameCount(timedGameCount - 1);
+                }
+                    return;
+        }
+    }
+
+
+    const gameTypeDefaultActionIndex = (gameType:"limitless"|"timed"|"set"|any) => {
+        switch(gameType) {
+            case "limitless":
+                return null;
+            case "timed":
+                setTimedGameCount(5);
+                return 5;
+            case "set":
+                setLimitedGameCount(20);
+                return 20;
+            default:
+                return null;
+        }
+
+    }
 
 
 
@@ -60,6 +117,22 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                     <button className={btnState.gameType==="limitless"?"active":""} onClick={()=>{setSettingOption("GameType","limitless")}}>limitless</button>
                     <button className={btnState.gameType==="timed"?"active":""} onClick={()=>{setSettingOption("GameType","timed")}}>timed</button>
                     <button className={btnState.gameType==="set"?"active":""} onClick={()=>{setSettingOption("GameType","set")}}>set</button>
+                    { btnState.gameType === "timed" &&
+                    <div>
+                    <label>Time</label>
+                    <input type="text" value={timedGameCount} readOnly />{/*--------------------------------------------------------------*/}
+                    <button onClick={()=>setTimeIncrement('increment')}>^</button>
+                    <button onClick={()=>setTimeIncrement('decrement')}>v</button>
+                </div>
+                    }
+                    { btnState.gameType === "set" &&
+                    <div>
+                        <label>Card Amount</label>
+                        <input type="text" value={limitedGameCount} readOnly />{/*--------------------------------------------------------------*/}
+                        <button onClick={()=>setCardIncrement('increment')}>^</button>
+                        <button onClick={()=>setCardIncrement('decrement')}>v</button>
+                    </div>
+                    }
                 </div>
             </div>
             <br/>

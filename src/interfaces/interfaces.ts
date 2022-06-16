@@ -37,7 +37,7 @@ export interface iFlashcardNotePayload {
 
 export interface iGameSettings {
     keyset: "treble" | "bass" | "upperTreble" | "lowest" | "highest" | "";
-    gameType: {type:"limitless"} | {type:"timed"} | {type:"set", amount: number} | {type: null};
+    gameType: {type:"limitless"|"timed"|"set", action?: any};
     optionAmount: "3" | "4" | "5" | "6" | "";
     cardType: "all" | "trouble cards" | "";
     inputType: "mouse-click" | "number-keys" | "hover-wheel" | "";
@@ -48,4 +48,11 @@ export interface iKeysetScoreInfo {
     avgAccuracy: number,
     avgTime: number,
     orderByScore: iSingleNoteData[],
+}
+
+export interface iFlashcardGameState {
+    currentState: "no-game"|"pre-game"|"game"|"post-game",
+    isCardChosen: boolean,
+    countdown: number,
+    gameType: {type: any, action?: any};
 }
