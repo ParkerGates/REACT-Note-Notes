@@ -9,8 +9,8 @@ let newSingleNoteData: iSingleNoteData;
 const initialState: iContextState = {
     noteData: noteData,
     probabilityPool: 0,
-    defaultGameSettings: { keyset: "", gameType: {type: 'limitless'}, optionAmount:"4", cardType: "all", inputType: "mouse-click" },
-    gameSettings: { keyset: "", gameType: {type: null}, optionAmount:"", cardType: "", inputType: "" },
+    defaultGameSettings: { keyset: "", gameType: {type: 'limitless', action:null}, optionAmount:"4", cardType: "all", inputType: "mouse-click" },
+    gameSettings: { keyset: "", gameType: {type: null, action:null}, optionAmount:"", cardType: "", inputType: "" },
 };
 
 const reducer = (state:any , action:any) => {
