@@ -8,17 +8,19 @@ export default class FlashcardGame {
     private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
     private keySetNotes: string[];
     public probabilityNumber: number;
+    private lastNoteChosen: string;
 
 
     constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest") {
         this.keySetName = keySetName;
         this.keySetNotes = FlashcardGame.noteRange(keySetName);
-        this.probabilityNumber = 0
+        this.probabilityNumber = 0;
+        this.lastNoteChosen = "";
     }
 
 
-    public getNote = (iNoteData: iNoteData): iFlashcardNotePayload => {
-        const chosenNote: string = this.findNoteFromProbabilityNum(iNoteData, this.randomProbability());
+    public getNote = (iNoteData: iNoteData, priorNoteChosen: string): iFlashcardNotePayload => {
+        const chosenNote: string = this.findNoteFromProbabilityNum(iNoteData, priorNoteChosen);
 
         const payload: iFlashcardNotePayload = {
             find: chosenNote,
@@ -92,23 +94,26 @@ export default class FlashcardGame {
 
     //Helper Methods
     //==================================================================
-    private findNoteFromProbabilityNum(iNoteData: iNoteData, randNum: number): string {
-        let findNum: number = randNum;
+    private findNoteFromProbabilityNum(iNoteData: iNoteData, priorNoteChosen: string): string {
+        let newNoteChosen: string = priorNoteChosen;
+
+        let findNum: number = Number((Math.random() * this.probabilityNumber).toFixed(1));
 
         for (let i:number = 0; i < this.keySetNotes.length; i++) {
             findNum -= iNoteData[this.keySetNotes[i]].score;
     
             if (findNum <= 0) {
-                return this.keySetNotes[i];
+                if (this.keySetNotes[i] === priorNoteChosen) {
+                    i = 0;
+                    findNum = Number((Math.random() * this.probabilityNumber).toFixed(1));
+                }
+                else {
+                    newNoteChosen = this.keySetNotes[i];
+                    return newNoteChosen;
+                }
             }
         }
-        return ""
-    }
-
-
-    private randomProbability(): number {
-        let rand: number = Number((Math.random() * this.probabilityNumber).toFixed(1));
-        return rand;
+        return newNoteChosen;
     }
 
 
