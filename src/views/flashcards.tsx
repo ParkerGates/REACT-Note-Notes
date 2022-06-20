@@ -44,7 +44,7 @@ export default function Flashcards() {
     const nextCard = ():void  => {
         game.probabilityNumber = contextData.contextState.probabilityPool;
         setGameState((prevState) => {return{...prevState, isCardChosen: false}});
-        setCardPayload(game.getNote(contextData.contextState.noteData));
+        setCardPayload(game.getNote(contextData.contextState.noteData, cardPayload.find));
         timer.start({ startValues: [0,0,0,0,0], target: {seconds: 5}, precision: 'secondTenths'});
     }
  
@@ -77,7 +77,7 @@ export default function Flashcards() {
             }
             document.getElementById(right).style.backgroundColor = "";
 
-            if (gameState.gameType.type === "set") setLimitedGameCount(limitedGameCount + 1)//----------------------Set GameType Increment
+            if (gameState.gameType.type === "set") setLimitedGameCount(limitedGameCount + 1);
             nextCard();
         }, 1500);
     }
@@ -87,7 +87,6 @@ export default function Flashcards() {
         game.countProbabilityPool(contextData.contextState.noteData);
         contextData.contextDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
         setGameState({...gameState, gameType:contextData.contextState.gameSettings.gameType});
-        console.log(contextData.contextState.gameSettings.gameType);
     }, [])
 
 
