@@ -9,7 +9,7 @@ import FlashcardImageAndOptions from '../components/FlashcardComponents/Flashcar
 
 export default function Flashcards() {
     const contextData = useContextData();
-    const game = new FlashcardGame("treble", contextData.contextState.gameSettings);
+    const game = new FlashcardGame(contextData.contextState.gameSettings, contextData.contextState.noteData);
 
     const [timer, isTargetAchived] = useTimer({precision: "secondTenths", updateWhenTargetAchieved: true});
     const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});

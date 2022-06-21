@@ -21,7 +21,7 @@ export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}
             inputType: contextData.contextState.defaultGameSettings.inputType
         })
 
-        const keysetArray = FlashcardGame.noteRange(keyset);
+        const keysetArray = FlashcardGame.noteRange(keyset,"all",contextData.contextState.noteData);
         const maxScore = 10.3 * keysetArray.length; //10.3 is worse possible score
         const minScore = 1.9 * keysetArray.length;  //1.9 is score given with 85% accuracy and an average time of 1.2 seconds
 

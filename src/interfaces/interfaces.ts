@@ -36,10 +36,10 @@ export interface iFlashcardNotePayload {
 }
 
 export interface iGameSettings {
-    keyset: "treble" | "bass" | "upperTreble" | "lowest" | "highest" | "";
+    keyset: "treble" | "bass" | "upperTreble" | "lowest" | "highest";
     gameType: {type:"limitless"|"timed"|"set", action?: any};
     optionAmount: 3 | 4 | 5 | 6 ;
-    cardType: "all" | "trouble cards" | "";
+    cardType: "all" | "trouble";
     inputType: "mouse-click" | "number-keys" | "hover-wheel" | "";
 }
 

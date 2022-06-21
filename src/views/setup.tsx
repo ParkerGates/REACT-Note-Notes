@@ -13,7 +13,7 @@ export default function Setup() {
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [gameData, setGameData] = useState<iGameSettings>({
-        keyset: "",
+        keyset: "treble",
         gameType: {type: data.contextState.defaultGameSettings.gameType.type, action:data.contextState.defaultGameSettings.gameType.type},
         optionAmount: data.contextState.defaultGameSettings.optionAmount,
         cardType: data.contextState.defaultGameSettings.cardType,
