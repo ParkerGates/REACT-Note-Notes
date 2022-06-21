@@ -25,7 +25,7 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
     const [timedGameCount, setTimedGameCount] = useState<number>(20);
 
 
-    const setSettingOption = (catagory:string, type:string) => {
+    const setSettingOption = (catagory:string, type:string|number) => {
         switch (catagory) {
             case "GameType":
                 setGameInfo({...gameInfo, gameType:{type:type, action:gameTypeDefaultActionIndex(type)}});
@@ -139,10 +139,10 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
             <div>
                 <div>Option Amount:</div>
                 <div>
-                    <button className={btnState.optionAmount === "3"?"active":""} onClick={()=>{setSettingOption("OptionAmount","3")}}>3</button>
-                    <button className={btnState.optionAmount === "4"?"active":""} onClick={()=>{setSettingOption("OptionAmount","4")}}>4</button>
-                    <button className={btnState.optionAmount === "5"?"active":""} onClick={()=>{setSettingOption("OptionAmount","5")}}>5</button>
-                    <button className={btnState.optionAmount === "6"?"active":""} onClick={()=>{setSettingOption("OptionAmount","6")}}>6</button>
+                    <button className={btnState.optionAmount === 3?"active":""} onClick={()=>{setSettingOption("OptionAmount",3)}}>3</button>
+                    <button className={btnState.optionAmount === 4?"active":""} onClick={()=>{setSettingOption("OptionAmount",4)}}>4</button>
+                    <button className={btnState.optionAmount === 5?"active":""} onClick={()=>{setSettingOption("OptionAmount",5)}}>5</button>
+                    <button className={btnState.optionAmount === 6?"active":""} onClick={()=>{setSettingOption("OptionAmount",6)}}>6</button>
                 </div>
             </div>
             <br/>

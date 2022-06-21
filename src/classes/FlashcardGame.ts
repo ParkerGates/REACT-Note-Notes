@@ -1,4 +1,4 @@
-import { iNoteData, iSingleNoteData, iFlashcardNotePayload } from '../interfaces/interfaces';
+import { iNoteData, iSingleNoteData, iFlashcardNotePayload, iGameSettings } from '../interfaces/interfaces';
 import { allKeys } from '../context/data';
 import { clamp, calcAccuracyScore, calcTimeScore } from "../utilities/utilities";
 import shuffle from "../utilities/shuffleArray";
@@ -8,14 +8,18 @@ export default class FlashcardGame {
     private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
     private keySetNotes: string[];
     public probabilityNumber: number;
+
     private lastNoteChosen: string;
+    private gameSettings: iGameSettings;
 
 
-    constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest") {
+    constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest", gameSettings: iGameSettings) {
         this.keySetName = keySetName;
         this.keySetNotes = FlashcardGame.noteRange(keySetName);
         this.probabilityNumber = 0;
+
         this.lastNoteChosen = "";
+        this.gameSettings = gameSettings;
     }
 
 
@@ -55,7 +59,7 @@ export default class FlashcardGame {
     //Setup Methods
     //==================================================================
     private createOptionsArray(selectedIndex: number): string[] {
-        const optionAmount: number = 5;
+        const optionAmount: number = this.gameSettings.optionAmount;
         const randomOffset: number = Math.floor(Math.random() * optionAmount) + 1
         let maxIndex: number = selectedIndex + randomOffset;
         let minIndex: number = selectedIndex - (optionAmount - randomOffset);

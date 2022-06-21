@@ -9,7 +9,7 @@ import FlashcardImageAndOptions from '../components/FlashcardComponents/Flashcar
 
 export default function Flashcards() {
     const contextData = useContextData();
-    const game = new FlashcardGame("treble");
+    const game = new FlashcardGame("treble", contextData.contextState.gameSettings);
 
     const [timer, isTargetAchived] = useTimer({precision: "secondTenths", updateWhenTargetAchieved: true});
     const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});
@@ -32,7 +32,7 @@ export default function Flashcards() {
                 if (prevState.countdown <= 1) {
                     nextCard();
                     clearInterval(countDownInterval);
-                    if(gameState.gameType.type === "timed") timedGame.start();//--------------------------------------Timer GameType Start
+                    if(gameState.gameType.type === "timed") timedGame.start();
                     return {...prevState, currentState:"game"};
                 }
                 return {...prevState, countdown: prevState.countdown - 1}
