@@ -1,7 +1,7 @@
 import { iNoteData, iSingleNoteData, iFlashcardNotePayload, iGameSettings } from '../interfaces/interfaces';
 import { allKeys } from '../context/data';
-import { clamp, calcAccuracyScore, calcTimeScore } from "../utilities/utilities";
-import shuffle from "../utilities/shuffleArray";
+import { clamp, calcAccuracyScore, calcTimeScore, getTroubleNoteRange } from "../utilities/utilities";
+import { shuffle } from "../utilities/utilities"
 import TimeQueue from '../utilities/timeQueue';
 
 export default class FlashcardGame {
@@ -13,13 +13,14 @@ export default class FlashcardGame {
     private gameSettings: iGameSettings;
 
 
-    constructor(keySetName: "treble" | "bass" | "upperTreble" | "lowest" | "highest", gameSettings: iGameSettings) {
-        this.keySetName = keySetName;
-        this.keySetNotes = FlashcardGame.noteRange(keySetName);
+    constructor(gameSettings: iGameSettings, noteData: iNoteData) {
+        this.gameSettings = gameSettings;
+
+        this.keySetName = gameSettings.keyset;
+        this.keySetNotes = FlashcardGame.noteRange(gameSettings.keyset, gameSettings.cardType, noteData);
         this.probabilityNumber = 0;
 
         this.lastNoteChosen = "";
-        this.gameSettings = gameSettings;
     }
 
 
@@ -78,18 +79,25 @@ export default class FlashcardGame {
     }
 
 
-    static noteRange(range: "treble" | "bass" | "upperTreble" | "lowest" | "highest"): string[] {
+    static noteRange(range: "treble"|"bass"|"upperTreble"|"lowest"|"highest", cardType: "all"|"trouble", noteData: iNoteData): string[] {
+        let createNoteRange: any;
+
         switch (range) {
             case "highest":
-                return allKeys.slice(45,52); //note range index
+                createNoteRange = cardType === "all" ? allKeys.slice(45,52) : getTroubleNoteRange(allKeys.slice(45,52), noteData);
+                return createNoteRange;                 //^note range index
             case "upperTreble":
-                return allKeys.slice(34,45); //note range index
+                createNoteRange = cardType === "all" ? allKeys.slice(34,45) : getTroubleNoteRange(allKeys.slice(34,45), noteData);
+                return createNoteRange;                 //^note range index
             case "treble":
-                return allKeys.slice(23,34); //note range index
+                createNoteRange = cardType === "all" ? allKeys.slice(23,34) : getTroubleNoteRange(allKeys.slice(23,34), noteData);
+                return createNoteRange;                 //^note range index
             case "bass":
-                return allKeys.slice(13,24); //note range index
+                createNoteRange = cardType === "all" ? allKeys.slice(13,24) : getTroubleNoteRange(allKeys.slice(13,24), noteData);
+                return createNoteRange;                 //^note range index
             case "lowest":
-                return allKeys.slice(0,13); //note range index
+                createNoteRange = cardType === "all" ? allKeys.slice(0,13) : getTroubleNoteRange(allKeys.slice(0,13), noteData);
+                return createNoteRange;                 //^note range index
         }
     }
 

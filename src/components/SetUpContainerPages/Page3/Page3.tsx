@@ -150,7 +150,7 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                 <div>Card Type:</div>
                 <div>
                     <button className={btnState.cardType==="all"?"active":""} onClick={()=>{setSettingOption("CardType","all")}}>all</button>
-                    <button className={btnState.cardType==="trouble"?"active":""} onClick={()=>{setSettingOption("CardType","trouble")}}>lowest 8</button>
+                    <button className={btnState.cardType==="trouble"?"active":""} onClick={()=>{setSettingOption("CardType","trouble")}}>trouble cards only</button>
                 </div>
             </div>
             <br/>
