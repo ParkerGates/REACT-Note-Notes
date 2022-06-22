@@ -116,6 +116,7 @@ export default function Flashcards() {
                         find={cardPayload.find}
                         image={cardPayload.find}
                         options={cardPayload.options}
+                        inputType={contextData.contextState.gameSettings.inputType}
                         handleSelectedOption={handleSelectedOption}
                     /> 
                     { (gameState.gameType.type === "limitless" || gameState.gameType.type === null) &&
