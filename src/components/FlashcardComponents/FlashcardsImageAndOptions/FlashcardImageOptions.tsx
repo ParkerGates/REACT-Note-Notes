@@ -1,19 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, memo } from "react";
 import { numberInput } from "../../../utilities/inputTypes";
 
 interface Props {
     find: string;
     image: any;
     options: string[];
+    inputType: string;
     handleSelectedOption: (rightIndex: string, selectedIndex: string) => void;
 }
 
 
-export default function FlashcardImageAndOptions({find, image, options, handleSelectedOption}: Props) {
+const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelectedOption}: Props) => {
     const findIndex = options.indexOf(find);
 
     useEffect(()=> {
-        numberInput(options);
+        console.log(inputType);
+        switch (inputType) {
+            case "number-keys":
+                numberInput(options);
+                break;
+            case "hover-wheel":
+                //numberInput(options);
+                break;
+        }
     })
 
     
@@ -23,12 +32,37 @@ export default function FlashcardImageAndOptions({find, image, options, handleSe
                 { image && <h1>{image}</h1> }
             </div>
             <div>
-                { options.map((option, optionIndex) => {
-                    return (
-                        <button id={String(optionIndex)} key={option} onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}>{option}</button>
-                    );
-                })}
+                { inputType === "mouse-click" &&
+                    options.map((option, optionIndex) => {
+                        return (
+                            <button 
+                                id={String(optionIndex)}
+                                key={option}
+                                onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}>
+                                {option}
+                            </button>
+                    )})
+                }
+
+                { inputType === "number-keys" &&
+                    options.map((option, optionIndex) => {
+                        return (
+                            <button
+                                id={String(optionIndex)}
+                                key={option}
+                                onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}
+                                >
+                                {option}
+                            </button>
+                    )})
+                }
+
+                { inputType === "hover-wheel" &&
+                    <div></div>
+                }
             </div>
         </div>
     );
 }
+
+export default memo(FlashcardImageAndOptions);
