@@ -34,14 +34,21 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
             case "OptionAmount":
                 setGameInfo({...gameInfo, optionAmount:type});
                 setBtnState({...btnState, optionAmount:type, gameInfoChanged:true});
+                //!!-------------------------
                 break;
             case "CardType":
                 setGameInfo({...gameInfo, cardType:type});
                 setBtnState({...btnState, cardType:type, gameInfoChanged:true});
                 break;
             case "InputType":
-                setGameInfo({...gameInfo, inputType:type});
-                setBtnState({...btnState, inputType:type, gameInfoChanged:true});
+                if (btnState.optionAmount > 4 && type === "arrow-keys") {
+                    setGameInfo({...gameInfo, inputType:type, optionAmount:4});
+                    setBtnState({...btnState, inputType:type, optionAmount:4, gameInfoChanged:true});
+                }
+                else {
+                    setGameInfo({...gameInfo, inputType:type});
+                    setBtnState({...btnState, inputType:type, gameInfoChanged:true});
+                }
                 break;
         }
     }
@@ -141,8 +148,16 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                 <div>
                     <button className={btnState.optionAmount === 3?"active":""} onClick={()=>{setSettingOption("OptionAmount",3)}}>3</button>
                     <button className={btnState.optionAmount === 4?"active":""} onClick={()=>{setSettingOption("OptionAmount",4)}}>4</button>
-                    <button className={btnState.optionAmount === 5?"active":""} onClick={()=>{setSettingOption("OptionAmount",5)}}>5</button>
-                    <button className={btnState.optionAmount === 6?"active":""} onClick={()=>{setSettingOption("OptionAmount",6)}}>6</button>
+                    <button
+                        className={btnState.optionAmount === 5?"active":""}
+                        onClick={()=>{setSettingOption("OptionAmount",5)}}
+                        disabled={btnState.inputType === "arrow-keys" ? true : false}
+                    >5</button>
+                    <button
+                        className={btnState.optionAmount === 6?"active":""}
+                        onClick={()=>{setSettingOption("OptionAmount",6)}}
+                        disabled={btnState.inputType === "arrow-keys" ? true : false}
+                    >6</button>
                 </div>
             </div>
             <br/>
@@ -159,7 +174,7 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                 <div>
                     <button className={btnState.inputType==="mouse-click"?"active":""} onClick={()=>{setSettingOption("InputType","mouse-click")}}>mouse-click</button>
                     <button className={btnState.inputType==="number-keys"?"active":""} onClick={()=>{setSettingOption("InputType","number-keys")}}>number-keys</button>
-                    <button className={btnState.inputType==="hover-wheel"?"active":""} onClick={()=>{setSettingOption("InputType","hover-wheel")}}>hover-wheel</button>
+                    <button className={btnState.inputType==="arrow-keys"?"active":""} onClick={()=>{setSettingOption("InputType","arrow-keys")}}>arrow-keys</button>
                 </div>
             </div>
 

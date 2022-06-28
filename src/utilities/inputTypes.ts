@@ -9,5 +9,14 @@ function numberInput(options: string[]): void {
     });
 }
 
+function arrowInput(options: string[]): void {
+    document.addEventListener('keyup', (e) => {
+        if (e.code === "ArrowUp") { document.getElementById('0')?.click() }
+        if (e.code === "ArrowLeft") { document.getElementById('1')?.click() }
+        if (e.code === "ArrowRight") { document.getElementById('2')?.click() }
+        if (e.code === "ArrowDown" && options.length >= 4) { document.getElementById('3')?.click() }
+    });
+}
 
-export { numberInput}
+
+export { numberInput, arrowInput }

@@ -40,7 +40,7 @@ export interface iGameSettings {
     gameType: {type:"limitless"|"timed"|"set", action?: any};
     optionAmount: 3 | 4 | 5 | 6 ;
     cardType: "all" | "trouble";
-    inputType: "mouse-click" | "number-keys" | "hover-wheel" | "";
+    inputType: "mouse-click" | "number-keys" | "arrow-keys";
 }
 
 export interface iKeysetScoreInfo {

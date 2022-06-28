@@ -1,5 +1,6 @@
 import { useEffect, memo } from "react";
-import { numberInput } from "../../../utilities/inputTypes";
+import { numberInput, arrowInput } from "../../../utilities/inputTypes";
+import "./imageOptions.css";
 
 interface Props {
     find: string;
@@ -14,16 +15,17 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     const findIndex = options.indexOf(find);
 
     useEffect(()=> {
-        console.log(inputType);
         switch (inputType) {
             case "number-keys":
                 numberInput(options);
                 break;
-            case "hover-wheel":
-                //numberInput(options);
+            case "arrow-keys":
+                arrowInput(options);
                 break;
         }
     })
+
+
 
     
     return (
@@ -57,8 +59,33 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
                     )})
                 }
 
-                { inputType === "hover-wheel" &&
-                    <div></div>
+                { inputType === "arrow-keys" &&
+                    <div className="arrow-keys-grid">
+                        <div></div>
+                        <button
+                            id="0"
+                            className="arrow-keys-tile"
+                            onClick={() => {handleSelectedOption(`${findIndex}`,`${0}`)}}
+                        >{options[0]}</button>
+                        <div></div>
+
+                        <button
+                            id="1"
+                            className="arrow-keys-tile"
+                            onClick={() => {handleSelectedOption(`${findIndex}`,`${1}`)}}
+                        >{options[1]}</button>
+                        <button
+                            id="3"
+                            className="arrow-keys-tile"
+                            onClick={() => {handleSelectedOption(`${findIndex}`,`${3}`)}}
+                            disabled={options.length < 4 ? true : false}
+                        >{options[3] || ""}</button>
+                        <button
+                            id="2"
+                            className="arrow-keys-tile"
+                            onClick={() => {handleSelectedOption(`${findIndex}`,`${2}`)}}
+                        >{options[2]}</button>
+                    </div>
                 }
             </div>
         </div>

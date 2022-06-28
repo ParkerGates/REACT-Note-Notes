@@ -1,0 +1,20 @@
+:root {
+    --tileH: 40px;
+}
+
+.arrow-keys-grid {
+    display: grid;
+    width: calc(var(--tileH) * 3);
+    height: calc(var(--tileH) * 2);
+
+    grid-template-columns: var(--tileH) var(--tileH) var(--tileH);
+    grid-template-rows: var(--tileH) var(--tileH) var(--tileH);
+}
+
+.arrow-keys-tile {
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    border: 2px solid #d5d3d3;
+    border-radius: 5px;
+}
