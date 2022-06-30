@@ -15,15 +15,14 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     const findIndex = options.indexOf(find);
 
     useEffect(()=> {
-        switch (inputType) {
-            case "number-keys":
-                numberInput(options);
-                break;
-            case "arrow-keys":
-                arrowInput(options);
-                break;
+        if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
+        else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
+
+        return () => {
+            if (inputType === "number-keys") document.removeEventListener("keyup", numberInput);
+            else if (inputType === "arrow-keys") document.removeEventListener("keyup", arrowInput);
         }
-    })
+    }, [])
 
 
 
@@ -39,7 +38,7 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
                         return (
                             <button 
                                 id={String(optionIndex)}
-                                key={option}
+                                key={option + optionIndex}
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}>
                                 {option}
                             </button>
@@ -51,7 +50,7 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
                         return (
                             <button
                                 id={String(optionIndex)}
-                                key={option}
+                                key={option + optionIndex}
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}
                                 >
                                 {option}

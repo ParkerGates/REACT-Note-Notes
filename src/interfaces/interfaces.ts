@@ -52,7 +52,6 @@ export interface iKeysetScoreInfo {
 
 export interface iFlashcardGameState {
     currentState: "no-game"|"pre-game"|"game"|"post-game",
-    isCardChosen: boolean,
     countdown: number,
     gameType: {type: any, action?: any};
 }
