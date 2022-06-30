@@ -10,18 +10,17 @@ import FlashcardImageAndOptions from '../components/FlashcardComponents/Flashcar
 export default function Flashcards() {
     const contextData = useContextData();
     const game = new FlashcardGame(contextData.contextState.gameSettings, contextData.contextState.noteData);
-
     const [timer, isTargetAchived] = useTimer({precision: "secondTenths", updateWhenTargetAchieved: true});
+
     const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});
     const [gameState, setGameState] = useState<iFlashcardGameState>({
         currentState: "no-game",
-        isCardChosen: false,
         countdown: 3,
         gameType: {type:"limitless"},
     });
+
     const [timedGame, timedGameIsDone] = useTimer({countdown: true, startValues: { seconds: 10 }, updateWhenTargetAchieved: true});
     const [limitedGameCount, setLimitedGameCount] = useState(0);
-
 
 
     const startGameCountdown = ():void => {
@@ -42,51 +41,58 @@ export default function Flashcards() {
  
  
     const nextCard = ():void  => {
+        resetShownAnswer();
         game.probabilityNumber = contextData.contextState.probabilityPool;
-        setGameState((prevState) => {return{...prevState, isCardChosen: false}});
         setCardPayload(game.getNote(contextData.contextState.noteData, cardPayload.find));
         timer.start({ startValues: [0,0,0,0,0], target: {seconds: 5}, precision: 'secondTenths'});
     }
  
  
     const handleSelectedOption = (correctIndex: string, selectedIndex: string): void => {
-        if (gameState.isCardChosen === false) {
-            setGameState({...gameState, isCardChosen: true});
-            let cardTime = {...timer.getTotalTimeValues()};
-            timer.stop();
+        let cardTime = {...timer.getTotalTimeValues()};
+        timer.stop();
 
-            if (correctIndex === selectedIndex) {
-                contextData.contextDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: true, time: cardTime.secondTenths});
-                document.getElementById(selectedIndex).style.backgroundColor = "green";
-                waitOnAnswerBeforeNextCard(selectedIndex);
-            }
-            else {
-                contextData.contextDispatch({type: "update-data", note: cardPayload.options[correctIndex], correct: false, time: cardTime.secondTenths});
-                document.getElementById(correctIndex).style.backgroundColor = "green";
-                document.getElementById(selectedIndex).style.backgroundColor = "red";
-                waitOnAnswerBeforeNextCard(correctIndex, selectedIndex);
-            }
+        if (correctIndex === selectedIndex) {
+            contextData.contextDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: true, time: cardTime.secondTenths});
+            document.getElementById(selectedIndex).style.backgroundColor = "green";
         }
+        else {
+            contextData.contextDispatch({type: "update-data", note: cardPayload.options[correctIndex], correct: false, time: cardTime.secondTenths});
+            document.getElementById(correctIndex).style.backgroundColor = "green";
+            document.getElementById(selectedIndex).style.backgroundColor = "red";
+        }
+        waitOnAnswerBeforeNextCard(correctIndex);
     }
  
  
-    const waitOnAnswerBeforeNextCard = (right: string, wrong:string = ""):void => {
-        const displayAnswer = setTimeout(() => {
-            if (wrong !== "") {
-                document.getElementById(wrong).style.backgroundColor = "";
-            }
-            document.getElementById(right).style.backgroundColor = "";
+    const waitOnAnswerBeforeNextCard = (correctIndex: string):void => {
+        document.addEventListener('keyup', skipShowAnswer);
 
-            if (gameState.gameType.type === "set") setLimitedGameCount(limitedGameCount + 1);
-            nextCard();
+        const displayAnswer = setTimeout(() => {
+            if (document.getElementById(String(correctIndex)).style.backgroundColor !== ""){
+
+                document.removeEventListener('keyup', skipShowAnswer);
+                if (gameState.gameType.type === "set") setLimitedGameCount(limitedGameCount + 1);
+                nextCard();
+            }
         }, 1500);
     }
+
+    const skipShowAnswer = () => {
+        document.removeEventListener('keyup', skipShowAnswer);
+        if (gameState.gameType.type === "set") setLimitedGameCount(limitedGameCount + 1);
+        nextCard()
+    }
+
+    const resetShownAnswer = () => cardPayload.options.forEach((item, index) => document.getElementById(String(index)).style.backgroundColor = "");
  
    //On Start Routines
     useEffect(() => {
         game.countProbabilityPool(contextData.contextState.noteData);
         contextData.contextDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
         setGameState({...gameState, gameType:contextData.contextState.gameSettings.gameType});
+
+        return () => {document.removeEventListener('keyup', skipShowAnswer);}
     }, [])
 
 
