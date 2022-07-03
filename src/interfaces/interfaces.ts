@@ -31,7 +31,7 @@ export interface iContextState {
 }
 
 export interface iFlashcardNotePayload {
-    find: string;
+    find: iNote;
     options: string[];
 }
 
@@ -55,3 +55,26 @@ export interface iFlashcardGameState {
     countdown: number,
     gameType: {type: any, action?: any};
 }
+
+export interface iSingleGameStats {
+    a0?: {right:number, amount:number};      b0?: {right:number, amount:number};      c1?: {right:number, amount:number};
+    d1?: {right:number, amount:number};      e1?: {right:number, amount:number};      f1?: {right:number, amount:number};
+    g1?: {right:number, amount:number};      a1?: {right:number, amount:number};      b1?: {right:number, amount:number};
+    c2?: {right:number, amount:number};      d2?: {right:number, amount:number};      e2?: {right:number, amount:number};
+    f2?: {right:number, amount:number};      g2?: {right:number, amount:number};      a2?: {right:number, amount:number};
+    b2?: {right:number, amount:number};      c3?: {right:number, amount:number};      d3?: {right:number, amount:number};
+    e3?: {right:number, amount:number};      f3?: {right:number, amount:number};      g3?: {right:number, amount:number};
+    a3?: {right:number, amount:number};      b3?: {right:number, amount:number};      c4?: {right:number, amount:number};
+    d4?: {right:number, amount:number};      e4?: {right:number, amount:number};      f4?: {right:number, amount:number};
+    g4?: {right:number, amount:number};      a4?: {right:number, amount:number};      b4?: {right:number, amount:number};
+    c5?: {right:number, amount:number};      d5?: {right:number, amount:number};      e5?: {right:number, amount:number};
+    f5?: {right:number, amount:number};      g5?: {right:number, amount:number};      a5?: {right:number, amount:number};
+    b5?: {right:number, amount:number};      c6?: {right:number, amount:number};      d6?: {right:number, amount:number};
+    e6?: {right:number, amount:number};      f6?: {right:number, amount:number};      g6?: {right:number, amount:number};
+    a6?: {right:number, amount:number};      b6?: {right:number, amount:number};      c7?: {right:number, amount:number};
+    d7?: {right:number, amount:number};      e7?: {right:number, amount:number};      f7?: {right:number, amount:number};
+    g7?: {right:number, amount:number};      a7?: {right:number, amount:number};      b7?: {right:number, amount:number};
+    c8?: {right:number, amount:number};
+}
+
+export type iNote = "a0"|"b0"|"c1"|"d1"|"e1"|"f1"|"g1"|"a1"|"b1"|"c2"|"d2"|"e2"|"f2"|"g2"|"a2"|"b2"|"c3"|"d3"|"e3"|"f3"| "g3"|"a3"|"b3"|"c4"|"d4"|"e4"|"f4"|"g4"|"a4"|"b4"|"c5"|"d5"|"e5"|"f5"|"g5"|"a5"|"b5"|"c6"|"d6"|"e6"|"f6"|"g6"|"a6"|"b6"|"c7"|"d7"|"e7"|"f7"|"g7"|"a7"|"b7"|"c8"|""

@@ -1,4 +1,4 @@
-import { iNoteData, iSingleNoteData, iFlashcardNotePayload, iGameSettings } from '../interfaces/interfaces';
+import { iNoteData, iSingleNoteData, iFlashcardNotePayload, iGameSettings, iNote } from '../interfaces/interfaces';
 import { allKeys } from '../context/data';
 import { clamp, calcAccuracyScore, calcTimeScore, getTroubleNoteRange } from "../utilities/utilities";
 import { shuffle } from "../utilities/utilities"
@@ -25,7 +25,7 @@ export default class FlashcardGame {
 
 
     public getNote = (iNoteData: iNoteData, priorNoteChosen: string): iFlashcardNotePayload => {
-        const chosenNote: string = this.findNoteFromProbabilityNum(iNoteData, priorNoteChosen);
+        const chosenNote: iNote = this.findNoteFromProbabilityNum(iNoteData, priorNoteChosen);
 
         const payload: iFlashcardNotePayload = {
             find: chosenNote,
@@ -106,8 +106,8 @@ export default class FlashcardGame {
 
     //Helper Methods
     //==================================================================
-    private findNoteFromProbabilityNum(iNoteData: iNoteData, priorNoteChosen: string): string {
-        let newNoteChosen: string = priorNoteChosen;
+    private findNoteFromProbabilityNum(iNoteData: iNoteData, priorNoteChosen: string): iNote {
+        let newNoteChosen: iNote = "";
 
         let findNum: number = Number((Math.random() * this.probabilityNumber).toFixed(1));
 
@@ -120,7 +120,7 @@ export default class FlashcardGame {
                     findNum = Number((Math.random() * this.probabilityNumber).toFixed(1));
                 }
                 else {
-                    newNoteChosen = this.keySetNotes[i];
+                    newNoteChosen = this.keySetNotes[i] as iNote;
                     return newNoteChosen;
                 }
             }

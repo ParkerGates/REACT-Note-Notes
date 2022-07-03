@@ -15,14 +15,19 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     const findIndex = options.indexOf(find);
 
     useEffect(()=> {
-        if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
-        else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
+        // if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
+        // else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
 
         return () => {
-            if (inputType === "number-keys") document.removeEventListener("keyup", numberInput);
-            else if (inputType === "arrow-keys") document.removeEventListener("keyup", arrowInput);
+            document.removeEventListener("keyup", numberInput);
+            document.removeEventListener("keyup", arrowInput);
         }
     }, [])
+
+    useEffect(()=>{
+        if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
+        else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
+    }, [options])
 
 
 

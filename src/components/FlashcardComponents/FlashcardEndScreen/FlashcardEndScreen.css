@@ -1,0 +1,30 @@
+.endGameHeading {
+    text-align: center;
+}
+
+.endGameScoresContainer {
+    height: 300px;
+}
+
+.endGameBtnContainer {
+    position: relative;
+    width: 100vw;
+    height: 50px;
+    
+    border: 2px solid green;
+}
+.endGameHomeBtn {
+    display: inline-block;
+    position: absolute;
+
+    left: 20px;
+    bottom:20px;
+}
+
+.endGameReplayContainer {
+    display: inline-block;
+    position: absolute;
+
+    right:20px;
+    bottom:20px;
+}

@@ -6,6 +6,7 @@ import Flashcards from './views/flashcards';
 import Review from './views/review';
 import About from './views/about';
 import Profile from './views/profile';
+import Reloads from './views/reloads';
 import './App.css';
 
 function App() {
@@ -14,11 +15,11 @@ function App() {
       <nav className="displayFlexCenter">
         <div className="displayInlineBlock">
           <Link to="/">Home</Link>
-          <Link to="setup">Setup</Link>
-          <Link to="flashcards">Flashcards</Link>
-          <Link to="review">Review</Link>
-          <Link to="about">About</Link>
-          <Link to="profile">Profile</Link>
+          <Link to="/setup">Setup</Link>
+          <Link to="/flashcards">Flashcards</Link>
+          <Link to="/review">Review</Link>
+          <Link to="/about">About</Link>
+          <Link to="/profile">Profile</Link>
         </div>
       </nav>
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/review" element={<Review />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/reloads/:location" element={<Reloads />} />
       </Routes>
     </BrowserRouter>
   );
