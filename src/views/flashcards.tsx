@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useContextData } from '../context/context';
-import { iFlashcardGameState, iFlashcardNotePayload } from '../interfaces/interfaces';
+import { iFlashcardGameState, iFlashcardNotePayload, iNote, iSingleGameStats } from '../interfaces/interfaces';
 import useTimer from 'easytimer-react-hook';
 import FlashcardGame from "../classes/FlashcardGame";
 import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCountdown/FlashcardCountdown';
 import FlashcardStartButton from '../components/FlashcardComponents/FlashcardStartButton/FlashcardStartButton';
 import FlashcardImageAndOptions from '../components/FlashcardComponents/FlashcardsImageAndOptions/FlashcardImageOptions';
+import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
 
 export default function Flashcards() {
     const contextData = useContextData();
     const game = new FlashcardGame(contextData.contextState.gameSettings, contextData.contextState.noteData);
     const [timer, isTargetAchived] = useTimer({precision: "secondTenths", updateWhenTargetAchieved: true});
+    const [sessionStats, setSessionStats] = useState<iSingleGameStats>({});
 
     const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});
     const [gameState, setGameState] = useState<iFlashcardGameState>({
@@ -54,10 +56,12 @@ export default function Flashcards() {
 
         if (correctIndex === selectedIndex) {
             contextData.contextDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: true, time: cardTime.secondTenths});
+            updateSessionStats(cardPayload.find, true);
             document.getElementById(selectedIndex).style.backgroundColor = "green";
         }
         else {
             contextData.contextDispatch({type: "update-data", note: cardPayload.options[correctIndex], correct: false, time: cardTime.secondTenths});
+            updateSessionStats(cardPayload.find, false);
             document.getElementById(correctIndex).style.backgroundColor = "green";
             document.getElementById(selectedIndex).style.backgroundColor = "red";
         }
@@ -66,33 +70,31 @@ export default function Flashcards() {
  
  
     const waitOnAnswerBeforeNextCard = (correctIndex: string):void => {
-        document.addEventListener('keyup', skipShowAnswer);
-
         const displayAnswer = setTimeout(() => {
-            if (document.getElementById(String(correctIndex)).style.backgroundColor !== ""){
-
-                document.removeEventListener('keyup', skipShowAnswer);
                 if (gameState.gameType.type === "set") setLimitedGameCount(limitedGameCount + 1);
                 nextCard();
-            }
         }, 1500);
     }
 
-    const skipShowAnswer = () => {
-        document.removeEventListener('keyup', skipShowAnswer);
-        if (gameState.gameType.type === "set") setLimitedGameCount(limitedGameCount + 1);
-        nextCard()
-    }
 
     const resetShownAnswer = () => cardPayload.options.forEach((item, index) => document.getElementById(String(index)).style.backgroundColor = "");
+
+
+    const updateSessionStats = (note: iNote, correct: boolean) => {
+        let newStats = {...sessionStats}
+        if (sessionStats[note] === undefined) newStats[note] = {right:0,amount:0};
+
+        newStats[note].amount += 1;
+        newStats[note].right += Number(correct);
+        setSessionStats(newStats);
+    }
  
+
    //On Start Routines
     useEffect(() => {
         game.countProbabilityPool(contextData.contextState.noteData);
         contextData.contextDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
         setGameState({...gameState, gameType:contextData.contextState.gameSettings.gameType});
-
-        return () => {document.removeEventListener('keyup', skipShowAnswer);}
     }, [])
 
 
@@ -131,7 +133,7 @@ export default function Flashcards() {
                 </div>
             }
            
-            { "post-game" === gameState.currentState && "post game" }
+            { "post-game" === gameState.currentState && <FlashcardEndScreen stats={sessionStats} /> }
  
         </div>
     );
