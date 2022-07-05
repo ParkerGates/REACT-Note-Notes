@@ -1,3 +1,7 @@
+body {
+  background-color: #3756f5;
+}
+
 .displayFlexCenter {
   display: flex;
   justify-content: center;
