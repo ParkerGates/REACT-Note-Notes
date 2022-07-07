@@ -1,0 +1,58 @@
+:root {
+    --widthL: 240px;
+    --heightL: 180px;
+    --widthS: 72px;
+    --heightS: 60px;
+  }
+
+/* All Main */
+.logoMainLg, .logoMainSm {
+    display: flex;
+    font-family: 'Rubik', sans-serif;
+}
+/* Large Main */
+.logoMainLg {
+    width: var(--widthL);
+    height: var(--heightL);
+    font-size: 34px;
+}
+/* Small Main */
+.logoMainSm {
+    width: var(--widthS);
+    height: var(--heightS);
+    font-size: 25px;
+}
+
+
+/* All Cards */
+.leftCardLg, .leftCardSm,.rightCardLg, .rightCardSm {
+    width: 50%;
+    margin: 2px;
+    border: 2px solid white;
+    text-align: center;
+}
+
+
+/* Large Cards */
+.leftCardLg, .rightCardLg { line-height: var(--heightL); }
+/* Small Cards */
+.leftCardSm, .rightCardSm { line-height: calc(var(--heightS) - 5px); }
+
+
+/* Right Cards */
+.rightCardLg, .rightCardSm {
+    color: white;
+    border: 2px solid white;
+}
+/* Left Cards */
+.leftCardLg, .leftCardSm {
+    color: #3756f5;
+    background-color: white;
+}
+
+
+/* Individual */
+.leftCardLg { border-radius: 0px 10px 10px 0px; }
+.leftCardSm { border-radius: 0px 5px 5px 0px; }
+.rightCardLg { border-radius: 10px 0px 0px 10px; }
+.rightCardSm { border-radius: 5px 0px 0px 5px; }
