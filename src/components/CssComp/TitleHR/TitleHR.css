@@ -1,0 +1,19 @@
+.boxTH {
+    display: flex;
+    padding: 10px;
+}
+.titleTH {
+    display: inline-block;
+    margin: 0px 5px 0px;
+
+    font-weight: bold;
+    white-space: nowrap;
+}
+.hrTH {
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+
+    border-color: black;
+    background-color: white;
+}
