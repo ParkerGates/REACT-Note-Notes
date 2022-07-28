@@ -1,0 +1,8 @@
+.dotsHome {
+    position: absolute;
+    transform-origin: top left;
+    transform: rotate(90.2deg);
+    top: 0px;
+    left: 400px;
+    
+}
