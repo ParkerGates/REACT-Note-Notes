@@ -1,0 +1,101 @@
+/* SHARE NAV ----------------------------------------------------------------------------------- */
+.navPadding {
+    height: 55px;
+}
+
+/* BAR NAV ------------------------------------------------------------------------------------- */
+.navBarContainer {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    padding: 8px 15px;
+    margin-bottom: -16px;
+}
+
+.hrNB {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+
+    border-color: black;
+    background-color: white;
+}
+
+.profileButton {
+    display: inline-block;
+
+    color: white;
+    font-weight: 600;
+    padding: 8px 10px;
+
+    border-radius: 12px;
+    background-image: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 231));
+}
+
+.navBarItems {
+    display: flex;
+    gap: 25px;
+}
+.navBarItem {
+    color: white;
+    text-decoration: none;
+}
+.activeNavBarItem {
+    background: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 206));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.navBarItem, .activeNavBarItem { text-decoration: none; font-weight: bold; }
+
+
+
+/* MOBILE NAV ---------------------------------------------------------------------------------- */
+.navMobileContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    height: 40px;
+    width: calc(100% - 20px);
+    overflow: hidden;
+    transition: height .2s;
+    transition-timing-function: ease-out;
+
+    font-size: 1.5rem;
+    padding: 10px;
+
+    background-color: rgb(12, 13, 30);
+}
+
+.navMobileIconSpace { width: 40px; }
+.navMobileTopContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navMobileProfile {
+    background: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 206));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+}
+.hamBtn {
+    border: none;
+    background-color: rgb(12, 13, 30);;
+}
+.ham {
+    color: white;
+    font-size: 25px;
+}
+
+.border5 {
+    border: 2px solid green;
+}
+
+
+@media screen and (max-width: 750px) {
+    body {
+       
+    }
+}

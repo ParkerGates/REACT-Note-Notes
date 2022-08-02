@@ -1,17 +1,17 @@
-.homeBg {
+.showcaseBg {
     position: absolute;
     top: 0px;
     right: 0px;
     width: 0px;
     height: 0px;
-    
+    z-index: -1;
 }
 
-.dotsHome {
+.dotsShowcase {
     position: fixed;
-    right: 300px;
+    left: 320px;
     height: 550px;
 
-    transform-origin: top right;
-    transform: rotate(-90deg);
+    transform-origin: top left;
+    transform: rotate(90deg);
 }
