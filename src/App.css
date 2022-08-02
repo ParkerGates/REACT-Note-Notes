@@ -20,3 +20,8 @@ body {
 .textAlignCenter {
   text-align: center;
 }
+
+.AppContainer {
+  display: flex;
+  flex-direction: column-reverse;
+}

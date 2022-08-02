@@ -7,6 +7,8 @@ import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCount
 import FlashcardStartButton from '../components/FlashcardComponents/FlashcardStartButton/FlashcardStartButton';
 import FlashcardImageAndOptions from '../components/FlashcardComponents/FlashcardsImageAndOptions/FlashcardImageOptions';
 import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
+import DotsLongest from "../svgs/DotsLongest.svg";
+import "./css/flashcards.css";
 
 export default function Flashcards() {
     const contextData = useContextData();
@@ -134,7 +136,10 @@ export default function Flashcards() {
             }
            
             { "post-game" === gameState.currentState && <FlashcardEndScreen stats={sessionStats} /> }
- 
+            
+            <div className="flashcardBg">
+                <img className="dotsFlashcards" src={DotsLongest} alt="dots" />
+            </div>
         </div>
     );
 }

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useContextData } from "../context/context";
 import { useNavigate } from "react-router-dom";
+import { iGameSettings, iKeysetScoreInfo } from "../interfaces/interfaces";
 import SetUpPage1 from "../components/SetUpContainerPages/Page1/Page1";
 import SetUpPage2 from "../components/SetUpContainerPages/Page2/Page2";
 import SetUpPage3 from "../components/SetUpContainerPages/Page3/Page3";
-import { iGameSettings, iKeysetScoreInfo } from "../interfaces/interfaces";
+import DotsLongest from "../svgs/DotsLongest.svg";
 import "./css/setup.css";
 import "../App.css";
 
@@ -37,6 +38,10 @@ export default function Setup() {
             {currentPage === 1 && <SetUpPage1 onNoteInfoChange={setKeysetInfo} onGameDataChange={setGameData} pageNav={pageNav}/>}
             {currentPage === 2 && <SetUpPage2 keysetInfo={keysetInfo} pageNav={pageNav} launchGame={launchGame}/>}
             {currentPage === 3 && <SetUpPage3 gameInfo={gameData} setGameInfo={setGameData} pageNav={pageNav} launchGame={launchGame}/>}
+
+            <div className="setupBg">
+                <img className="dotsSetup" src={DotsLongest} alt="dots" />
+            </div>
         </div>
     );
 }

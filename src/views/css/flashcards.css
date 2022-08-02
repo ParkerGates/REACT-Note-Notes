@@ -1,4 +1,4 @@
-.homeBg {
+.flashcardsBg {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -7,11 +7,9 @@
     
 }
 
-.dotsHome {
+.dotsFlashcards {
     position: fixed;
-    right: 300px;
     height: 550px;
-
-    transform-origin: top right;
-    transform: rotate(-90deg);
+    bottom: -70px;
+    left: 10px;
 }
