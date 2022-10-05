@@ -6,6 +6,7 @@ import SetUpPage1 from "../components/SetUpContainerPages/Page1/Page1";
 import SetUpPage2 from "../components/SetUpContainerPages/Page2/Page2";
 import SetUpPage3 from "../components/SetUpContainerPages/Page3/Page3";
 import DotsLongest from "../svgs/DotsLongest.svg";
+import BotSmall from "../svgs/BotSmall.svg";
 import "./css/setup.css";
 import "../App.css";
 
@@ -41,6 +42,7 @@ export default function Setup() {
 
             <div className="setupBg">
                 <img className="dotsSetup" src={DotsLongest} alt="dots" />
+                <img className="botSetup" src={BotSmall} alt="gradiant rectangle" />
             </div>
         </div>
     );

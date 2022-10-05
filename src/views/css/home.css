@@ -1,17 +1,210 @@
-.homeBg {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 0px;
-    height: 0px;
-    
+.ResponsiveFlexTest {
+    display: flex;
+    max-width: 500px;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px auto auto;
+    height: calc(100vh - 140px);
+}
+.HomeContainer {
+    height: calc(100vh - 70px);
+    position: relative;
+    overflow: hidden;
+    margin-top: 14px;
 }
 
+
+/* TEXT-CONTENT===================================================*/
+.s1TitleHome {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0px 0px 20px;
+}
+.s1ContentHome {
+    text-align: center;
+    font-size: .9rem;
+}
+.s1CallToActionHome {
+    font-size: .8rem;
+    margin-bottom: 20px;
+}
+.s1CallAndBtn {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+
+/* BTN-CONTAINER=================================================== */
+.s1BtnContainerHome {
+    display: flex;
+    justify-content: space-between;
+}
+.guestBtnHome {
+    font-size: .8rem;
+    padding: 10px;
+}
+.loginBtnHome {
+    font-size: .8rem;
+    padding: 10px;
+    margin: 0px 15px 0px 0px;
+}
+.signupBtnHome {
+    font-size: .8rem;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+
+/* SECTIONS======================================================*/
+.LogoHome { width: 200px; }
+.section1Home {
+        position: relative;
+        height: 100%;
+        margin: 12px;
+}
+
+
+/* BACKGROUND======================================================*/
 .dotsHome {
     position: fixed;
-    right: 300px;
-    height: 550px;
+    top: 0px;
+    right: 200px;
+    height: 400px;
 
     transform-origin: top right;
     transform: rotate(-90deg);
+    z-index: -1;
+}
+.botHome {
+    position: fixed;
+    width: 150vw;
+    bottom: 0px;
+    left: -5px;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+/* MOBILE-SM======================================================*/
+@media screen and (max-width: 750px) and (max-height: 635px) {
+    .HomeContainer { height: 570px; }
+    .ResponsiveFlexTest { height: 500px; }
+    .section1Home { position: relative; }
+    .botHome {
+        position: relative;
+        bottom: 50px;
+        width: 1000px;
+    }
+}
+
+
+/* MOBILE-MD========================================================*/
+@media screen and (min-width: 750px) {
+    .LogoHome { width: 250px; margin-top:12px}
+    .s1TitleHome { font-size: 2rem; }
+    .s1ContentHome { font-size: 1.2rem; }
+    .botHome {
+        position: fixed;
+        width: 105vw;
+        bottom: 0px;
+    }
+    .dotsHome {
+        right: 400px;
+        height: 550px;
+    }
+}
+@media screen and (min-width: 750px) and (max-height: 700px) {
+    .HomeContainer { height: 629px; }
+    .ResponsiveFlexTest { height: 555px; }
+    .section1Home { position: relative; }
+    .botHome {
+        position: relative;
+        width: 1400px;
+        bottom: 60px;
+    }
+}
+
+
+/* DESKTOP-MD======================================================*/
+@media screen and (min-width: 1100px) {
+    .ResponsiveFlexTest {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 80vh;
+        max-width: 100vw;
+        margin-top: 0px;
+    }
+    .LogoHome { width: 500px; margin: 0px; }
+    .section1Home {
+        position: relative;
+        width: 500px;
+        height: 360px;
+    }
+    .s1TitleHome {
+        text-align: left;
+        font-size: 2.2rem;
+        margin: -18px 0px 20px;
+    }
+    .s1ContentHome {
+        text-align: left;
+        font-size: 1.2rem;
+    }
+    .s1CallToActionHome {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    .guestBtnHome {
+        font-size: 1.1rem;
+        border-radius: 30px;
+        padding: 15px;
+    }
+    .loginBtnHome {
+        font-size: 1.1rem;
+        padding: 15px;
+        border-radius: 30px;
+        margin: 0px 20px 0px 0px;
+    }
+    .signupBtnHome {
+        font-size: 1.1rem;
+        padding: 15px;
+        border-radius: 30px;
+    }
+}
+@media screen and (min-width: 1100px) and (max-height: 800px) {
+    .HomeContainer { height: 732px; }
+    .ResponsiveFlexTest { height: 640px; border: 1px solid green; }
+    .botHome {
+        position: relative;
+        width: 1800px;
+        bottom: 70px;
+        left: -5px;
+    }
+}
+
+
+/* DESKTOP-LG=======================================================*/
+@media screen and (min-width: 1500px) {
+    .LogoHome { width: 600px; }
+    .section1Home {
+        position: relative;
+        width: 600px;
+        height: 440px;
+    }
+    .s1TitleHome { font-size: 2.8rem; }
+    .s1ContentHome { font-size: 1.5rem; }
+    .s1CallToActionHome { font-size: 1rem; }
+    .guestBtnHome { font-size: 1.4rem; }
+    .loginBtnHome { font-size: 1.4rem; }
+    .signupBtnHome { font-size: 1.4rem; }
+}
+@media screen and (min-width: 1500px) and (max-height: 800px) {
+    .botHome { bottom: 60px; }
 }

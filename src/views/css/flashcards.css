@@ -4,7 +4,7 @@
     right: 0px;
     width: 0px;
     height: 0px;
-    
+    z-index: -1;
 }
 
 .dotsFlashcards {
@@ -12,4 +12,11 @@
     height: 550px;
     bottom: -70px;
     left: 10px;
+}
+
+.botFlashcards {
+    position: fixed;
+    width: 105vw;
+    bottom: -50px;
+    left: -5px;
 }

@@ -8,6 +8,7 @@ import FlashcardStartButton from '../components/FlashcardComponents/FlashcardSta
 import FlashcardImageAndOptions from '../components/FlashcardComponents/FlashcardsImageAndOptions/FlashcardImageOptions';
 import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
 import DotsLongest from "../svgs/DotsLongest.svg";
+import BotBig from "../svgs/BotBig.svg";
 import "./css/flashcards.css";
 
 export default function Flashcards() {
@@ -139,6 +140,7 @@ export default function Flashcards() {
             
             <div className="flashcardBg">
                 <img className="dotsFlashcards" src={DotsLongest} alt="dots" />
+                <img className="botFlashcards" src={BotBig} alt="gradiant rectangle" />
             </div>
         </div>
     );

@@ -1,3 +1,20 @@
+.containerProfile {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px 0px;
+}
+
+.contentProfile {
+    width: 1200px;
+    height: 80vh;
+
+    color: white;
+    background-color: black;
+
+    border: 2px solid white;
+    border-radius: 25px;
+}
+
 .profileBg {
     position: absolute;
     top: 0px;
@@ -9,9 +26,16 @@
 
 .dotsProfile {
     position: fixed;
-    left: 320px;
+    left: 400px;
     height: 550px;
 
     transform-origin: top left;
     transform: rotate(90deg);
+}
+
+.botProfile {
+    position: fixed;
+    width: 105vw;
+    bottom: 0px;
+    left: -5px;
 }

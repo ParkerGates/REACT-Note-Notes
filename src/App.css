@@ -25,3 +25,27 @@ body {
   display: flex;
   flex-direction: column-reverse;
 }
+
+.btnPlain {
+  color: white;
+  background-color: black;
+  
+  font-weight: bold;
+
+  border: 2px solid white;
+  border-radius: 25px;
+}
+
+.btnGradiant {
+  color: white;
+  background-image: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 231));
+
+  font-weight: bold;
+}
+
+.btnGradiantRound {
+  color: white;
+  background-image: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 231));
+
+  font-weight: bold;
+}
