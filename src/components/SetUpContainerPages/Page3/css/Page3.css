@@ -1,4 +1,100 @@
+.configbtnContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.configbtn {
+    padding: 10px;
+}
+
+
+.configSpecificsContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    border: 1px dashed white;
+    border-radius: 20px;
+    padding: 6px 15px;
+    margin-left: 10px
+}
+.configSpecificsTitle { margin-right: 10px; }
+.configSpecificsInput {
+    width: 30px;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px
+}
+.configSpecificsBtn {
+    width: 30px;
+    padding: 5px 8px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+
 .active {
-    background-color: white;
-    color: red;
+    background: 
+    linear-gradient(to right, black , black) padding-box,
+    linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 231)) border-box;
+    border-radius: 50em;
+    border: 3px solid transparent;
+}
+
+
+.configTitleContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.configTitle {
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
+.configHr {
+    width: 100%;
+    background-color: whtie; border: 1px solid white;
+}
+
+
+.configTestBtnContainer {
+}
+
+
+
+
+
+.configSaveSettings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .9rem;
+}
+.configTestBtn {
+    font-size: 1.1rem;
+    padding:12px 20px;
+    border: none;
+    border-radius: 22px;
+}
+.configSaveBtn {
+    padding: 5px 8px;
+}
+
+
+.configbottomNavBtns {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 30px;
+}
+.backbtn {
+    font-size: 1.8rem;
+    border: none;
+    background-color: black;
+    font-weight: bolder;
+    
+    background: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 206));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

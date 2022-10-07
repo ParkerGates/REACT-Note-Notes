@@ -1,6 +1,7 @@
 import FlashcardGame from "../../../classes/FlashcardGame";
 import { useContextData } from "../../../context/context";
 import { iKeysetScoreInfo, iSingleNoteData } from "../../../interfaces/interfaces";
+import "../../../App.css";
 import "./css/Page1.css";
 
 interface Props {
@@ -69,11 +70,11 @@ export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}
 
     return (
         <div className="keySetBtnContainer">
-            <button className="keySetBtn" onClick={()=>{setKeysetInfo("treble")}}>Treble</button>
-            <button className="keySetBtn" onClick={()=>{setKeysetInfo("bass")}}>Bass</button>
-            <button className="keySetBtn" onClick={()=>{setKeysetInfo("upperTreble")}}>Upper Treble</button>
-            <button className="keySetBtn" onClick={()=>{setKeysetInfo("lowest")}}>Lowest</button>
-            <button className="keySetBtn" onClick={()=>{setKeysetInfo("highest")}}>Highest</button>
+            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("treble")}}>Treble</button>
+            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("bass")}}>Bass</button>
+            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("upperTreble")}}>Upper Treble</button>
+            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("lowest")}}>Lowest</button>
+            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("highest")}}>Highest</button>
         </div>
     )
 }

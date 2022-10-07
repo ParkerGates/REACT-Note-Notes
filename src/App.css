@@ -29,9 +29,7 @@ body {
 .btnPlain {
   color: white;
   background-color: black;
-  
   font-weight: bold;
-
   border: 2px solid white;
   border-radius: 25px;
 }

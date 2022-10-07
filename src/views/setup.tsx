@@ -35,7 +35,16 @@ export default function Setup() {
 
 
     return(
-        <div>
+        <div className="SetupContainer">
+            <div className="setupGuideContainer">
+                <h1 className="setupTitle">Setup</h1>
+                <hr className="setupHr" />
+                <div className="setupPageIndicator">
+                    <span className={currentPage===1?"curPage":""}>Keyset</span>
+                    <span className={currentPage===2?"curPage":""}>Game Info</span>
+                    <span className={currentPage===3?"curPage":""}>Game Config</span>
+                </div>
+            </div>
             {currentPage === 1 && <SetUpPage1 onNoteInfoChange={setKeysetInfo} onGameDataChange={setGameData} pageNav={pageNav}/>}
             {currentPage === 2 && <SetUpPage2 keysetInfo={keysetInfo} pageNav={pageNav} launchGame={launchGame}/>}
             {currentPage === 3 && <SetUpPage3 gameInfo={gameData} setGameInfo={setGameData} pageNav={pageNav} launchGame={launchGame}/>}

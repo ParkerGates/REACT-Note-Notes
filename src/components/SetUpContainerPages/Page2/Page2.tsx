@@ -15,22 +15,29 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
 
             <div className='textAlignCenter page2Block'>
                 <div className='MasteryAverageContainer'>
-                    <input className='MasteryAverageTextBox' type="text" value={`${keysetInfo.masteryLvl}%`} readOnly />
                     <div className='MasteryAverageText'>Mastery Level</div>
+                    <input className='btnPlain MasteryAverageTextBox' type="text" value={`${keysetInfo.masteryLvl}%`} readOnly />
                 </div>
             </div>
 
             <div className="textAlignCenter page2Block">
-                <div className='MasteryAverageContainer'>
-                    <input className='MasteryAverageTextBox' type="text" value={`${keysetInfo.avgAccuracy}%`} readOnly />
+                    <div className='MasteryAverageContainer'>
                     <div className='MasteryAverageText'>Average Accuracy</div>
+                    <input className='btnPlain MasteryAverageTextBox' type="text" value={`${keysetInfo.avgAccuracy}%`} readOnly />
                 </div>
 
                 <div className='MasteryAverageContainer'>
-                    <input className='MasteryAverageTextBox' type="text" value={`${keysetInfo.avgTime}s`} readOnly />
                     <div className='MasteryAverageText'>Average Time</div>
+                    <input className='btnPlain MasteryAverageTextBox' type="text" value={`${keysetInfo.avgTime}s`} readOnly />
                 </div>
             </div>
+
+
+            <div className='avgTitleContainer'>
+                <h2 className="avgTitle">Avg Accuracy & Recall</h2>
+                <hr className="avgHr"/>
+            </div>
+
 
             { keysetInfo.orderByScore.length === 0
                 ?   <div className="page2Block">
@@ -43,8 +50,8 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
                                 <div key={note.note} className="displayInlineBlock scoreDisplayBoxContainer">
                                     <span>{note.note}: </span>
                                     <div className="displayInlineBlock">
-                                        <div className="scoreDisplayBox">{note.acc}</div>
-                                        <div className="scoreDisplayBox">{note.avgTime}</div>
+                                        <div className="scoreDisplayBox scoreDisplayBoxLeft">{note.acc}%</div>
+                                        <div className="scoreDisplayBox scoreDisplayBoxRight">{note.avgTime}s</div>
                                     </div>
                                 </div>
                             );
@@ -52,14 +59,16 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
                     </div>
             }
 
-            <div className="positionRelative">
-                <div className="configTestBtnContainer">
-                    <button onClick={()=>{pageNav("forward")}}>Config</button>
-                    <button onClick={launchGame}>Test</button>
+            <div className="positionRelative bottomNavBtns">
+                <button className="backbtn" onClick={()=>{pageNav("back")}}>{"<"}</button>
+
+                <div className="gameInfoTestBtnContainer">
+                    <button className="btnPlain gameInfoBtn" onClick={()=>{pageNav("forward")}}>Config</button>
+                    <button className="btnGradiant testBtn" onClick={launchGame}>Test</button>
                 </div>
             </div>
 
-            <button className="backBtn" onClick={()=>{pageNav("back")}}>{"<"}</button>
+            {/* <button className="" onClick={()=>{pageNav("back")}}>{"<"}</button> */}
         </div>
     )
 }

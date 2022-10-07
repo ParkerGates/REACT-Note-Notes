@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useContextData } from "../../../context/context";
 import { iGameSettings } from '../../../interfaces/interfaces';
 import './css/Page3.css';
-import '../Page2/css/Page2.css';
 import { getNameOfJSDocTypedef } from 'typescript';
 
 interface Props {
@@ -117,83 +116,146 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
 
     return (
         <div>
-            <div>Page 3</div>
             <div>
-                <div>Game Type:</div>
-                <div>
-                    <button className={btnState.gameType==="limitless"?"active":""} onClick={()=>{setSettingOption("GameType","limitless")}}>limitless</button>
-                    <button className={btnState.gameType==="timed"?"active":""} onClick={()=>{setSettingOption("GameType","timed")}}>timed</button>
-                    <button className={btnState.gameType==="set"?"active":""} onClick={()=>{setSettingOption("GameType","set")}}>set</button>
-                    { btnState.gameType === "timed" &&
-                    <div>
-                    <label>Time</label>
-                    <input type="text" value={timedGameCount} readOnly />{/*--------------------------------------------------------------*/}
-                    <button onClick={()=>setTimeIncrement('increment')}>^</button>
-                    <button onClick={()=>setTimeIncrement('decrement')}>v</button>
+                <div className="configTitleContainer">
+                    <h2 className="configTitle">Game Type</h2>
+                    <hr className="configHr" />
                 </div>
+                <div className="configbtnContainer">
+                    <button className={`btnPlain configbtn ${btnState.gameType==="limitless"?"active":""}`} onClick={()=>{setSettingOption("GameType","limitless")}}>limitless</button>
+                    <button className={`btnPlain configbtn ${btnState.gameType==="timed"?"active":""}`} onClick={()=>{setSettingOption("GameType","timed")}}>timed</button>
+                    <button className={`btnPlain configbtn ${btnState.gameType==="set"?"active":""}`} onClick={()=>{setSettingOption("GameType","set")}}>set</button>
+                    
+                    { btnState.gameType === "timed" &&
+                    <div className="configSpecificsContainer">
+                        <label className="configSpecificsTitle">Time</label>
+                        <input type="text" className="configSpecificsInput" value={`${timedGameCount}s`} readOnly />{/*--------------------------------------------------------------*/}
+                        <button 
+                            className="btnPlain configSpecificsBtn"
+                            onClick={()=>setTimeIncrement('increment')}
+                            >^
+                        </button>
+                        <button
+                            className="btnPlain configSpecificsBtn"
+                            onClick={()=>setTimeIncrement('decrement')}
+                            >v
+                        </button>
+                    </div>
                     }
                     { btnState.gameType === "set" &&
-                    <div>
-                        <label>Card Amount</label>
-                        <input type="text" value={limitedGameCount} readOnly />{/*--------------------------------------------------------------*/}
-                        <button onClick={()=>setCardIncrement('increment')}>^</button>
-                        <button onClick={()=>setCardIncrement('decrement')}>v</button>
+                    <div className="configSpecificsContainer">
+                        <label className="configSpecificsTitle">Card Amount</label>
+                        <input type="text" className="configSpecificsInput" value={limitedGameCount} readOnly />{/*--------------------------------------------------------------*/}
+                        <button
+                            className="btnPlain configSpecificsBtn"
+                            onClick={()=>setCardIncrement('increment')}
+                            >^
+                        </button>
+                        <button
+                            className="btnPlain configSpecificsBtn"
+                            onClick={()=>setCardIncrement('decrement')}
+                            >v
+                        </button>
                     </div>
                     }
                 </div>
-            </div>
-            <br/>
-            <div>
-                <div>Option Amount:</div>
+                </div>
                 <div>
-                    <button className={btnState.optionAmount === 3?"active":""} onClick={()=>{setSettingOption("OptionAmount",3)}}>3</button>
-                    <button className={btnState.optionAmount === 4?"active":""} onClick={()=>{setSettingOption("OptionAmount",4)}}>4</button>
+            </div>
+
+            <br/>
+
+            <div>
+                <div className="configTitleContainer">
+                    <h2 className="configTitle">Option Amount</h2>
+                    <hr className="configHr" />
+                </div>
+                <div className="configbtnContainer">
+                    <button className={`btnPlain configbtn ${btnState.optionAmount === 3?"active":""}`} onClick={()=>{setSettingOption("OptionAmount",3)}}>3</button>
+                    <button className={`btnPlain configbtn ${btnState.optionAmount === 4?"active":""}`} onClick={()=>{setSettingOption("OptionAmount",4)}}>4</button>
                     <button
-                        className={btnState.optionAmount === 5?"active":""}
+                        className={`btnPlain configbtn ${btnState.optionAmount === 5?"active":""}`}
                         onClick={()=>{setSettingOption("OptionAmount",5)}}
                         disabled={btnState.inputType === "arrow-keys" ? true : false}
                     >5</button>
                     <button
-                        className={btnState.optionAmount === 6?"active":""}
+                        className={`btnPlain configbtn ${btnState.optionAmount === 6?"active":""}`}
                         onClick={()=>{setSettingOption("OptionAmount",6)}}
                         disabled={btnState.inputType === "arrow-keys" ? true : false}
                     >6</button>
                 </div>
             </div>
+
             <br/>
+
             <div>
-                <div>Card Type:</div>
-                <div>
-                    <button className={btnState.cardType==="all"?"active":""} onClick={()=>{setSettingOption("CardType","all")}}>all</button>
-                    <button className={btnState.cardType==="trouble"?"active":""} onClick={()=>{setSettingOption("CardType","trouble")}}>trouble cards only</button>
+                <div className="configTitleContainer">
+                    <h2 className="configTitle">Card Type</h2>
+                    <hr className="configHr" />
                 </div>
-            </div>
-            <br/>
-            <div>
-                <div>Input Type:</div>
-                <div>
-                    <button className={btnState.inputType==="mouse-click"?"active":""} onClick={()=>{setSettingOption("InputType","mouse-click")}}>mouse-click</button>
-                    <button className={btnState.inputType==="number-keys"?"active":""} onClick={()=>{setSettingOption("InputType","number-keys")}}>number-keys</button>
-                    <button className={btnState.inputType==="arrow-keys"?"active":""} onClick={()=>{setSettingOption("InputType","arrow-keys")}}>arrow-keys</button>
+                <div className="configbtnContainer">
+                    <button
+                        className={`btnPlain configbtn ${btnState.cardType==="all"?"active":""}`} onClick={()=>{setSettingOption("CardType","all")}}
+                        >all
+                    </button>
+                    <button
+                        className={`btnPlain configbtn ${btnState.cardType==="trouble"?"active":""}`}
+                        onClick={()=>{setSettingOption("CardType","trouble")}}
+                        >trouble cards only
+                    </button>
                 </div>
             </div>
 
-            <div className="positionRelative">
-                <div className="configTestBtnContainer">
-                    <span>                        
-                        { btnState.gameInfoChanged === null && ""}
-                        { btnState.gameInfoChanged === false && <>saved</> }
-                        { btnState.gameInfoChanged === true && 
-                            <>
-                                <label>Set final as default</label>
-                                <button onClick={saveAsDefault}>+</button>
-                            </>
-                        }
-                    </span>
-                    <button onClick={launchGame}>Test</button>
+            <br/>
+
+            <div>
+                <div className="configTitleContainer">
+                    <h2 className="configTitle">Input Type</h2>
+                    <hr className="configHr" />
+                </div>
+                <div className="configbtnContainer">
+                    <button
+                        className={`btnPlain configbtn ${btnState.inputType==="mouse-click"?"active":""}`}
+                        onClick={()=>{setSettingOption("InputType","mouse-click")}}
+                        >mouse-click
+                    </button>
+                    <button
+                        className={`btnPlain configbtn ${btnState.inputType==="number-keys"?"active":""}`}
+                        onClick={()=>{setSettingOption("InputType","number-keys")}}
+                        >number-keys
+                    </button>
+                    <button
+                        className={`btnPlain configbtn ${btnState.inputType==="arrow-keys"?"active":""}`}
+                        onClick={()=>{setSettingOption("InputType","arrow-keys")}}
+                        >arrow-keys
+                    </button>
+                </div>
+
+                <div className="configbottomNavBtns">
+                    <button className="backbtn" onClick={()=>{pageNav("back")}}>{"<"}</button>
+                    <div className="configTestBtnContainer">
+                        <span className="configSaveSettings">                        
+                            { btnState.gameInfoChanged === null && ""}
+                            { btnState.gameInfoChanged === false && <>saved</> }
+                            { btnState.gameInfoChanged === true && 
+                                <>
+                                    <>Set final as default</>
+                                    <button
+                                        className="btnPlain configSaveBtn"
+                                        onClick={saveAsDefault}
+                                        >+
+                                    </button>
+                                </>
+                            }
+                            <button
+                                className="btnGradiant configTestBtn"
+                                onClick={launchGame}
+                                >Test
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <button className="backBtn" onClick={()=>{pageNav("back")}}>{"<"}</button>
         </div>
     )
 }
