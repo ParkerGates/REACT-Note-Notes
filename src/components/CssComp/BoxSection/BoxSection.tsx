@@ -4,7 +4,7 @@ import "./BoxSection.css";
 interface Props {
     title: string;
     fontSize:  "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    children: string;
+    children: any;
 }
 
 function BoxSection({title, fontSize, children}: Props) {

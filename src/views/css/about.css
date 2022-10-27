@@ -1,3 +1,15 @@
+.aboutPageContainer {
+    margin: auto;
+    width: 80vw;
+}
+.aboutPageTitle {
+    font-size: 2.5rem;
+    margin: 20px 0px 0px 0px;
+}
+.aboutPageContent {
+}
+
+
 .aboutBg {
     position: absolute;
     top: 0px;
@@ -14,4 +26,22 @@
 
     transform-origin: top left;
     transform: rotate(90deg);
+}
+
+
+@media screen and (min-width: 900px) {
+    .aboutPageContainer {
+        display: flex;
+        width: auto;
+    }
+    .aboutPageTitle {
+        width: 17vw;
+        /* border: 1px solid green; */
+        font-size: calc(3.5vw * 1.25);
+        margin-top: 0px;
+        padding: 20px 0px 0px 40px;
+    }
+    .aboutPageContent {
+        width: 66vw;
+    }
 }
