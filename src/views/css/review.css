@@ -1,3 +1,27 @@
+.reviewPageContainer {
+    margin: auto;
+    width: 80vw;
+}
+.reviewPageTitle {
+    font-size: 2.5rem;
+    margin: 20px 0px 0px 0px;
+}
+.reviewPageContent {
+}
+
+.ReviewImage { width: 500px; }
+
+.ReviewImageContainer {
+    text-align: center;
+    overflow-y: scroll;
+    -webkit-mask-image: linear-gradient(90deg, #000 95%, transparent);
+}
+
+
+
+
+
+
 .reviewBg {
     position: absolute;
     top: 0px;
@@ -14,4 +38,36 @@
 
     transform-origin: top left;
     transform: rotate(90deg);
+}
+
+@media screen and (min-width: 750px) {
+    .ReviewImageContainer { overflow-y:auto; }
+}
+
+
+@media screen and (min-width: 900px) {
+    .reviewPageContainer {
+        display: flex;
+        width: auto;
+    }
+    .reviewPageTitle {
+        width: 17vw;
+        /* border: 1px solid green; */
+        font-size: calc(3.5vw * 1.25);
+        margin-top: 0px;
+        padding: 20px 0px 0px 40px;
+    }
+    .reviewPageContent {
+        width: 66vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .ReviewImage { width: 700px; }
+}
+
+@media screen and (min-width: 1450px) {
+    .ReviewImage {
+        width: 900px;
+    }
 }
