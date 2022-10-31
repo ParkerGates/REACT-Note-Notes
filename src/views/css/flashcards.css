@@ -1,3 +1,37 @@
+.flashcardTestingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 12px;
+}
+.flashcardCardDisplay {
+    width: 90vw;
+    height: calc(100vh - 280px);
+
+    margin: 20px
+}
+.flashcardInteractArea {
+    width: 90vw;
+    height: 100px;
+    position: fixed;
+    bottom: 20px;
+}
+.flashcardCardDisplay, .flashcardInteractArea {
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: black;
+    z-index: 5
+}
+
+
+
+
+
+
+
+
 .flashcardsBg {
     position: absolute;
     top: 0px;
@@ -19,4 +53,18 @@
     width: 105vw;
     bottom: -50px;
     left: -5px;
+
+    /* position: fixed;
+    width: 105vw;
+    bottom: -50px;
+    left: -5px; */
+}
+
+.botFlashcards2 {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    background-image: linear-gradient(to right, rgba(36, 119, 243, 1) , rgba(36, 243, 206, 1));
+    width: 100%;
+    height: 90px;
 }

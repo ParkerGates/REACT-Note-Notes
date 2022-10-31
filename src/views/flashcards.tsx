@@ -4,7 +4,6 @@ import { iFlashcardGameState, iFlashcardNotePayload, iNote, iSingleGameStats } f
 import useTimer from 'easytimer-react-hook';
 import FlashcardGame from "../classes/FlashcardGame";
 import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCountdown/FlashcardCountdown';
-import FlashcardStartButton from '../components/FlashcardComponents/FlashcardStartButton/FlashcardStartButton';
 import FlashcardImageAndOptions from '../components/FlashcardComponents/FlashcardsImageAndOptions/FlashcardImageOptions';
 import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
 import DotsLongest from "../svgs/DotsLongest.svg";
@@ -115,9 +114,26 @@ export default function Flashcards() {
 
  
     return(
-        <div>
-            <h4>Flashcards</h4>
-            { "no-game" === gameState.currentState && <FlashcardStartButton startGameCountdown={startGameCountdown}/> }
+        <div className="flashcardTestingContainer">
+            <div className="flashcardCardDisplay">
+                Display
+            </div>
+            <div className="flashcardInteractArea">
+                { "no-game" === gameState.currentState && 
+                    <button onClick={startGameCountdown}>Start</button>
+                }
+            </div>
+
+
+
+
+
+
+
+
+
+
+
  
             { "pre-game" === gameState.currentState && <FlashcardCountdown countDownNumber={gameState.countdown}/> }
  
@@ -141,6 +157,7 @@ export default function Flashcards() {
             <div className="flashcardBg">
                 <img className="dotsFlashcards" src={DotsLongest} alt="dots" />
                 <img className="botFlashcards" src={BotBig} alt="gradiant rectangle" />
+                <div className="botFlashcards2">&nbsp;</div>
             </div>
         </div>
     );
