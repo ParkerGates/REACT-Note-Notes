@@ -4,14 +4,13 @@ import "./imageOptions.css";
 
 interface Props {
     find: string;
-    image: any;
     options: string[];
     inputType: string;
     handleSelectedOption: (rightIndex: string, selectedIndex: string) => void;
 }
 
 
-const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelectedOption}: Props) => {
+const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Props) => {
     const findIndex = options.indexOf(find);
 
     useEffect(()=> {
@@ -34,9 +33,6 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     
     return (
         <div>
-            <div>
-                { image && <h1>{image}</h1> }
-            </div>
             <div>
                 { inputType === "mouse-click" &&
                     options.map((option, optionIndex) => {
@@ -96,4 +92,4 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     );
 }
 
-export default memo(FlashcardImageAndOptions);
+export default memo(FlashcardOptions);

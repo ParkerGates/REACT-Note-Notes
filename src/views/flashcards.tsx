@@ -4,7 +4,7 @@ import { iFlashcardGameState, iFlashcardNotePayload, iNote, iSingleGameStats } f
 import useTimer from 'easytimer-react-hook';
 import FlashcardGame from "../classes/FlashcardGame";
 import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCountdown/FlashcardCountdown';
-import FlashcardImageAndOptions from '../components/FlashcardComponents/FlashcardsImageAndOptions/FlashcardImageOptions';
+import FlashcardOptions from '../components/FlashcardComponents/FlashcardOptions/FlashcardOptions';
 import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
 import DotsLongest from "../svgs/DotsLongest.svg";
 import BotBig from "../svgs/BotBig.svg";
@@ -115,33 +115,23 @@ export default function Flashcards() {
  
     return(
         <div className="flashcardTestingContainer">
+            
             <div className="flashcardCardDisplay">
-                Display
+                { "pre-game" === gameState.currentState && <FlashcardCountdown countDownNumber={gameState.countdown}/> }
+                { "game" === gameState.currentState && cardPayload.find }
+                { "post-game" === gameState.currentState && <FlashcardEndScreen stats={sessionStats} /> }
             </div>
+
             <div className="flashcardInteractArea">
                 { "no-game" === gameState.currentState && 
                     <button onClick={startGameCountdown}>Start</button>
                 }
-            </div>
 
 
-
-
-
-
-
-
-
-
-
- 
-            { "pre-game" === gameState.currentState && <FlashcardCountdown countDownNumber={gameState.countdown}/> }
- 
-            { "game" === gameState.currentState && 
+                { "game" === gameState.currentState && 
                 <div>
-                    <FlashcardImageAndOptions 
+                    <FlashcardOptions 
                         find={cardPayload.find}
-                        image={cardPayload.find}
                         options={cardPayload.options}
                         inputType={contextData.contextState.gameSettings.inputType}
                         handleSelectedOption={handleSelectedOption}
@@ -150,9 +140,11 @@ export default function Flashcards() {
                         <button onClick={()=>{setGameState((prevState) => {return {...prevState, currentState:"post-game"}})}}>End Game</button>
                     }
                 </div>
-            }
-           
-            { "post-game" === gameState.currentState && <FlashcardEndScreen stats={sessionStats} /> }
+                } 
+
+            </div>
+
+
             
             <div className="flashcardBg">
                 <img className="dotsFlashcards" src={DotsLongest} alt="dots" />
