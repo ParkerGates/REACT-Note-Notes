@@ -24,19 +24,6 @@ export default function FlashcardEndScreen({stats}: Props) {
                     );
                 })}
             </div>
-
-            <div className="endGameBtnContainer">
-            <Link to="/"><button className="endGameHomeBtn">Home</button></Link>
-
-                <div className="endGameReplayContainer">
-                    <div>Play Again?</div>
-                    <div>
-                        <Link to="/reloads/flashcards"><button>Replay</button></Link>
-                        <Link to="/setup"><button>New Game</button></Link>
-                    </div>
-                </div>
-
-            </div>
         </div>
     );
 }

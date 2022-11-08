@@ -7,24 +7,22 @@
 }
 
 .endGameBtnContainer {
-    position: relative;
-    width: 100vw;
-    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
     
-    border: 2px solid green;
+    border: 2px solid red;
 }
 .endGameHomeBtn {
-    display: inline-block;
-    position: absolute;
+    border: 2px solid red;
 
-    left: 20px;
-    bottom:20px;
 }
 
 .endGameReplayContainer {
-    display: inline-block;
-    position: absolute;
+    border: 2px solid red;
+    min-width: 200px;
 
-    right:20px;
-    bottom:20px;
 }

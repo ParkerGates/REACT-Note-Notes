@@ -26,7 +26,7 @@ const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Prop
     useEffect(()=>{
         if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
         else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
-    }, [options])
+    }, [options, inputType])
 
 
 
