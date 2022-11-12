@@ -127,22 +127,28 @@ export default function Flashcards() {
 
             <div className="flashcardInteractArea">
                 { "no-game" === gameState.currentState && 
-                    <button className="btnPlain  flashcardGameStartBtn" onClick={startGameCountdown}>Start</button>
+                    <button className="btnPlain flashcardGameStartBtn" onClick={startGameCountdown}>Start</button>
                 }
 
 
                 { "game" === gameState.currentState && 
-                    <div>
-                        <FlashcardOptions 
-                            find={cardPayload.find}
-                            options={cardPayload.options}
-                            inputType={contextData.contextState.gameSettings.inputType}
-                            handleSelectedOption={handleSelectedOption}
-                        /> 
+                    <>
+                        <div>
+                            <FlashcardOptions 
+                                find={cardPayload.find}
+                                options={cardPayload.options}
+                                inputType={contextData.contextState.gameSettings.inputType}
+                                handleSelectedOption={handleSelectedOption}
+                            />
+                        </div>
                         { (gameState.gameType.type === "limitless" || gameState.gameType.type === null) &&
-                            <button onClick={()=>{setGameState((prevState) => {return {...prevState, currentState:"post-game"}})}}>End Game</button>
+                            <button
+                                className="flashcardEndGameBtn" 
+                                onClick={()=>{setGameState((prevState) => {return {...prevState, currentState:"post-game"}})}}>
+                                    End Game
+                            </button>
                         }
-                    </div>
+                    </>
                 }
 
                 {  "post-game" === gameState.currentState &&

@@ -11,7 +11,8 @@
     justify-content: center;
     align-items: center;
     width: 90vw;
-    height: calc(100vh - 280px);
+    max-width: 350px;
+    height: calc(100vh - 270px);
     margin: 20px
 }
 .flashcardInteractArea {
@@ -19,6 +20,7 @@
     justify-content: center;
     align-items: center;
     width: 90vw;
+    max-width: 600px;
     height: 100px;
     position: fixed;
     bottom: 20px;
@@ -36,6 +38,23 @@
     height: 100%;
     border: none;
 }
+
+.flashcardEndGameBtn {
+    width: 150px;
+    position: fixed;
+    right: calc(50vw - 75px);
+    bottom: -10px;
+
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 5px 10px;
+
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
 
 
 

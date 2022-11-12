@@ -40,6 +40,7 @@ const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Prop
                             <button 
                                 id={String(optionIndex)}
                                 key={option + optionIndex}
+                                className="btnPlain flashcardOptionBtns"
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}>
                                 {option}
                             </button>
@@ -52,6 +53,7 @@ const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Prop
                             <button
                                 id={String(optionIndex)}
                                 key={option + optionIndex}
+                                className="btnPlain flashcardOptionBtns"
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}
                                 >
                                 {option}
