@@ -3,7 +3,23 @@
 }
 
 .endGameScoresContainer {
-    height: 300px;
+    
+}
+
+.endGameContainer {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid yellow; */
+    padding: 0px 10px;
+}
+
+.endGameNoteScoreContainer {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid white;
+    border-radius: 16px;
+    padding: 5px 10px;
+    margin: 8px;
 }
 
 .endGameBtnContainer {
@@ -12,17 +28,24 @@
     align-items: center;
     width: 100%;
     height: 100%;
-
-    
-    border: 2px solid red;
-}
-.endGameHomeBtn {
-    border: 2px solid red;
+    padding: 10px;
 
 }
 
-.endGameReplayContainer {
-    border: 2px solid red;
-    min-width: 200px;
+.endGameBtns {
+    width: 70px;
+    height: 50px;
 
+    font-size: .6rem;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 10px;
+
+}
+
+@media only screen and (min-width: 550px) {
+    .endGameBtns {
+        font-size: 1rem;
+        width: 110px;
+    }
 }

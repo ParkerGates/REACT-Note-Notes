@@ -153,16 +153,9 @@ export default function Flashcards() {
 
                 {  "post-game" === gameState.currentState &&
                     <div className="endGameBtnContainer">
-                        <button className="endGameHomeBtn">Home</button>
-
-                        <div className="endGameReplayContainer">
-                            <div>Play Again?</div>
-                            <div>
-                                <Link to="/reloads/flashcards"><button>Replay</button></Link>
-                                <Link to="/setup"><button>New Game</button></Link>
-                            </div>
-                        </div>
-
+                        <Link to="/home"><button className="btnPlain endGameBtns">Home</button></Link>
+                        <Link to="/reloads/flashcards"><button className="btnPlain endGameBtns">Replay</button></Link>
+                        <Link to="/setup"><button className="btnPlain endGameBtns">New Game</button></Link>
                     </div>
                 }
             </div>
@@ -171,7 +164,6 @@ export default function Flashcards() {
             
             <div className="flashcardBg">
                 <img className="dotsFlashcards" src={DotsLongest} alt="dots" />
-                <img className="botFlashcards" src={BotBig} alt="gradiant rectangle" />
                 <div className="botFlashcards2">&nbsp;</div>
             </div>
         </div>
