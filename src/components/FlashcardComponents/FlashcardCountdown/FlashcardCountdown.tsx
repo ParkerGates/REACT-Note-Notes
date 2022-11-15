@@ -6,7 +6,7 @@ export default function FlashcardCountdown({countDownNumber}: Props) {
 
     return (
         <>
-            {countDownNumber}
+            <h1 style={{fontSize:"80px"}}>{countDownNumber}</h1>
         </>
     );
 }

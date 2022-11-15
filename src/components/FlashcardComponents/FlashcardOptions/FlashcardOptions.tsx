@@ -4,14 +4,13 @@ import "./imageOptions.css";
 
 interface Props {
     find: string;
-    image: any;
     options: string[];
     inputType: string;
     handleSelectedOption: (rightIndex: string, selectedIndex: string) => void;
 }
 
 
-const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelectedOption}: Props) => {
+const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Props) => {
     const findIndex = options.indexOf(find);
 
     useEffect(()=> {
@@ -27,7 +26,7 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     useEffect(()=>{
         if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
         else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
-    }, [options])
+    }, [options, inputType])
 
 
 
@@ -35,15 +34,13 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     return (
         <div>
             <div>
-                { image && <h1>{image}</h1> }
-            </div>
-            <div>
                 { inputType === "mouse-click" &&
                     options.map((option, optionIndex) => {
                         return (
                             <button 
                                 id={String(optionIndex)}
                                 key={option + optionIndex}
+                                className="btnPlain flashcardOptionBtns"
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}>
                                 {option}
                             </button>
@@ -56,6 +53,7 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
                             <button
                                 id={String(optionIndex)}
                                 key={option + optionIndex}
+                                className="btnPlain flashcardOptionBtns"
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}
                                 >
                                 {option}
@@ -96,4 +94,4 @@ const FlashcardImageAndOptions = ({find, image, options, inputType, handleSelect
     );
 }
 
-export default memo(FlashcardImageAndOptions);
+export default memo(FlashcardOptions);

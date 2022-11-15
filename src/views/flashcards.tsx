@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useContextData } from '../context/context';
 import { iFlashcardGameState, iFlashcardNotePayload, iNote, iSingleGameStats } from '../interfaces/interfaces';
+import { Link } from 'react-router-dom';
 import useTimer from 'easytimer-react-hook';
 import FlashcardGame from "../classes/FlashcardGame";
 import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCountdown/FlashcardCountdown';
-import FlashcardStartButton from '../components/FlashcardComponents/FlashcardStartButton/FlashcardStartButton';
-import FlashcardImageAndOptions from '../components/FlashcardComponents/FlashcardsImageAndOptions/FlashcardImageOptions';
+import FlashcardOptions from '../components/FlashcardComponents/FlashcardOptions/FlashcardOptions';
 import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
 import DotsLongest from "../svgs/DotsLongest.svg";
 import BotBig from "../svgs/BotBig.svg";
+import '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen.css'
 import "./css/flashcards.css";
+import "../App.css";
 
 export default function Flashcards() {
     const contextData = useContextData();
@@ -115,32 +117,54 @@ export default function Flashcards() {
 
  
     return(
-        <div>
-            <h4>Flashcards</h4>
-            { "no-game" === gameState.currentState && <FlashcardStartButton startGameCountdown={startGameCountdown}/> }
- 
-            { "pre-game" === gameState.currentState && <FlashcardCountdown countDownNumber={gameState.countdown}/> }
- 
-            { "game" === gameState.currentState && 
-                <div>
-                    <FlashcardImageAndOptions 
-                        find={cardPayload.find}
-                        image={cardPayload.find}
-                        options={cardPayload.options}
-                        inputType={contextData.contextState.gameSettings.inputType}
-                        handleSelectedOption={handleSelectedOption}
-                    /> 
-                    { (gameState.gameType.type === "limitless" || gameState.gameType.type === null) &&
-                        <button onClick={()=>{setGameState((prevState) => {return {...prevState, currentState:"post-game"}})}}>End Game</button>
-                    }
-                </div>
-            }
-           
-            { "post-game" === gameState.currentState && <FlashcardEndScreen stats={sessionStats} /> }
+        <div className="flashcardTestingContainer">
+            
+            <div className="flashcardCardDisplay">
+                { "pre-game" === gameState.currentState && <FlashcardCountdown countDownNumber={gameState.countdown}/> }
+                { "game" === gameState.currentState && cardPayload.find }
+                { "post-game" === gameState.currentState && <FlashcardEndScreen stats={sessionStats} /> }
+            </div>
+
+            <div className="flashcardInteractArea">
+                { "no-game" === gameState.currentState && 
+                    <button className="btnPlain flashcardGameStartBtn" onClick={startGameCountdown}>Start</button>
+                }
+
+
+                { "game" === gameState.currentState && 
+                    <>
+                        <div>
+                            <FlashcardOptions 
+                                find={cardPayload.find}
+                                options={cardPayload.options}
+                                inputType={contextData.contextState.gameSettings.inputType}
+                                handleSelectedOption={handleSelectedOption}
+                            />
+                        </div>
+                        { (gameState.gameType.type === "limitless" || gameState.gameType.type === null) &&
+                            <button
+                                className="flashcardEndGameBtn" 
+                                onClick={()=>{setGameState((prevState) => {return {...prevState, currentState:"post-game"}})}}>
+                                    End Game
+                            </button>
+                        }
+                    </>
+                }
+
+                {  "post-game" === gameState.currentState &&
+                    <div className="endGameBtnContainer">
+                        <Link to="/home"><button className="btnPlain endGameBtns">Home</button></Link>
+                        <Link to="/reloads/flashcards"><button className="btnPlain endGameBtns">Replay</button></Link>
+                        <Link to="/setup"><button className="btnPlain endGameBtns">New Game</button></Link>
+                    </div>
+                }
+            </div>
+
+
             
             <div className="flashcardBg">
                 <img className="dotsFlashcards" src={DotsLongest} alt="dots" />
-                <img className="botFlashcards" src={BotBig} alt="gradiant rectangle" />
+                <div className="botFlashcards2">&nbsp;</div>
             </div>
         </div>
     );
