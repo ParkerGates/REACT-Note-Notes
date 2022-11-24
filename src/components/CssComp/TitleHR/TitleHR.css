@@ -1,10 +1,10 @@
 .boxTH {
     display: flex;
-    padding: 10px;
+    padding: 10px 0px;
 }
 .titleTH {
     display: inline-block;
-    margin: 0px 5px 0px;
+    margin: 0px 10px 0px 0px;
 
     font-weight: bold;
     white-space: nowrap;

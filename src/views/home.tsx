@@ -1,5 +1,5 @@
-import DotsLong from "../svgs/DotsLong.svg";
-import BotHome from "../svgs/BotHome2.svg";
+import DotsLong from "../svgs/Background/DotsLong.svg";
+import BotHome from "../svgs/Background/BotHome2.svg";
 import Logo from "../components/Logo/Logo";
 import "./css/home.css";
 import '../App.css';

@@ -1,4 +1,4 @@
-import DotsLong from "../svgs/DotsLong.svg";
+import DotsLong from "../svgs/Background/DotsLong.svg";
 import "./css/showcase.css";
 
 export default function Showcase() {

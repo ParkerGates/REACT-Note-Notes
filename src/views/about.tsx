@@ -1,5 +1,5 @@
 import BoxSection from '../components/CssComp/BoxSection/BoxSection';
-import DotsLong from "../svgs/DotsLong.svg";
+import DotsLong from "../svgs/Background/DotsLong.svg";
 import "./css/about.css";
 
 export default function About() {

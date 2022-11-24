@@ -1,5 +1,5 @@
-import LogoBig from "../../svgs/LogoBig.png";
-import LogoSmall from "../../svgs/LogoSmall.svg";
+import LogoBig from "../../svgs/Logos/LogoBig.png";
+import LogoSmall from "../../svgs/Logos/LogoSmall.svg";
 import './logo.css';
 
 interface Props {
