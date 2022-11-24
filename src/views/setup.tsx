@@ -5,8 +5,8 @@ import { iGameSettings, iKeysetScoreInfo } from "../interfaces/interfaces";
 import SetUpPage1 from "../components/SetUpContainerPages/Page1/Page1";
 import SetUpPage2 from "../components/SetUpContainerPages/Page2/Page2";
 import SetUpPage3 from "../components/SetUpContainerPages/Page3/Page3";
-import DotsLongest from "../svgs/DotsLongest.svg";
-import BotSmall from "../svgs/BotSmall.svg";
+import DotsLongest from "../svgs/Background/DotsLongest.svg";
+import BotSmall from "../svgs/Background/BotSmall.svg";
 import "./css/setup.css";
 import "../App.css";
 

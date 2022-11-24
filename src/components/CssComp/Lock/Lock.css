@@ -1,0 +1,13 @@
+.lock {
+    width: 18px;
+    height: 18px;
+
+    outline: 1px solid white;
+    border: 3px solid black;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.locked {
+    background-color: white;
+}

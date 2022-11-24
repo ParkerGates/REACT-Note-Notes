@@ -7,8 +7,8 @@ import FlashcardGame from "../classes/FlashcardGame";
 import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCountdown/FlashcardCountdown';
 import FlashcardOptions from '../components/FlashcardComponents/FlashcardOptions/FlashcardOptions';
 import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
-import DotsLongest from "../svgs/DotsLongest.svg";
-import BotBig from "../svgs/BotBig.svg";
+import DotsLongest from "../svgs/Background/DotsLongest.svg";
+import BotBig from "../svgs/Background/BotBig.svg";
 import '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen.css'
 import "./css/flashcards.css";
 import "../App.css";
@@ -153,7 +153,7 @@ export default function Flashcards() {
 
                 {  "post-game" === gameState.currentState &&
                     <div className="endGameBtnContainer">
-                        <Link to="/home"><button className="btnPlain endGameBtns">Home</button></Link>
+                        <Link to="/"><button className="btnPlain endGameBtns">Home</button></Link>
                         <Link to="/reloads/flashcards"><button className="btnPlain endGameBtns">Replay</button></Link>
                         <Link to="/setup"><button className="btnPlain endGameBtns">New Game</button></Link>
                     </div>

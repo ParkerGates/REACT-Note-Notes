@@ -1,6 +1,6 @@
 import React from 'react';
 import BoxSection from '../components/CssComp/BoxSection/BoxSection';
-import DotsLong from "../svgs/DotsLong.svg";
+import DotsLong from "../svgs/Background/DotsLong.svg";
 import Highest from "../svgs/Review/Highest.svg"
 import HighTreble from "../svgs/Review/HighTreble.svg"
 import Treble from "../svgs/Review/Treble.svg"
