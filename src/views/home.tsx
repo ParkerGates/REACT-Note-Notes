@@ -3,9 +3,9 @@ import BotHome from "../svgs/Background/BotHome2.svg";
 import Logo from "../components/Logo/Logo";
 import "./css/home.css";
 import '../App.css';
+import withFirebase from "../hoc/firebaseHOC";
 
-
-export default function Home() {
+function Home(props) {
 
     return(
         <div className="HomeContainer">  
@@ -28,7 +28,7 @@ export default function Home() {
                         <div className="s1BtnContainerHome">
                             <button className="btnPlain guestBtnHome">Guest</button>
                             <div>
-                                <button className="btnPlain loginBtnHome">Login</button>
+                                <button onClick={props.signIn} className="btnPlain loginBtnHome">Login</button>
                                 <button className="btnGradiant signupBtnHome">Sign Up</button>
                             </div>
                         </div>
@@ -42,3 +42,5 @@ export default function Home() {
         </div>
     );
 }
+
+export default withFirebase(Home);

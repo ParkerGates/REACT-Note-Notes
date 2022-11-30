@@ -9,7 +9,28 @@ import Profile from './views/profile';
 import Reloads from './views/reloads';
 import NavBar from './components/NavBar/NavBar';
 import Showcase from './views/showcase';
+
+import {getFirestore,collection,getDoc,doc,setDoc,deleteDoc} from "firebase/firestore";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import firebase from "firebase/compat/app"
+import 'firebase/compat/firestore'
+import 'firebase/compat/auth';
+
 import './App.css';
+
+const app = firebase.initializeApp({
+	apiKey: "AIzaSyDclldB4PxY91iPbx-cG_A4iNTQvCWDXbk",
+	authDomain: "testingfirebase-eece3.firebaseapp.com",
+	projectId: "testingfirebase-eece3",
+	storageBucket: "testingfirebase-eece3.appspot.com",
+	messagingSenderId: "269467348339",
+	appId: "1:269467348339:web:90ac2f0ed27c6ab783e906",
+	measurementId: "G-GHZJVVWL0F"
+});
+
+const auth: any = firebase.auth();
+const firestore = firebase.firestore();
+const db = getFirestore();
 
 function App() {
   
