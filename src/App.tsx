@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import AuthGuard from './routing/AuthGuard';
 import Home from './views/home';
 import Setup from './views/setup';
 import Flashcards from './views/flashcards';
@@ -11,7 +12,6 @@ import NavBar from './components/NavBar/NavBar';
 import Showcase from './views/showcase';
 
 import {getFirestore,collection,getDoc,doc,setDoc,deleteDoc} from "firebase/firestore";
-import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from "firebase/compat/app"
 import 'firebase/compat/firestore'
 import 'firebase/compat/auth';
@@ -41,10 +41,23 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/setup" element={<Setup />} />
-            <Route path="/flashcards" element={<Flashcards />} />
             <Route path="/review" element={<Review />} />
             <Route path="/showcase" element={<Showcase />} />
+            <Route path="/setup" element={
+              <AuthGuard>
+                <Setup />  
+              </AuthGuard>
+            } />
+            <Route path="/flashcards" element={
+              <AuthGuard>
+                <Flashcards />
+              </AuthGuard>
+            } />
+            {/* <Route path="/profile" element={
+              <AuthGuard>
+                <Profile />
+              </AuthGuard>
+            } /> */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/reloads/:location" element={<Reloads />} />
           </Routes>

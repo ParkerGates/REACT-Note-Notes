@@ -1,7 +1,6 @@
 import firebase from "firebase/compat/app";
 import { doc, setDoc } from "firebase/firestore";
 import { useFirestoreData } from "../context/context";
-import { isPropertySignature } from "typescript";
 
 interface Props {
     styling?: string;

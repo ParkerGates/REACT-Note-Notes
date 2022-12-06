@@ -47,7 +47,7 @@ export default function AppContext(props: Props) {
 
     return(
         <ContextData.Provider value={{contextState: noteScore, contextDispatch: dispatch}}>
-            <FirestoreData.Provider value={{auth: auth, db: db}}>
+            <FirestoreData.Provider value={{auth: auth, db: db, user: user}}>
                 {props.children}
             </FirestoreData.Provider>
         </ContextData.Provider>

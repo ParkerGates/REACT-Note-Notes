@@ -11,8 +11,8 @@ const withFireBase = WrappedComponent => {
             const provider = new firebase.auth.GoogleAuthProvider();
             fsd.auth.signInWithPopup(provider)
                 .then((res) => {
-                    console.log(res.additionalUserInfo.isNewUser);
-                    console.log(res.user.uid);
+                    // console.log(res.additionalUserInfo.isNewUser);
+                    // console.log(res.user.uid);
         
                     if (res.additionalUserInfo.isNewUser === true) {
                         setDoc(doc(fsd.db,"Users",String(res.user.uid)), {

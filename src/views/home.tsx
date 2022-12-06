@@ -4,8 +4,11 @@ import Logo from "../components/Logo/Logo";
 import "./css/home.css";
 import '../App.css';
 import withFirebase from "../hoc/firebaseHOC";
+import { useFirestoreData } from "../context/context";
+import { Link } from "react-router-dom";
 
 function Home(props) {
+    let fbd = useFirestoreData();
 
     return(
         <div className="HomeContainer">  
@@ -26,10 +29,20 @@ function Home(props) {
                         <div className="s1CallToActionHome">Lets Hop To It!</div>
 
                         <div className="s1BtnContainerHome">
-                            <button className="btnPlain guestBtnHome">Guest</button>
+                            { fbd.user === null ?
+                                <button className="btnPlain guestBtnHome">Guest</button>
+                                :
+                                <button onClick={props.signOut} className="btnPlain guestBtnHome">Sign Out</button>
+                            }
                             <div>
-                                <button onClick={props.signIn} className="btnPlain loginBtnHome">Login</button>
-                                <button className="btnGradiant signupBtnHome">Sign Up</button>
+                                { fbd.user === null ?
+                                    <>
+                                        <button onClick={props.signIn} className="btnPlain loginBtnHome">Login</button>
+                                        <button onClick={props.signIn} className="btnGradiant signupBtnHome">Sign Up</button>
+                                    </>
+                                    :
+                                    <Link to="/setup"><button className="btnGradiant signupBtnHome">Flashcards</button></Link>
+                                }
                             </div>
                         </div>
                     </div>
