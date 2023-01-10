@@ -1,17 +1,24 @@
 import DotsLong from "../svgs/Background/DotsLong.svg";
 import BotHome from "../svgs/Background/BotHome2.svg";
 import Logo from "../components/Logo/Logo";
+import Bloom from "../svgs/Background/Bloom.svg";
 import "./css/home.css";
 import '../App.css';
+import withFirebase from "../hoc/firebaseHOC";
+import { useFirestoreData } from "../context/context";
+import { Link } from "react-router-dom";
 
-
-export default function Home() {
+function Home(props) {
+    let fbd = useFirestoreData();
 
     return(
         <div className="HomeContainer">  
             <div className="ResponsiveFlexTest">
                 <div className="LogoHome">
                     <Logo size="Large" width="100%"/>
+                    <div className="bloomContainerHome">
+                        <img className="bloomHome" src={Bloom} alt="bloom" />
+                    </div>
                 </div>
 
                 <div className="section1Home">
@@ -26,10 +33,20 @@ export default function Home() {
                         <div className="s1CallToActionHome">Lets Hop To It!</div>
 
                         <div className="s1BtnContainerHome">
-                            <button className="btnPlain guestBtnHome">Guest</button>
+                            { fbd.user === null ?
+                                <button className="btnPlain guestBtnHome">Guest</button>
+                                :
+                                <button onClick={props.signOut} className="btnPlain guestBtnHome">Sign Out</button>
+                            }
                             <div>
-                                <button className="btnPlain loginBtnHome">Login</button>
-                                <button className="btnGradiant signupBtnHome">Sign Up</button>
+                                { fbd.user === null ?
+                                    <>
+                                        <button onClick={props.signIn} className="btnPlain loginBtnHome">Login</button>
+                                        <button onClick={props.signIn} className="btnGradiant signupBtnHome">Sign Up</button>
+                                    </>
+                                    :
+                                    <Link to="/setup"><button className="btnGradiant signupBtnHome">Flashcards</button></Link>
+                                }
                             </div>
                         </div>
                     </div>
@@ -42,3 +59,5 @@ export default function Home() {
         </div>
     );
 }
+
+export default withFirebase(Home);

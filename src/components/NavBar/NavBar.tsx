@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import { useFirestoreData } from "../../context/context";
+import withFireBase from "../../hoc/firebaseHOC";
 import Logo from "../Logo/Logo";
 import "./Navs.css";
 
 
 
-export default function NavBar() {
+function NavBar(props) {
+    let fbd = useFirestoreData();
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
     const [showNav, setShowNav] = useState<boolean>(false);
 
@@ -31,16 +34,22 @@ export default function NavBar() {
 
                 <div className="navBarItems">
                     <NavLink to="/about" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>About</NavLink>
-                    <NavLink to="/setup" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Flashcard</NavLink>
+                    { fbd.user !== null &&
+                        <NavLink to="/setup" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Flashcard</NavLink>
+                    }
                     <NavLink to="/review" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Review</NavLink>
                     <NavLink to="/showcase" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Showcase</NavLink>
                 </div>
 
                 <hr className="hrNB" />
 
-                <Link to="/profile">
-                    <div className="profileButton">Profile</div>
-                </Link>
+                { fbd.user !== null ?
+                    <Link to="/profile">
+                        <div className="profileButton">Profile</div>
+                    </Link>
+                    :
+                    <button onClick={props.signIn} className="profileButton2">Sign In</button>
+                }
             </nav>
         );
     }
@@ -62,10 +71,12 @@ export default function NavBar() {
                         <i className="fa fa-question-circle-o navMobileIconSpace" aria-hidden="true"></i>
                         <NavLink to="/about" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>About</NavLink>
                     </div>
-                    <div>
-                        <i className="fa fa-th-large navMobileIconSpace" aria-hidden="true"></i>
-                        <NavLink to="/setup" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Flashcards</NavLink>
-                    </div>
+                    { fbd.user !== null &&
+                        <div>
+                            <i className="fa fa-th-large navMobileIconSpace" aria-hidden="true"></i>
+                            <NavLink to="/setup" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Flashcards</NavLink>
+                        </div>
+                    }
                     <div>
                         <i className="fa fa-graduation-cap navMobileIconSpace" aria-hidden="true"></i>
                         <NavLink to="/review" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Review</NavLink>
@@ -79,6 +90,8 @@ export default function NavBar() {
         );
     }
 }
+
+export default withFireBase(NavBar)
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;

@@ -10,7 +10,7 @@ interface Props {
 export default function Logo({size, width}: Props) {
     const logo = size === "Small" ?
         <img src={LogoSmall} alt="Logo" width={width} /> :
-        <img src={LogoBig} alt="Logo" width={width}/>;
+        <img src={LogoBig} alt="Logo" width={width} style={{width:width, position:"absolute"}} />;
 
     return (<>{logo}</>);
 }

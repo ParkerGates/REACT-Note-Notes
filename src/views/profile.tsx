@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import withFireBase from '../hoc/firebaseHOC';
 import BoxSection from '../components/CssComp/BoxSection/BoxSection';
 import ProfileImg from "../svgs/Images/profileImage.svg";
 import Checkmark from "../svgs/Images/checkmark.svg";
@@ -9,8 +10,7 @@ import Lock from "../components/CssComp/Lock/Lock";
 import "./css/profile.css";
 import "../App.css";
 
-
-export default function Profile() {
+function Profile(props) {
     const [lock, setLock] = useState<boolean>(true);
 
     const logOut = () => {
@@ -58,7 +58,7 @@ export default function Profile() {
                     <TitleHR title="Settings" fontSize="h2" />
                     <div className="profileSettingsContainer">
                         <button
-                            onClick={logOut}
+                            onClick={props.signOut}
                             className="profileLogOutBtn"
                             >Log Out
                         </button>
@@ -91,3 +91,5 @@ export default function Profile() {
         </div>
     );
 }
+
+export default withFireBase(Profile)
