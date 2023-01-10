@@ -1,6 +1,7 @@
 import DotsLong from "../svgs/Background/DotsLong.svg";
 import BotHome from "../svgs/Background/BotHome2.svg";
 import Logo from "../components/Logo/Logo";
+import Bloom from "../svgs/Background/Bloom.svg";
 import "./css/home.css";
 import '../App.css';
 import withFirebase from "../hoc/firebaseHOC";
@@ -15,6 +16,9 @@ function Home(props) {
             <div className="ResponsiveFlexTest">
                 <div className="LogoHome">
                     <Logo size="Large" width="100%"/>
+                    <div className="bloomContainerHome">
+                        <img className="bloomHome" src={Bloom} alt="bloom" />
+                    </div>
                 </div>
 
                 <div className="section1Home">
