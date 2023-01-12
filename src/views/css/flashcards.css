@@ -4,7 +4,9 @@
     align-items: center;
     text-align: center;
     position: relative;
+    overflow: hidden;
     margin-top: 12px;
+    height: calc(100vh - 10rem);
 }
 .flashcardCardDisplay {
     display: flex;
@@ -13,7 +15,9 @@
     width: 90vw;
     max-width: 350px;
     height: calc(100vh - 270px);
-    margin: 20px
+    min-height: 372px;
+    margin: 20px;
+    overflow: hidden;
 }
 .flashcardInteractArea {
     display: flex;
@@ -56,6 +60,12 @@
 }
 
 
+.bloomFlashcards {
+    position: absolute;
+    bottom: 0px;
+    z-index: -2;
+}
+
 .flashcardsBg {
     position: absolute;
     top: 0px;
@@ -70,25 +80,25 @@
     height: 550px;
     bottom: -70px;
     left: 10px;
+    z-index: -1;
 }
+
 
 .botFlashcards {
-    position: fixed;
-    width: 105vw;
-    bottom: -50px;
-    left: -5px;
-
-    /* position: fixed;
-    width: 105vw;
-    bottom: -50px;
-    left: -5px; */
-}
-
-.botFlashcards2 {
     position: fixed;
     left: 0px;
     bottom: 0px;
     background-image: linear-gradient(to right, rgba(36, 119, 243, 1) , rgba(36, 243, 206, 1));
     width: 100%;
-    height: 90px;
+    height: 94px;
+}
+
+@media screen and (max-height: 650px) {
+    .flashcardCardDisplay { margin-top: 15px; margin-bottom: 0px; }
+    .botFlashcards { position: relative; }
+    .flashcardInteractArea { position: relative; top: 3rem; }
+    .flashcardTestingContainer { height: 580px; }
+    .dotsFlashcards { position: absolute; }
+    .bloomFlashcards {bottom: 5rem}
+
 }

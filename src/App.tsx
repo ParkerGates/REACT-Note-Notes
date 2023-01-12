@@ -37,7 +37,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="AppContainer">
-        <div className="border1">
+        <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

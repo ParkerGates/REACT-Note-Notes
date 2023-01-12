@@ -5,6 +5,7 @@
 }
 .configbtn {
     padding: 10px;
+    z-index: 1;
 }
 
 
@@ -52,10 +53,12 @@
 .configTitle {
     font-size: 1.3rem;
     white-space: nowrap;
+    z-index: 1;
 }
 .configHr {
     width: 100%;
-    background-color: whtie; border: 1px solid white;
+    background-color: white; border: 1px solid white;
+    z-index: 1;
 }
 
 
@@ -81,12 +84,14 @@
 .configSaveBtn {
     padding: 5px 8px;
 }
+.configSaveSettings, .configTestBtn, .configSaveBtn { z-index: 1; }
 
 
 .configbottomNavBtns {
     display: flex;
     justify-content: space-between;
     margin: 40px 30px;
+    
 }
 .backbtn {
     font-size: 1.8rem;

@@ -8,7 +8,7 @@ import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCount
 import FlashcardOptions from '../components/FlashcardComponents/FlashcardOptions/FlashcardOptions';
 import FlashcardEndScreen from '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen';
 import DotsLongest from "../svgs/Background/DotsLongest.svg";
-import BotBig from "../svgs/Background/BotBig.svg";
+import Bloom from "../svgs/Background/HalfBloom.svg";
 import '../components/FlashcardComponents/FlashcardEndScreen/FlashcardEndScreen.css'
 import "./css/flashcards.css";
 import "../App.css";
@@ -159,13 +159,12 @@ export default function Flashcards() {
                     </div>
                 }
             </div>
-
-
+            <div className="botFlashcards">&nbsp;</div>
             
             <div className="flashcardBg">
                 <img className="dotsFlashcards" src={DotsLongest} alt="dots" />
-                <div className="botFlashcards2">&nbsp;</div>
             </div>
+            <img className="bloomFlashcards" src={Bloom} />
         </div>
     );
 }
