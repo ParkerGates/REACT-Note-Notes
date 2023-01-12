@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useContextData } from "../../../context/context";
 import { iGameSettings } from '../../../interfaces/interfaces';
 import './css/Page3.css';
-import { getNameOfJSDocTypedef } from 'typescript';
 
 interface Props {
     gameInfo: iGameSettings;
@@ -239,7 +238,7 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                             { btnState.gameInfoChanged === false && <>saved</> }
                             { btnState.gameInfoChanged === true && 
                                 <>
-                                    <>Set final as default</>
+                                    <span style={{zIndex:"1"}}>Set final as default</span>
                                     <button
                                         className="btnPlain configSaveBtn"
                                         onClick={saveAsDefault}

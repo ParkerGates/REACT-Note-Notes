@@ -38,37 +38,36 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
                 <hr className="avgHr"/>
             </div>
 
+            <div className="avgAccuracyRecallBlock">
+                { keysetInfo.orderByScore.length === 0
+                    ?   <div className="page2Block">
+                            <pre className='moreTestingRequired'>Test More To See Score...</pre>
+                        </div>
 
-            { keysetInfo.orderByScore.length === 0
-                ?   <div className="page2Block">
-                        <pre className='moreTestingRequired'>Test More To See Score...</pre>
-                    </div>
-
-                :   <div className="singleNoteScoreInfoContainer page2Block">
-                        {keysetInfo.orderByScore.map((note)=> {
-                            return (
-                                <div key={note.note} className="displayInlineBlock scoreDisplayBoxContainer">
-                                    <span>{note.note}: </span>
-                                    <div className="displayInlineBlock">
-                                        <div className="scoreDisplayBox scoreDisplayBoxLeft">{note.acc}%</div>
-                                        <div className="scoreDisplayBox scoreDisplayBoxRight">{note.avgTime}s</div>
+                    :   <div className="singleNoteScoreInfoContainer page2Block">
+                            {keysetInfo.orderByScore.map((note)=> {
+                                return (
+                                    <div key={note.note} className="displayInlineBlock scoreDisplayBoxContainer">
+                                        <span>{note.note}: </span>
+                                        <div className="displayInlineBlock">
+                                            <div className="scoreDisplayBox scoreDisplayBoxLeft">{note.acc}%</div>
+                                            <div className="scoreDisplayBox scoreDisplayBoxRight">{note.avgTime}s</div>
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                        </div>
+                }
+
+                <div className="positionRelative bottomNavBtns">
+                    <button className="backbtn" onClick={()=>{pageNav("back")}}>{"<"}</button>
+
+                    <div className="gameInfoTestBtnContainer">
+                        <button className="btnPlain gameInfoBtn" onClick={()=>{pageNav("forward")}}>Config</button>
+                        <button className="btnGradiant testBtn" onClick={launchGame}>Test</button>
                     </div>
-            }
-
-            <div className="positionRelative bottomNavBtns">
-                <button className="backbtn" onClick={()=>{pageNav("back")}}>{"<"}</button>
-
-                <div className="gameInfoTestBtnContainer">
-                    <button className="btnPlain gameInfoBtn" onClick={()=>{pageNav("forward")}}>Config</button>
-                    <button className="btnGradiant testBtn" onClick={launchGame}>Test</button>
                 </div>
             </div>
-
-            {/* <button className="" onClick={()=>{pageNav("back")}}>{"<"}</button> */}
         </div>
     )
 }

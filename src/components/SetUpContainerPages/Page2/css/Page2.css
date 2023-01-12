@@ -8,6 +8,7 @@
     line-height: 25px;
 
     border: 1px solid white;
+    background-color: black;
     padding: 10px
 
 }
@@ -77,6 +78,9 @@
     margin: 10px;
 }
 
+.avgAccuracyRecallBlock {
+    
+}
 .bottomNavBtns {
     display:flex;
     align-items: center;
