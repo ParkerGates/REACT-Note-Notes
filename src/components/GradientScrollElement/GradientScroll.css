@@ -1,0 +1,22 @@
+.gradientScroll {
+    position: absolute;
+    top: 18vh;
+    right: 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 70vh;
+    background-color: green;
+    background-image: linear-gradient(rgb(66, 212, 204), rgb(36, 119, 243));
+}
+.gradientScrollBtn {
+    display: flex;
+    justify-content: center;
+    background: none;
+    border: none;
+    margin: 3px 0px;
+}
+.gradientScrollIcons { color: rgb(255, 255, 255); }
+.gradIconOpacity { color: rgba(255, 255, 255, 30%); }
