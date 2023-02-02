@@ -7,6 +7,10 @@
     margin: 20px 0px 0px 0px;
 }
 .reviewPageContent {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    height: calc(100vh - 57px);
 }
 
 .ReviewImage { width: 500px; }

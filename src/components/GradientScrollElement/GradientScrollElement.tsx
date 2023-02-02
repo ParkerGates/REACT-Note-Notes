@@ -13,7 +13,7 @@ export default function GradientScrollElement({controlId}: Props) {
 
     const btnScrollByHoldDown = (dir: "up" | "down") => {
         const scrollSpeed = dir === "up" ? 6 : -6;
-    
+        
         selected.scrollTop += scrollSpeed;
         setHoldTimer(setTimeout(() => {btnScrollByHoldDown(dir)}, 10));
     }
