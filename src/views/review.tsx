@@ -1,11 +1,12 @@
 import React from 'react';
 import BoxSection from '../components/CssComp/BoxSection/BoxSection';
 import DotsLong from "../svgs/Background/DotsLong.svg";
-import Highest from "../svgs/Review/Highest.svg"
+import Highest from "../svgs/Review/Highest.svg";
 import HighTreble from "../svgs/Review/HighTreble.svg"
-import Treble from "../svgs/Review/Treble.svg"
-import Bass from "../svgs/Review/Bass.svg"
-import LowerBass from "../svgs/Review/LowerBass.svg"
+import Treble from "../svgs/Review/Treble.svg";
+import Bass from "../svgs/Review/Bass.svg";
+import LowerBass from "../svgs/Review/LowerBass.svg";
+import GradientScrollElement from '../components/GradientScrollElement/GradientScrollElement';
 import "./css/review.css";
 
 export default function Review() {
@@ -14,7 +15,7 @@ export default function Review() {
         <>
             <div className="reviewPageContainer">   
                 <h1 className="reviewPageTitle">Review</h1>
-                <div className="reviewPageContent">
+                <div id="reviewScroll" className="reviewPageContent">
 
                     <BoxSection title={"Treble"} fontSize={"h3"}>
                         <div className="ReviewImageContainer">
@@ -22,32 +23,18 @@ export default function Review() {
                         </div>
                     </BoxSection>
                     <br />
+
                     <BoxSection title={"Bass"} fontSize={"h3"}>
                         <div className="ReviewImageContainer">
                             <img className="ReviewImage" src={Bass} alt="bass review" />
                         </div>
                     </BoxSection>
                     <br />
-                    <BoxSection title={"High Treble"} fontSize={"h3"}>
-                        <div className="ReviewImageContainer">
-                            <img className="ReviewImage" src={HighTreble} alt="high treble review" />
-                        </div>
-                    </BoxSection>
-                    <br />
-                    <BoxSection title={"Low Base"} fontSize={"h3"}>
-                        <div className="ReviewImageContainer">
-                            <img className="ReviewImage" src={LowerBass} alt="lower bass review" />
-                        </div>
-                    </BoxSection>
-                    <br />
-                    <BoxSection title={"Highest"} fontSize={"h3"}>
-                        <div className="ReviewImageContainer">
-                            <img className="ReviewImage" src={Highest} alt="highest note review" />
-                        </div>
-                    </BoxSection>
-                    <br />
+                    
                 </div>
             </div>
+
+            <GradientScrollElement controlId="#reviewScroll" />
             <div className="reviewBg">
                 <img className="dotsReview" src={DotsLong} alt="dots" />
             </div>

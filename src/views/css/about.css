@@ -7,6 +7,10 @@
     margin: 20px 0px 0px 0px;
 }
 .aboutPageContent {
+    height: calc(100vh - 128px);
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
 }
 
 
@@ -36,12 +40,12 @@
     }
     .aboutPageTitle {
         width: 17vw;
-        /* border: 1px solid green; */
         font-size: calc(3.5vw * 1.25);
         margin-top: 0px;
         padding: 20px 0px 0px 40px;
     }
     .aboutPageContent {
         width: 66vw;
+        height: calc(100vh - 57px);
     }
 }
