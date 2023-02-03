@@ -28,7 +28,7 @@ function NavBar(props) {
     if ( windowDimensions.width >= 750) {
         return (
             <nav className="navBarContainer navPadding">
-                <Link to="/"><Logo size="Small" width="45px"/></Link>
+                <Link to="/"><div style={{backgroundColor:"black"}}><Logo size="Small" width="45px"/></div></Link>
 
                 <hr className="hrNB"/>
 
