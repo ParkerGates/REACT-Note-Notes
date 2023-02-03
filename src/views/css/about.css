@@ -25,7 +25,8 @@
 
 .dotsAbout {
     position: fixed;
-    left: 320px;
+    left: 310px;
+    top: 3px;
     height: 550px;
 
     transform-origin: top left;
