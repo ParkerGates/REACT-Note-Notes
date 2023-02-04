@@ -18,5 +18,5 @@
     border: none;
     margin: 3px 0px;
 }
-.gradientScrollIcons { color: rgb(255, 255, 255); }
-.gradIconOpacity { color: rgba(255, 255, 255, 30%); }
+.gradientScrollIcons { color: rgba(255, 255, 255, 30%); }
+.gradIconOpacity { color: rgb(255, 255, 255); }
