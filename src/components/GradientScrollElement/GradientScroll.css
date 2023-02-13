@@ -1,6 +1,6 @@
 .gradientScroll {
     position: absolute;
-    top: 18vh;
+    top: 18.5vh;
     right: 0px;
 
     display: flex;
@@ -24,3 +24,6 @@
     .gradientScroll { width: 12px; }
     .gradientScrollBtn { display: none; }
 }
+
+@media screen and (max-height: 450px) { .gradientScroll { top: 5rem; } }
+@media screen and (max-height: 275px) { .gradientScroll { height: 12rem; } }
