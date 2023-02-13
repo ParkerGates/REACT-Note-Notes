@@ -10,7 +10,7 @@
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none; 
-    height: calc(100vh - 57px);
+    height: calc(100vh - 128px);
 }
 
 .ReviewImage { width: 500px; }
@@ -52,6 +52,7 @@
     }
     .reviewPageContent {
         width: 66vw;
+        height: calc(100vh - 57px);
     }
 }
 
