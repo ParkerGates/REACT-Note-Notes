@@ -17,14 +17,14 @@ export default function Review() {
                 <h1 className="reviewPageTitle">Review</h1>
                 <div id="reviewScroll" className="reviewPageContent">
 
-                    <BoxSection title={"Treble"} fontSize={"h3"}>
+                    <BoxSection title={"Treble"}>
                         <div className="ReviewImageContainer">
                             <img className="ReviewImage" src={Treble} alt="treble review" />
                         </div>
                     </BoxSection>
                     <br />
 
-                    <BoxSection title={"Bass"} fontSize={"h3"}>
+                    <BoxSection title={"Bass"}>
                         <div className="ReviewImageContainer">
                             <img className="ReviewImage" src={Bass} alt="bass review" />
                         </div>
@@ -35,9 +35,7 @@ export default function Review() {
             </div>
 
             <GradientScrollElement controlId="#reviewScroll" />
-            <div className="reviewBg">
-                <img className="dotsReview" src={DotsLong} alt="dots" />
-            </div>
+            <img className="dotsReview" src={DotsLong} alt="dots" />
         </>
     );
 }

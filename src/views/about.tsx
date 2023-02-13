@@ -11,25 +11,25 @@ export default function About() {
             <div className="aboutPageContainer">
                 <h1 className="aboutPageTitle">About</h1>
                 <div id="aboutScroll" className="aboutPageContent">
-                    <BoxSection title={"What Is Note Notes?"} fontSize={"h2"}>
+                    <BoxSection title={"What Is Note Notes?"}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
                     </BoxSection>
 
-                    <BoxSection title={"What Will I Learn?"} fontSize={"h2"}>
+                    <BoxSection title={"What Will I Learn?"}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
                     </BoxSection>
 
-                    <BoxSection title={"How Does It Work?"} fontSize={"h2"}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
-                    </BoxSection>
-
-                    <BoxSection title={"How Can I Use It?"} fontSize={"h2"}>
+                    <BoxSection title={"How Does It Work?"}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
                     </BoxSection>
 
-                    <BoxSection title={"What To Do Upon Completion?"} fontSize={"h2"}>
+                    <BoxSection title={"How Can I Use It?"}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
+                    </BoxSection>
+
+                    <BoxSection title={"What To Do Upon Completion?"}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur leo a nisi porttitor, at convallis dolor mattis. Aenean  et laoreet eros, non blandit tellus. Fusce vel sagittis turpis, vel commodo eros. Curabitur mattis aliquet erat, vitae pulvinar urna facilisis ut. Nullam efficitur varius est at tincidunt. Cras vehicula lorem nec pellentesque interdum. Donec aliquet mollis neque, nec rhoncus nunc venenatis in. Curabitur ut lectus in nunc faucibus luctus eget et dui. Praesent a tempor elit. Mauris pulvinar vel erat vitae varius.
                     </BoxSection>

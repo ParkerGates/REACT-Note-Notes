@@ -13,7 +13,7 @@ interface Props {
 export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}: Props) {
     const contextData = useContextData(); 
     
-    const setKeysetInfo = (keyset: "treble" | "bass" | "upperTreble" | "lowest" | "highest") => {
+    const setKeysetInfo = (keyset: "treble" | "bass") => {
         onGameDataChange({
             keyset: keyset,
             gameType: {type: contextData.contextState.defaultGameSettings.gameType.type},
@@ -22,6 +22,7 @@ export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}
             inputType: contextData.contextState.defaultGameSettings.inputType
         })
 
+        //returns array containing individual notes in keyset as strings "c4"
         const keysetArray = FlashcardGame.noteRange(keyset,"all",contextData.contextState.noteData);
         const maxScore = 10.3 * keysetArray.length; //10.3 is worse possible score
         const minScore = 1.9 * keysetArray.length;  //1.9 is score given with 85% accuracy and an average time of 1.2 seconds
@@ -50,7 +51,9 @@ export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}
         }
 
         avgAccAddUp = Math.ceil((avgAccAddUp / keysetArray.length) * 100);
+        console.log(avgAccAddUp);
         avgTimeAddUp = Number((avgTimeAddUp / keysetArray.length).toFixed(1));
+        console.log(avgTimeAddUp);
         
         let avgScorePercentage = Math.ceil((avgScoreAddUp - minScore) / (maxScore - minScore) * 100);
         avgScorePercentage = avgScorePercentage > 100 ? 100 : avgScorePercentage;
@@ -72,9 +75,8 @@ export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}
         <div className="keySetBtnContainer">
             <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("treble")}}>Treble</button>
             <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("bass")}}>Bass</button>
-            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("upperTreble")}}>Upper Treble</button>
-            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("lowest")}}>Lowest</button>
-            <button className="btnPlain keySetBtn" onClick={()=>{setKeysetInfo("highest")}}>Highest</button>
+            <button className="btnPlain keySetBtn" style={{color:"rgba(255, 255, 255, 0.5)"}}>Upper Treble</button>
+            <button className="btnPlain keySetBtn" style={{color:"rgba(255, 255, 255, 0.5)"}}>Lower Bass</button>
         </div>
     )
 }

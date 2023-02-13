@@ -1,17 +1,6 @@
-let noteData = {    
-    a0: {note: "a0", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    b0: {note: "b0", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    c1: {note: "c1", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    d1: {note: "d1", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    e1: {note: "e1", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    f1: {note: "f1", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    g1: {note: "g1", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    a1: {note: "a1", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    b1: {note: "b1", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    c2: {note: "c2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    d2: {note: "d2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    e2: {note: "e2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    f2: {note: "f2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
+import { iNoteData } from "../interfaces/interfaces";
+
+let noteData: iNoteData = {    
     g2: {note: "g2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
     a2: {note: "a2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
     b2: {note: "b2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
@@ -33,27 +22,5 @@ let noteData = {
     d5: {note: "d5", acc: 2, dataSize: 4, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 4.6 },
     e5: {note: "e5", acc: 3, dataSize: 3, time:[2.2,1.6,2], avgTime: 1.9, score: 4.9 },
     f5: { note: "f5", acc: 1, dataSize: 3, time:[1,2.4,1.1], avgTime: 1.5, score: 4.8 },
-    g5: {note: "g5", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    a5: {note: "a5", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    b5: {note: "b5", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    c6: {note: "c6", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    d6: {note: "d6", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    e6: {note: "e6", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    f6: {note: "f6", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    g6: {note: "g6", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    a6: {note: "a6", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    b6: {note: "b6", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    c7: {note: "c7", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    d7: {note: "d7", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    e7: {note: "e7", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    f7: {note: "f7", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    g7: {note: "g7", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    a7: {note: "a7", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    b7: {note: "b7", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
-    c8: {note: "c8", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5}
 }
-
-const allKeys = ["a0","b0","c1","d1","e1","f1","g1","a1","b1","c2","d2","e2","f2","g2","a2","b2","c3","d3","e3","f3", "g3","a3","b3","c4","d4","e4","f4","g4","a4","b4","c5","d5","e5","f5","g5","a5","b5","c6","d6","e6","f6","g6","a6","b6","c7","d7","e7","f7","g7","a7","b7","c8"]
-
 export default noteData;
-export{ allKeys }
