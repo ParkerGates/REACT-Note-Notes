@@ -1,11 +1,10 @@
 import { iNoteData, iSingleNoteData, iFlashcardNotePayload, iGameSettings, iNote } from '../interfaces/interfaces';
-import { allKeys } from '../context/data';
 import { clamp, calcAccuracyScore, calcTimeScore, getTroubleNoteRange } from "../utilities/utilities";
 import { shuffle } from "../utilities/utilities"
 import TimeQueue from '../utilities/timeQueue';
 
 export default class FlashcardGame {
-    private keySetName:"treble" | "bass" | "upperTreble" | "lowest" | "highest";
+    private keySetName: "treble" | "bass";
     private keySetNotes: string[];
     public probabilityNumber: number;
 
@@ -24,8 +23,8 @@ export default class FlashcardGame {
     }
 
 
-    public getNote = (iNoteData: iNoteData, priorNoteChosen: string): iFlashcardNotePayload => {
-        const chosenNote: iNote = this.findNoteFromProbabilityNum(iNoteData, priorNoteChosen);
+    public getNote = (noteData: iNoteData, priorNoteChosen: string): iFlashcardNotePayload => {
+        const chosenNote: iNote = this.findNoteFromProbabilityNum(noteData, priorNoteChosen);
 
         const payload: iFlashcardNotePayload = {
             find: chosenNote,
@@ -35,7 +34,7 @@ export default class FlashcardGame {
     }
 
 
-    static updateNoteData(note: string, correct: boolean, time: number, prior: iSingleNoteData): iSingleNoteData {
+    static updateNoteData(note: iNote, correct: boolean, time: number, prior: iSingleNoteData): iSingleNoteData {
         const updatedNoteData: iSingleNoteData = {
             note: note,
             acc: correct === true ? clamp(prior.acc + 1, 1, 19) : clamp(prior.acc - 1, 1, 19),
@@ -79,25 +78,21 @@ export default class FlashcardGame {
     }
 
 
-    static noteRange(range: "treble"|"bass"|"upperTreble"|"lowest"|"highest", cardType: "all"|"trouble", noteData: iNoteData): string[] {
+    static noteRange(range: "treble"|"bass", cardType: "all"|"trouble", noteData: iNoteData): string[] {
         let createNoteRange: any;
+        const trebleNotes = ["c4","d4","e4","f4","g4","a4","b4","c5","d5","e5","f5"];
+        const bassNotes = ["g2","a2","b2","c3","d3","e3","f3","g3","a3","b3","c4"];
 
         switch (range) {
-            case "highest":
-                createNoteRange = cardType === "all" ? allKeys.slice(45,52) : getTroubleNoteRange(allKeys.slice(45,52), noteData);
-                return createNoteRange;                 //^note range index
-            case "upperTreble":
-                createNoteRange = cardType === "all" ? allKeys.slice(34,45) : getTroubleNoteRange(allKeys.slice(34,45), noteData);
-                return createNoteRange;                 //^note range index
             case "treble":
-                createNoteRange = cardType === "all" ? allKeys.slice(23,34) : getTroubleNoteRange(allKeys.slice(23,34), noteData);
+                createNoteRange = cardType === "all" ? trebleNotes : getTroubleNoteRange(trebleNotes, noteData);
                 return createNoteRange;                 //^note range index
             case "bass":
-                createNoteRange = cardType === "all" ? allKeys.slice(13,24) : getTroubleNoteRange(allKeys.slice(13,24), noteData);
+                createNoteRange = cardType === "all" ? bassNotes : getTroubleNoteRange(bassNotes, noteData);
                 return createNoteRange;                 //^note range index
-            case "lowest":
-                createNoteRange = cardType === "all" ? allKeys.slice(0,13) : getTroubleNoteRange(allKeys.slice(0,13), noteData);
-                return createNoteRange;                 //^note range index
+            default:
+                createNoteRange = cardType === "all" ? trebleNotes : getTroubleNoteRange(trebleNotes, noteData);
+                return createNoteRange;    
         }
     }
 
@@ -106,13 +101,13 @@ export default class FlashcardGame {
 
     //Helper Methods
     //==================================================================
-    private findNoteFromProbabilityNum(iNoteData: iNoteData, priorNoteChosen: string): iNote {
+    private findNoteFromProbabilityNum(noteData: iNoteData, priorNoteChosen: string): iNote {
         let newNoteChosen: iNote = "";
 
         let findNum: number = Number((Math.random() * this.probabilityNumber).toFixed(1));
 
         for (let i:number = 0; i < this.keySetNotes.length; i++) {
-            findNum -= iNoteData[this.keySetNotes[i]].score;
+            findNum -= noteData[this.keySetNotes[i]].score;
     
             if (findNum <= 0) {
                 if (this.keySetNotes[i] === priorNoteChosen) {
@@ -133,11 +128,11 @@ export default class FlashcardGame {
 
     //Public Utility Methods
     //==================================================================
-    public countProbabilityPool(iNoteData: iNoteData): number {
+    public countProbabilityPool(noteData: iNoteData): number {
         let probabilityNumber = 0;
 
         for (let i = 0; i < this.keySetNotes.length; i++) {
-            probabilityNumber += iNoteData[this.keySetNotes[i]].score
+            probabilityNumber += noteData[this.keySetNotes[i]].score
         }
 
         this.probabilityNumber = probabilityNumber;

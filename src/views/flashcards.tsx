@@ -18,6 +18,7 @@ export default function Flashcards() {
     const game = new FlashcardGame(contextData.contextState.gameSettings, contextData.contextState.noteData);
     const [timer, isTargetAchived] = useTimer({precision: "secondTenths", updateWhenTargetAchieved: true});
     const [sessionStats, setSessionStats] = useState<iSingleGameStats>({});
+    console.log(contextData.contextState.gameSettings)  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!ConsoleLog
 
     const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});
     const [gameState, setGameState] = useState<iFlashcardGameState>({

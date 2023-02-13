@@ -2,7 +2,7 @@
     display: inline-block;
     font-size: 1.8rem;
 
-    padding: 20px 0px;
+    padding: 26px 0px;
     margin-bottom: 10px;
     z-index: 1;
 }
@@ -10,8 +10,9 @@
 .keySetBtnContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 10px;
     height: calc(100vh - 250px);
     min-height: 450px;
     max-height: 600px;
+    margin: 0px 20px 0px;
 }
