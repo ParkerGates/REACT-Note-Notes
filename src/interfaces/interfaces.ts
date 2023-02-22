@@ -23,6 +23,7 @@ export interface iContextState {
     gameSettings: iGameSettings | null;
     probabilityPool: number;
     noteData: iNoteData;
+    guest: boolean;
 }
 
 export interface iFlashcardNotePayload {

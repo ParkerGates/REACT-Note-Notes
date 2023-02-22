@@ -11,6 +11,7 @@ const initialState: iContextState = {
     probabilityPool: 0,
     defaultGameSettings: { keyset: "treble", gameType: {type: 'limitless', action:null}, optionAmount:4, cardType: "all", inputType: "mouse-click" },
     gameSettings: { keyset: "treble", gameType: {type: 'limitless', action:null}, optionAmount:4, cardType: "all", inputType: "mouse-click" },
+    guest: false
 };
 
 const reducer = (state:any , action:any) => {
@@ -43,6 +44,9 @@ const reducer = (state:any , action:any) => {
             newState = {...state, defaultGameSettings: {...action.gameSettings, keyset:""}}
             return newState;
 
+        case "guestSignInToggle":
+            newState = {...state, guest: !state.guest}
+            return newState;
 
         case "reset":
             return initialState;
