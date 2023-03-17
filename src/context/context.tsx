@@ -1,6 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { useContext } from 'react';
 import { initialState, reducer } from './reducer';
+import { firebaseGET } from '../firebase/firebase';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getFirestore} from "firebase/firestore";
@@ -39,11 +40,25 @@ const ContextData = React.createContext<any>({});
 export function useContextData() { return useContext(ContextData); }
 export { ContextData }
 
-
-
 export default function AppContext(props: Props) {
     const [user] = useAuthState(auth);
     const [noteScore, dispatch] = useReducer(reducer, initialState);
+
+    useEffect(() => {
+            if (user !== null && user.uid !== null) {
+                const fetchCloudData = async () => {
+                    dispatch({
+                        type:"new-state",
+                        newState: await firebaseGET(db, user.uid),
+                    });
+                }
+                fetchCloudData();
+            }
+
+    }, [user]);
+
+
+
 
     return(
         <ContextData.Provider value={{contextState: noteScore, contextDispatch: dispatch}}>

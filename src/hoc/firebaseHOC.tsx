@@ -1,32 +1,31 @@
 import React from "react";
 import firebase from "firebase/compat/app";
-import { useFirestoreData } from "../context/context";
-import { doc, setDoc } from "firebase/firestore";
+import { useContextData, useFirestoreData } from "../context/context";
+import { firebaseNEW } from "../firebase/firebase";
 
 const withFireBase = WrappedComponent => {
     function Firebase(props) {
         let fsd = useFirestoreData();
+        let context = useContextData();
 
         const signInWithGoogle = async () => {
             const provider = new firebase.auth.GoogleAuthProvider();
             fsd.auth.signInWithPopup(provider)
                 .then((res) => {
-                    // console.log(res.additionalUserInfo.isNewUser);
-                    // console.log(res.user.uid);
-        
                     if (res.additionalUserInfo.isNewUser === true) {
-                        setDoc(doc(fsd.db,"Users",String(res.user.uid)), {
-                            name:"helppp",
-                            age:"help"
-                        });
+                        firebaseNEW(fsd.db, res.user.uid);
                     }
-        
-        
                 })
-                .catch((err) => {console.log("errorrrrr")});
+                .catch((err) => {});
         }
 
+        const signInAsGuest = () => {
+            context.contextDispatch({type:"guestSignInToggle"});
+        }
+
+
         const signOut = () => {
+            context.contextDispatch({type:"reset"});
             fsd.auth.signOut();
         }
 
@@ -34,6 +33,7 @@ const withFireBase = WrappedComponent => {
             <WrappedComponent 
                 signIn={signInWithGoogle}
                 signOut={signOut}
+                signInAsGuest={signInAsGuest}
                 {...props}
             />
         );

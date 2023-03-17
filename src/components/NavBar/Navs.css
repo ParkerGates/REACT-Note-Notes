@@ -11,6 +11,7 @@
 
     padding: 8px 15px;
     margin-bottom: -16px;
+    z-index: 5;
 }
 
 .hrNB {
@@ -35,6 +36,7 @@
 .profileButton2 {
     width: 220px;
     color: white;
+    white-space: nowrap;
     font-size: 1rem;
     font-weight: bold;
     padding: 8px 5px;
@@ -67,6 +69,7 @@
 
 /* MOBILE NAV ---------------------------------------------------------------------------------- */
 .navMobileContainer {
+    position: absolute;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -81,6 +84,7 @@
     padding: 10px;
 
     background-color: rgb(12, 13, 30);
+    z-index: 5;
 }
 
 .navMobileIconSpace { width: 40px; }
@@ -106,11 +110,4 @@
 
 .border5 {
     border: 2px solid green;
-}
-
-
-@media screen and (max-width: 750px) {
-    body {
-       
-    }
 }
