@@ -5,14 +5,14 @@ import Bloom from "../svgs/Background/Bloom.svg";
 import "./css/home.css";
 import '../App.css';
 import withFirebase from "../hoc/firebaseHOC";
-import { useContextData, useFirestoreData } from "../context/context";
+import { ContextData, useContextData, useFirestoreData } from "../context/context";
 import { Link } from "react-router-dom";
+import { firebaseUPDATE } from "../firebase/firebase";
 
 function Home(props) {
     let fbd = useFirestoreData();
     let context = useContextData();
 
-    console.log(context.contextState.guest)
     return(
         <div className="HomeContainer">  
             <div className="ResponsiveFlexTest">
@@ -50,6 +50,7 @@ function Home(props) {
                                     <Link to="/setup"><button className="btnGradiant signupBtnHome">Flashcards</button></Link>
                                 }
                             </div>
+                            <button onClick={() => {console.log(context.contextState)}}>he</button>
                         </div>
                     </div>
                 </div>

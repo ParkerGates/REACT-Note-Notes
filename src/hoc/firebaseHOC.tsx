@@ -1,8 +1,7 @@
 import React from "react";
 import firebase from "firebase/compat/app";
 import { useContextData, useFirestoreData } from "../context/context";
-import { doc, setDoc } from "firebase/firestore";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { firebaseNEW } from "../firebase/firebase";
 
 const withFireBase = WrappedComponent => {
     function Firebase(props) {
@@ -13,27 +12,20 @@ const withFireBase = WrappedComponent => {
             const provider = new firebase.auth.GoogleAuthProvider();
             fsd.auth.signInWithPopup(provider)
                 .then((res) => {
-                    // console.log(res.additionalUserInfo.isNewUser);
-                    // console.log(res.user.uid);
-        
                     if (res.additionalUserInfo.isNewUser === true) {
-                        setDoc(doc(fsd.db,"Users",String(res.user.uid)), {
-                            name:"helppp",
-                            age:"help"
-                        });
+                        firebaseNEW(fsd.db, res.user.uid);
                     }
-        
                 })
-                .catch((err) => {console.log("errorrrrr")});
+                .catch((err) => {});
         }
 
         const signInAsGuest = () => {
-            console.log("hi");
             context.contextDispatch({type:"guestSignInToggle"});
         }
 
 
         const signOut = () => {
+            context.contextDispatch({type:"reset"});
             fsd.auth.signOut();
         }
 

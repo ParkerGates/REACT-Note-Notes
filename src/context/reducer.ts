@@ -1,4 +1,4 @@
-import noteData from './data'
+import { noteData, newNoteData, guestNoteData } from './data'
 import FlashcardGame from '../classes/FlashcardGame';
 import { iContextState, iSingleNoteData } from '../interfaces/interfaces';
 const _ = require('lodash');
@@ -7,7 +7,7 @@ let newState: iContextState;
 let newSingleNoteData: iSingleNoteData;
 
 const initialState: iContextState = {
-    noteData: noteData,
+    noteData: newNoteData,
     probabilityPool: 0,
     defaultGameSettings: { keyset: "treble", gameType: {type: 'limitless', action:null}, optionAmount:4, cardType: "all", inputType: "mouse-click" },
     gameSettings: { keyset: "treble", gameType: {type: 'limitless', action:null}, optionAmount:4, cardType: "all", inputType: "mouse-click" },
@@ -23,6 +23,12 @@ const reducer = (state:any , action:any) => {
 
             newState.noteData[action.note] = newSingleNoteData;
             newState.probabilityPool = (newState.noteData[action.note].score - state.noteData[action.note].score) + state.probabilityPool;
+            return newState;
+
+
+        case "new-state":
+            //action {newState}
+            newState = action.newState;
             return newState;
 
 
@@ -45,7 +51,7 @@ const reducer = (state:any , action:any) => {
             return newState;
 
         case "guestSignInToggle":
-            newState = {...state, guest: !state.guest}
+            newState = {...initialState, guest: !state.guest, noteData: guestNoteData }
             return newState;
 
         case "reset":

@@ -80,7 +80,7 @@ function NavBar(props) {
                     }
                     <div>
                         <i className="fa fa-graduation-cap navMobileIconSpace" aria-hidden="true"></i>
-                        <NavLink to="/review" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Review</NavLink>
+                        <NavLink to="/review" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Review</NavLink>
                     </div>
                     <div>
                         <i className="fa fa-eye navMobileIconSpace" aria-hidden="true"></i>
