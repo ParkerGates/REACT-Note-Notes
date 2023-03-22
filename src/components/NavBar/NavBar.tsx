@@ -6,7 +6,6 @@ import Logo from "../Logo/Logo";
 import "./Navs.css";
 
 
-
 function NavBar(props) {
     let fbd = useFirestoreData();
     let context = useContextData();
@@ -61,7 +60,13 @@ function NavBar(props) {
                     <div className="navMobileTopContainer">
                         <button className="hamBtn" onClick={()=>setShowNav(!showNav)}><i className="fa fa-bars ham"></i></button>
                         <Link to="/" onClick={onNavigation}><Logo size="Small" width="40px"/></Link>
-                        <Link to="/profile" onClick={onNavigation}><i className="fa fa-user-circle navMobileProfile" aria-hidden="true"></i></Link>
+
+                        { (fbd.user !== null || context.contextState.guest !== false)  ?
+                            <Link to="/profile" onClick={onNavigation}><i className="fa fa-user-circle navMobileProfile" aria-hidden="true"></i></Link>
+                            :
+                            <button onClick={props.signIn} className="loginNavBtn"><i className="fas fa-sign-in-alt navMobileLogin" aria-hidden="true"></i></button>
+                        }
+                
                     </div>
 
                     <div>
@@ -69,7 +74,7 @@ function NavBar(props) {
                         <NavLink to="/" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Home</NavLink>
                     </div>
                     <div>
-                        <i className="fa fa-question-circle-o navMobileIconSpace" aria-hidden="true"></i>
+                        <i className="	far fa-question-circle navMobileIconSpace" aria-hidden="true"></i>
                         <NavLink to="/about" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>About</NavLink>
                     </div>
                     { (fbd.user !== null || context.contextState.guest !== false) &&

@@ -8,14 +8,6 @@ const firebaseGET = async (db, userId) => {
     }
 }
 
-// const firebaseGET = async (db, userId) => {
-//     // const cloudData = await getDoc(doc(db,"Users", userId));
-//     // if (cloudData.exists()) {
-//     //     return cloudData.data();
-//     // }
-// }
-
-
 const firebaseUPDATE = async (db, userId) => {
     const cloudData = doc(db, "Users", userId);
     await updateDoc(cloudData, {
@@ -25,8 +17,6 @@ const firebaseUPDATE = async (db, userId) => {
 }
 
 const firebasePOST = (db, userId) => {
-
-
     return "";
 }
 

@@ -14,8 +14,6 @@ interface Props {
 }
 
 
-
-
 const app = firebase.initializeApp({
 	apiKey: "AIzaSyDclldB4PxY91iPbx-cG_A4iNTQvCWDXbk",
 	authDomain: "testingfirebase-eece3.firebaseapp.com",
@@ -30,8 +28,6 @@ const firestore = firebase.firestore();
 const db = getFirestore();
 
 
-
-
 const FirestoreData = React.createContext<any>({});
 export function useFirestoreData() { return useContext(FirestoreData); }
 export { FirestoreData }
@@ -39,6 +35,7 @@ export { FirestoreData }
 const ContextData = React.createContext<any>({});
 export function useContextData() { return useContext(ContextData); }
 export { ContextData }
+
 
 export default function AppContext(props: Props) {
     const [user] = useAuthState(auth);
@@ -56,8 +53,6 @@ export default function AppContext(props: Props) {
             }
 
     }, [user]);
-
-
 
 
     return(

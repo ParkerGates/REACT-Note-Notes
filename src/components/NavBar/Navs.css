@@ -94,20 +94,27 @@
     align-items: center;
 }
 .navMobileProfile {
-    background: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 206));
+    background: linear-gradient(to right, rgb(90, 151, 243) , rgb(110, 246, 221));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 30px;
+    width: 30px;
+}
+.navMobileLogin {
+    color: white;
     font-size: 30px;
 }
 .hamBtn {
     border: none;
-    background-color: rgb(12, 13, 30);;
+    background-color: rgb(12, 13, 30);
+}
+.loginNavBtn {
+    border: none;
+    background-color: rgb(12, 13, 30);
+    margin: 0px;
+    padding: 0px;
 }
 .ham {
     color: white;
     font-size: 25px;
-}
-
-.border5 {
-    border: 2px solid green;
 }
