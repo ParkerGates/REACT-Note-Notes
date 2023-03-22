@@ -30,6 +30,16 @@ const firebaseNEW = (db, userId) => {
     });
 }
 
+const firebaseRESET = (db, userId) => {
+    updateDoc(doc(db,"Users",String(userId)), {
+        noteData: newNoteData,
+        probabilityPool: 0,
+        defaultGameSettings: { keyset: "treble", gameType: {type: 'limitless', action:null}, optionAmount:4, cardType: "all", inputType: "mouse-click" },
+        gameSettings: { keyset: "treble", gameType: {type: 'limitless', action:null}, optionAmount:4, cardType: "all", inputType: "mouse-click" },
+        guest: false
+    });
+}
+
 // const figureItOut = async () => {
 //     deleteDoc(doc(db,"Users","new"));
 //     setDoc(doc(db,"Users","new"), {name:"help",age:"help"});
@@ -38,4 +48,4 @@ const firebaseNEW = (db, userId) => {
 //     if (aim.exists()){}
 // }
 
-export { firebaseGET, firebasePOST, firebaseNEW, firebaseUPDATE };
+export { firebaseGET, firebasePOST, firebaseNEW, firebaseUPDATE, firebaseRESET };

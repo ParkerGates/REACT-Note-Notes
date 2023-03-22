@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     padding: 60px 20px 0px;
-
-    border: 2px solid salmon;
 }
 
 .contentProfile {
@@ -99,7 +97,7 @@
 
 
 
-.profileDangerZoneContainer{
+.profileDangerZoneContainer {
     position: absolute;
     bottom: 0px;
     width: 100%;
@@ -137,27 +135,34 @@
 
 
 .profilePageProfileImgAndNameContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: inline-block;
+    position: absolute;
+    top: 75px;
+    height: 90px;
 
+    min-width: 100px;
+    max-width: 90vw;
+    margin-left: 30px;
+    padding: 0px 10px;
 
-    width: 550px;
-    margin-left: 40px;
-
-    border: 2px solid gold;
-    background-color: red;
+    background-color: black;
 }
 
 .profilePageProfileImg {
-    border: 2px solid pink;
-    width: 120px;
-    height: 120px;
+    display: inline;
+    position:relative;
+
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
 }
 
 .profilePageUsernameHeading {
-    border: 2px solid lightblue;
-    font-size: 4rem;
+    display: inline;
+    position:relative;
+    bottom: 20px;
+
+    font-size: 3.5rem;
     margin: 0px;
 }
 
@@ -191,4 +196,20 @@
     width: 105vw;
     bottom: 0px;
     left: -5px;
+}
+
+@media screen and (max-width: 950px) {
+    .contentProfile { flex-direction: column; margin: 0px 10px; height: auto; }
+    .profilePageSections { width: 85vw; }
+    .profileDangerZoneContainer {
+        position:static;
+        margin-top: 40px;  
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .contentProfile { width: 100%; }
+    .profilePageProfileImgAndNameContainer { top: 95px; height: 50px; }
+    .profilePageProfileImg { width: 50px; height: 50px; margin-right: 10px; }
+    .profilePageUsernameHeading { bottom: 15px; font-size: 2rem; }
 }
