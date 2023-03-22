@@ -25,12 +25,10 @@ const reducer = (state:any , action:any) => {
             newState.probabilityPool = (newState.noteData[action.note].score - state.noteData[action.note].score) + state.probabilityPool;
             return newState;
 
-
         case "new-state":
             //action {newState}
             newState = action.newState;
             return newState;
-
 
         case "update-probability-pool":
         //action {assign}
@@ -38,12 +36,10 @@ const reducer = (state:any , action:any) => {
             newState.probabilityPool = action.assign;
             return newState;
 
-
         case "update-game-settings":
         //action {gameSettings}
             newState = {...state, gameSettings: action.gameSettings}
             return newState;
-
 
         case "update-default-game-settings":
         //action {gameSettings}
@@ -56,7 +52,6 @@ const reducer = (state:any , action:any) => {
 
         case "reset":
             return initialState;
-
 
         default:
             return state;

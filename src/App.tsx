@@ -53,12 +53,11 @@ function App() {
                 <Flashcards />
               </AuthGuard>
             } />
-            {/* <Route path="/profile" element={
+            <Route path="/profile" element={
               <AuthGuard>
                 <Profile />
               </AuthGuard>
-            } /> */}
-            <Route path="/profile" element={<Profile />} />
+            } />
             <Route path="/reloads/:location" element={<Reloads />} />
           </Routes>
         </div>
