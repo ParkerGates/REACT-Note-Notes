@@ -1,7 +1,7 @@
 import React from "react";
 import firebase from "firebase/compat/app";
-import { useContextData, useFirestoreData } from "../context/context";
-import { firebaseNEW } from "../firebase/firebase";
+import { ContextData, useContextData, useFirestoreData } from "../context/context";
+import { firebaseNEW, firebaseRESET } from "../firebase/firebase";
 
 const withFireBase = WrappedComponent => {
     function Firebase(props) {
@@ -29,11 +29,28 @@ const withFireBase = WrappedComponent => {
             fsd.auth.signOut();
         }
 
+        const resetAccount = () => {
+            if (fsd.user) {
+                firebaseRESET(fsd.db, fsd.user.uid);
+            }
+            context.contextDispatch({type:"reset"});
+        }
+
+        const deleteAccount = () => {
+            if (fsd.user) {
+                firebaseRESET(fsd.db, fsd.user.uid);
+            }
+            context.contextDispatch({type:"reset"});
+            fsd.auth.signOut();
+        }
+
         return(
             <WrappedComponent 
                 signIn={signInWithGoogle}
                 signOut={signOut}
                 signInAsGuest={signInAsGuest}
+                resetAccount={resetAccount}
+                deleteAccount={deleteAccount}
                 {...props}
             />
         );

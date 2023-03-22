@@ -17,21 +17,17 @@ function Profile(props) {
         console.log("Log Out");
     }
 
-    const resetAccount = () => {
-        console.log("Reset Account");
-    }
 
-    const deleteAccount = () => {
-        console.log("Delete Account");
-    }
 
     return (
+        <>
         <div className="containerProfile">
             <div className="contentProfile">
-                {/* <div className="profilePageProfileImgAndNameContainer">
-                    <img className="profilePageProfileImg" src={ProfileImg} alt="profile image" />
-                    <h1 className="profilePageUsernameHeading">Parker Gates</h1>
-                </div> */}
+
+            <div className="profilePageProfileImgAndNameContainer">
+                <img className="profilePageProfileImg" src={ProfileImg} alt="profile image" />
+                <h1 className="profilePageUsernameHeading">Parker Gates</h1>
+            </div>
 
                 <div className="profilePageSections">
                     <TitleHR title="Masteries" fontSize="h2" />
@@ -42,8 +38,6 @@ function Profile(props) {
                     </div>
                 </div>
 
-
-
                 <div className="profilePageSections">
                     <TitleHR title="Progress" fontSize="h2" />
                     <div className="profileNoteInfoBubble">
@@ -51,8 +45,6 @@ function Profile(props) {
                         <span className="profileNoteInfoTitle">95%</span>
                     </div>
                 </div>
-
-
 
                 <div className="profilePageSections">
                     <TitleHR title="Settings" fontSize="h2" />
@@ -68,13 +60,13 @@ function Profile(props) {
                                 <Lock lockState={lock} setLockState={setLock} />
                             </span>
                             <button
-                                onClick={resetAccount}
+                                onClick={props.resetAccount}
                                 className="profileResetBtn"
                                 disabled={lock}
                                 >Reset Account
                             </button>
                             <button
-                                onClick={deleteAccount}
+                                onClick={props.deleteAccount}
                                 className="profileDeleteBtn"
                                 disabled={lock}
                                 >Delete Account
@@ -89,6 +81,13 @@ function Profile(props) {
                 <img className="botProfile" src={BotProfile} alt="gradiant slope" />
             </div>
         </div>
+
+
+        {/* <div className="profilePageProfileImgAndNameContainer">
+            <img className="profilePageProfileImg" src={ProfileImg} alt="profile image" />
+            <h1 className="profilePageUsernameHeading">Parker Gates</h1>
+        </div> */}
+        </>
     );
 }
 
