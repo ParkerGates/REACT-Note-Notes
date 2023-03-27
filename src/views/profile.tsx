@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import withFireBase from '../hoc/firebaseHOC';
-import BoxSection from '../components/CssComp/BoxSection/BoxSection';
+import { useContextData, useFirestoreData } from '../context/context';
 import ProfileImg from "../svgs/Images/profileImage.svg";
 import Checkmark from "../svgs/Images/checkmark.svg";
 import DotsLong from "../svgs/Background/DotsLong.svg";
@@ -11,13 +11,15 @@ import "./css/profile.css";
 import "../App.css";
 
 function Profile(props) {
+    let fsd = useFirestoreData();
+    let context = useContextData();
+
     const [lock, setLock] = useState<boolean>(true);
 
     const logOut = () => {
         console.log("Log Out");
     }
-
-
+    
 
     return (
         <>
@@ -26,7 +28,7 @@ function Profile(props) {
 
             <div className="profilePageProfileImgAndNameContainer">
                 <img className="profilePageProfileImg" src={ProfileImg} alt="profile image" />
-                <h1 className="profilePageUsernameHeading">Parker Gates</h1>
+                <h1 className="profilePageUsernameHeading">{fsd.user !== null ? fsd.user.displayName : "Guest"}</h1>
             </div>
 
                 <div className="profilePageSections">
