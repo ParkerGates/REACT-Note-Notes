@@ -18,7 +18,6 @@
 }
 
 .profilePageSections {
-    /* border: 1px solid white; */
     width: 100%;
     margin: 0rem 1rem;
     padding-top: 3rem;
@@ -38,6 +37,7 @@
     gap: 2rem;
 
     padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
 
     border: 1px solid white;
     border-radius: 35px;
@@ -54,6 +54,22 @@
 }
 .profileNoteInfoCheck {
     width: 2rem;
+}
+.profileNoMasteies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: rgb(146, 146, 146);
+    border-style:dashed;
+}
+.profileNoMasteriesText {
+    color: rgb(146, 146, 146);
+    white-space: nowrap;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 
@@ -199,8 +215,8 @@
 }
 
 @media screen and (max-width: 950px) {
-    .contentProfile { flex-direction: column; margin: 0px 10px; height: auto; }
-    .profilePageSections { width: 85vw; }
+    .contentProfile { flex-direction: column; margin: 0px 10px; height: auto; padding-bottom: 10px; }
+    .profilePageSections { width: calc(100% - 2.4rem);; }
     .profileDangerZoneContainer {
         position:static;
         margin-top: 40px;  
@@ -212,4 +228,5 @@
     .profilePageProfileImgAndNameContainer { top: 95px; height: 50px; }
     .profilePageProfileImg { width: 50px; height: 50px; margin-right: 10px; }
     .profilePageUsernameHeading { bottom: 15px; font-size: 2rem; }
+    .profileNoteInfoBubble { padding: .5rem 1.5rem; }
 }
