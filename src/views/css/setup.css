@@ -72,14 +72,11 @@
 @media screen and (max-height: 835px) {
     .botSetup {
         position:relative;
-        width: 100%;
+        width: 102%;
         height: 100%;
     }
     .botBarContainerSetup {
-        /* border: 1px solid gold; */
         overflow: hidden;
-        /* position: relative;
-        top: 2px; */
         width: 100vw;
         height: 66px;
         margin:0px;
