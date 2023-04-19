@@ -40,7 +40,7 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
 
             <div className="avgAccuracyRecallBlock">
                 { keysetInfo.orderByScore.length === 0
-                    ?   <div className="page2Block">
+                    ?   <div className="page2Block displayFlexCenter">
                             <pre className='moreTestingRequired'>Test More To See Score...</pre>
                         </div>
 

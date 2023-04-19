@@ -1,3 +1,8 @@
+.page2Container {
+    height: calc(100vh - 12rem);
+    position: relative;
+}
+
 .scoreDisplayBox {
     display: inline-block;
     width: 35px;
@@ -84,6 +89,9 @@
 .bottomNavBtns {
     display:flex;
     align-items: center;
+    position: absolute;
+    bottom: 0px;
+    width: calc(100% - 4rem);
     margin: 40px 30px;
 }
 .backbtn {
@@ -99,6 +107,21 @@
 
 
 .moreTestingRequired {
+    display: inline-block;
     text-align: center;
     font-size: 1.5rem;
+    border: 2px dashed rgb(158, 158, 158);
+    width: auto;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+@media screen and (max-height: 835px) {
+    .page2Container {
+        height: 39rem;
+    }
+    .bottomNavBtns{
+        bottom: -2rem;
+    }
+
 }
