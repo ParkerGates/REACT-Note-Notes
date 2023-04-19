@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getKeysetProgress } from "../utilities/utilities";
 import withFireBase from '../hoc/firebaseHOC';
 import { useContextData, useFirestoreData } from '../context/context';
 import ProfileImg from "../svgs/Images/profileImage.svg";
@@ -13,13 +14,11 @@ import "../App.css";
 function Profile(props) {
     let fsd = useFirestoreData();
     let context = useContextData();
+    const trebleProgress = getKeysetProgress(context, "treble");
+    const bassProgress = getKeysetProgress(context, "bass");
 
     const [lock, setLock] = useState<boolean>(true);
 
-    const logOut = () => {
-        console.log("Log Out");
-    }
-    
 
     return (
         <>
@@ -33,18 +32,38 @@ function Profile(props) {
 
                 <div className="profilePageSections">
                     <TitleHR title="Masteries" fontSize="h2" />
-                    <div className="profileNoteInfoBubble">
+
+
+                    { trebleProgress > 85 && <div className="profileNoteInfoBubble">
                         <span className="profileNoteInfoTitle">Treble</span>
                         <hr className="profileNoteInfoHr" />
                         <img className="profileNoteInfoCheck" src={Checkmark} alt="checkmark" />
                     </div>
+                    }
+                    { bassProgress > 85 && <div className="profileNoteInfoBubble">
+                        <span className="profileNoteInfoTitle">Bass</span>
+                        <hr className="profileNoteInfoHr" />
+                        <img className="profileNoteInfoCheck" src={Checkmark} alt="checkmark" />
+                    </div>
+                    }
+                    { trebleProgress < 85 && bassProgress < 85 && <div className="profileNoteInfoBubble profileNoMasteies">
+                        
+                        <div className="profileNoMasteriesText">No Masteries . . .</div>
+
+                    </div>
+                    }
+
                 </div>
 
                 <div className="profilePageSections">
                     <TitleHR title="Progress" fontSize="h2" />
                     <div className="profileNoteInfoBubble">
                         <span className="profileNoteInfoTitle">Treble</span>
-                        <span className="profileNoteInfoTitle">95%</span>
+                        <span className="profileNoteInfoTitle">{`${trebleProgress}%`}</span>
+                    </div>
+                    <div className="profileNoteInfoBubble">
+                        <span className="profileNoteInfoTitle">Bass</span>
+                        <span className="profileNoteInfoTitle">{`${bassProgress}%`}</span>
                     </div>
                 </div>
 
@@ -84,11 +103,6 @@ function Profile(props) {
             </div>
         </div>
 
-
-        {/* <div className="profilePageProfileImgAndNameContainer">
-            <img className="profilePageProfileImg" src={ProfileImg} alt="profile image" />
-            <h1 className="profilePageUsernameHeading">Parker Gates</h1>
-        </div> */}
         </>
     );
 }

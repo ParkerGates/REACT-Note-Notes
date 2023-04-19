@@ -1,4 +1,5 @@
-import { iNoteData } from "../interfaces/interfaces";
+import { iKeysetScoreInfo, iNoteData, iSingleNoteData } from "../interfaces/interfaces";
+import FlashcardGame from "../classes/FlashcardGame";
 
 const clamp = (num, min, max): number => Math.min(Math.max(num, min), max);
 
@@ -55,5 +56,31 @@ const getTroubleNoteRange = (normalRange: string[], noteData: iNoteData): string
     return isDataSizeBigEnough === true ? troubleKeyset : normalRange;
 }
 
+const getKeysetProgress = (context:any, keyset:"treble"|"bass") => {
+    const keysetArray = FlashcardGame.noteRange(keyset,"all",context.contextState.noteData);
 
-export { clamp, calcAccuracyScore, calcTimeScore, shuffle, getTroubleNoteRange }
+    const maxScore = 10.3 * keysetArray.length; //10.3 is worse possible score
+    const minScore = 1.9 * keysetArray.length;  //1.9 is score given with 85% accuracy and an average time of 1.2 seconds
+
+    let avgScoreAddUp = 0;
+
+    for (let i = 0; i < keysetArray.length; i++) {
+        if (context.contextState.noteData[keysetArray[i]].dataSize >= 1) {
+            avgScoreAddUp += context.contextState.noteData[keysetArray[i]].score;
+        }
+        else {
+            // {masteryLvl: 0, avgAccuracy: 0, avgTime: 0, orderByScore: []}
+            console.log("no talent");
+            return 0;
+        }
+    }
+
+    let avgScorePercentage = Math.ceil((avgScoreAddUp - minScore) / (maxScore - minScore) * 100);
+    avgScorePercentage = avgScorePercentage > 100 ? 100 : avgScorePercentage;
+    console.log(avgScorePercentage, 100 - avgScorePercentage);
+
+    return (100 - avgScorePercentage);
+}
+
+
+export { clamp, calcAccuracyScore, calcTimeScore, shuffle, getTroubleNoteRange, getKeysetProgress }

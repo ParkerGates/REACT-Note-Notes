@@ -16,7 +16,7 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
             <div className='textAlignCenter page2Block'>
                 <div className='MasteryAverageContainer'>
                     <div className='MasteryAverageText'>Mastery Level</div>
-                    <input className='btnPlain MasteryAverageTextBox' type="text" value={`${keysetInfo.masteryLvl}%`} readOnly />
+                    <input className='btnPlain MasteryAverageTextBox' type="text" value={`${100 - keysetInfo.masteryLvl}%`} readOnly />
                 </div>
             </div>
 

@@ -71,5 +71,29 @@ let guestNoteData: iNoteData = {
     f5: {note: "f5", acc: 1, dataSize: 3, time:[1,2.4,1.1], avgTime: 1.5, score: 4.8 },
 }
 
-export { noteData, newNoteData, guestNoteData }
+let guestNoteDataTESTING: iNoteData = {    
+    g2: {note: "g2", acc: 7, dataSize: 10, time:[1,1,1,1,1], avgTime: 1, score: 3.8 },
+    a2: {note: "a2", acc: 7, dataSize: 10, time:[1.2,1.4,5,1.2,1.4], avgTime: 2, score: 3.5 },
+    c3: {note: "c3", acc: 7, dataSize: 10, time:[1.2,2.3,1.2,1.7,1.1], avgTime: 1.5, score: 2.8 },
+    b2: {note: "b2", acc: 7, dataSize: 10, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 2.6 },
+    d3: {note: "d3", acc: 8, dataSize: 10, time:[0.7,1.6,1.1,1.3], avgTime: 1.2, score: 2.6 },
+    e3: {note: "e3", acc: 7, dataSize: 10, time:[1,1,1,1], avgTime: 1.1, score: 3.6 },
+    f3: {note: "f3", acc: 8, dataSize: 10, time:[1.2,1.4,5,1.2,1.4], avgTime: 2, score: 2.5 },
+    g3: {note: "g3", acc: 7, dataSize: 10, time:[1,1,1,1], avgTime: 1, score: 3.6 },
+    a3: {note: "a3", acc: 7, dataSize: 10, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 2.6 },
+    b3: {note: "b3", acc: 8, dataSize: 10, time:[1.2,2.3,1.2,1.7,1.1], avgTime: 1.5, score: 2.8 },
+    c4: {note: "c4", acc: 7, dataSize: 10, time:[1, 1, 1, 1, 1], avgTime: 1, score: 3.9 },
+    d4: {note: "d4", acc: 7, dataSize: 10, time:[1.4, 2.7, 1.3], avgTime: 1.8, score: 3.9 },
+    e4: {note: "e4", acc: 7, dataSize: 10, time:[1.2, 1.2], avgTime: 1.2, score: 3.6 },
+    f4: {note: "f4", acc: 7, dataSize: 10, time:[1.2,1.4,5,1.2,1.4], avgTime: 2, score: 3.5 },
+    g4: {note: "g4", acc: 7, dataSize: 10, time:[1.2,2.3,1.2,1.7,1.1], avgTime: 1.5, score: 3.8 },
+    a4: {note: "a4", acc: 8, dataSize: 10, time:[2,1.1,1,1.8], avgTime: 1.5, score: 3.8 },
+    b4: {note: "b4", acc: 7, dataSize: 10, time:[1.7,2.5,1.4,2.2], avgTime: 1.9, score: 2.9 },
+    c5: {note: "c5", acc: 7, dataSize: 10, time:[0.7,1.6,1.1,1.3], avgTime: 1.2, score: 2.6 },
+    d5: {note: "d5", acc: 8, dataSize: 10, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 2.6 },
+    e5: {note: "e5", acc: 7, dataSize: 10, time:[2.2,1.6,2], avgTime: 1.9, score: 2.9 },
+    f5: {note: "f5", acc: 7, dataSize: 10, time:[1,2.4,1.1], avgTime: 1.5, score: 2.8 },
+}
+
+export { noteData, newNoteData, guestNoteData, guestNoteDataTESTING }
 export default noteData;
