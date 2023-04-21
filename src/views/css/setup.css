@@ -53,6 +53,7 @@
 .botSetup {
     position: fixed;
     width: 105vw;
+    height: 3rem;
     bottom: 0px;
     left: -5px;
     z-index: 2;
