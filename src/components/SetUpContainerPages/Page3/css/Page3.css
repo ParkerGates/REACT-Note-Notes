@@ -1,3 +1,7 @@
+.page3Container {
+    height: calc(100vh - 12rem);
+    position: relative;
+}
 .configbtnContainer {
     display: flex;
     align-items: center;
@@ -62,11 +66,6 @@
 }
 
 
-.configTestBtnContainer {
-}
-
-
-
 
 
 .configSaveSettings {
@@ -90,6 +89,9 @@
 .configbottomNavBtns {
     display: flex;
     justify-content: space-between;
+    position:absolute;
+    bottom: 0px;
+    width: calc(100% - 4rem);
     margin: 40px 30px;
     
 }
@@ -102,4 +104,14 @@
     background: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 206));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-height: 835px) {
+    .page3Container {
+        height: 39rem;
+    }
+    .configbottomNavBtns {
+        bottom: -2rem;
+    }
+
 }

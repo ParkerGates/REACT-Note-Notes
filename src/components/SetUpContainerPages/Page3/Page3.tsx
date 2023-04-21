@@ -114,7 +114,7 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
 
 
     return (
-        <div>
+        <div className="page3Container">
             <div>
                 <div className="configTitleContainer">
                     <h2 className="configTitle">Game Type</h2>
