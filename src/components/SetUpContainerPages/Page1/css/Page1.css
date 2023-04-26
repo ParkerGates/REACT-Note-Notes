@@ -16,3 +16,20 @@
     max-height: 600px;
     margin: 0px 20px 0px;
 }
+
+@media screen and (max-width: 750px) {
+    .keySetBtn {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    .keySetBtn {
+        font-size: 1.1rem;
+        padding: .8rem;
+    }
+    .keySetBtnContainer {
+        margin: 0px;
+        gap: 2px;
+    }
+}
