@@ -21,6 +21,7 @@
 .scoreDisplayBoxRight { border-radius: 0px 20px 20px 0px;}
 .scoreDisplayBoxContainer {
     text-align: center;
+    display: inline-block;
 }
 
 .singleNoteScoreInfoContainer {
@@ -64,6 +65,7 @@
 
 .page2Block {
     margin: 0px 0px 10px;
+    text-align: center;
 }
 
 .MasteryAverageTextBox {
@@ -83,9 +85,9 @@
     margin: 10px;
 }
 
-.avgAccuracyRecallBlock {
-    
-}
+
+
+
 .bottomNavBtns {
     display:flex;
     align-items: center;
@@ -124,4 +126,45 @@
         bottom: -2rem;
     }
 
+}
+
+@media screen and (max-width: 550px){
+    .MasteryAverageTextBox { width: 100%; }
+    .MasteryAverageText { text-align: start; }
+    .MasteryAverageContainer {
+        margin: 0px 0px 10px;
+        width: calc(100% - 0px);
+    }
+    .page2Block {
+        margin: 0px 0px 0px;
+        align-items: baseline;
+    }
+
+    .avgTitleContainer { margin: 0px; }
+    .avgHr { margin-left: 10px; }
+    .avgTitle {
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+
+    .scoreDisplayBox {
+        display: inline-block;
+        width: 35px;
+        height: 25px;
+    
+        font-size: 1rem;
+        text-align: center;
+        line-height: 25px;
+    
+        border: 1px solid white;
+        background-color: black;
+        padding: 10px
+    
+    }
+    .scoreDisplayBoxLeft { border-radius: 20px 0px 0px 20px;}
+    .scoreDisplayBoxRight { border-radius: 0px 20px 20px 0px;}
+    .scoreDisplayBoxContainer {
+        text-align: center;
+        display: block;
+    } 
 }
