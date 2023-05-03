@@ -43,9 +43,9 @@ export default function Setup() {
                     <h1 className="setupTitle">Setup</h1>
                     <hr className="setupHr" />
                     <div className="setupPageIndicator">
-                        <span className={currentPage===1?"curPage":""}>Keyset</span>
-                        <span className={currentPage===2?"curPage":""}>Game Info</span>
-                        <span className={currentPage===3?"curPage":""}>Game Config</span>
+                        <span className={currentPage===1?"curPage":"notCurPage"}>Keyset</span>
+                        <span className={currentPage===2?"curPage":"notCurPage"}>Game Info</span>
+                        <span className={currentPage===3?"curPage":"notCurPage"}>Game Config</span>
                     </div>
                 </div>
                 <img className="bloomSetup" src={Bloom} />
