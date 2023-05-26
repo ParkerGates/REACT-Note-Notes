@@ -1,6 +1,12 @@
 .page2Container {
-    height: calc(100vh - 12rem);
+    height: calc(100vh - 11.8rem);
     position: relative;
+}
+
+.avgAccuracyRecallBlock{
+    height: 32vh;
+    min-height: 16rem;
+    overflow-y: scroll;
 }
 
 .scoreDisplayBox {
@@ -66,6 +72,7 @@
 .page2Block {
     margin: 0px 0px 10px;
     text-align: center;
+    padding-right: 5px;
 }
 
 .MasteryAverageTextBox {
@@ -107,7 +114,6 @@
     -webkit-text-fill-color: transparent;
 }
 
-
 .moreTestingRequired {
     display: inline-block;
     text-align: center;
@@ -118,14 +124,23 @@
     padding: 1rem;
 }
 
+
+
+
+
 @media screen and (max-height: 835px) {
     .page2Container {
-        height: 39rem;
+        height: calc(100vh - 11.5rem);
+        min-height: 39rem;
     }
-    .bottomNavBtns{
-        bottom: -2rem;
-    }
+    .bottomNavBtns{ bottom: -2rem;}
+}
 
+@media screen and (max-width: 750px) {
+    .page2Container {
+        height: calc(100vh - 10.5rem);
+        min-height: 40rem;
+    }
 }
 
 @media screen and (max-width: 550px){
@@ -147,6 +162,11 @@
         white-space: nowrap;
     }
 
+    .singleNoteScoreInfoContainer {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+    }
     .scoreDisplayBox {
         display: inline-block;
         width: 35px;
@@ -167,4 +187,16 @@
         text-align: center;
         display: block;
     } 
+}
+
+@media screen and (max-width: 750px) and (min-height: 835px) {
+    .page2Container {
+        height: calc(100vh - 11.8rem);
+        min-height: 39rem;
+    }
+}
+
+@media screen and (max-width: 290px) {
+    .scoreDisplayBoxLeft { border-radius: 0px;}
+    .scoreDisplayBoxRight { border-radius: 0px;}
 }
