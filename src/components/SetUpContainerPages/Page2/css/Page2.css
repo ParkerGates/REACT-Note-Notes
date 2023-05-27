@@ -53,21 +53,6 @@
 }
 
 
-.gameInfoTestBtnContainer {
-    position: absolute;
-    right: 10px;
-}
-.gameInfoBtn, .testBtn { font-size: 1.1rem;}
-.gameInfoBtn {
-    padding:10px;
-    margin-right: 20px;
-}
-.testBtn {
-    padding:12px 20px;
-    border: none;
-    border-radius: 22px;
-}
-
 
 .page2Block {
     margin: 0px 0px 10px;
@@ -92,9 +77,7 @@
     margin: 10px;
 }
 
-
-
-
+/* --------------------------------------------------------------- */
 .bottomNavBtns {
     display:flex;
     align-items: center;
@@ -102,6 +85,8 @@
     bottom: 0px;
     width: calc(100% - 4rem);
     margin: 40px 30px;
+
+    /* border: 2px solid rgb(36, 243, 206); */
 }
 .backbtn {
     font-size: 1.8rem;
@@ -113,6 +98,23 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.gameInfoTestBtnContainer {
+    position: absolute;
+    right: 10px;
+}
+.gameInfoBtn, .testBtn { font-size: 1.1rem;}
+.gameInfoBtn {
+    padding:10px;
+    margin-right: 20px;
+}
+.testBtn {
+    padding:12px 20px;
+    border: none;
+    border-radius: 22px;
+}
+/* --------------------------------------------------------------- */
+
 
 .moreTestingRequired {
     display: inline-block;
@@ -167,26 +169,10 @@
         grid-template-columns: auto auto;
         gap: 10px;
     }
-    .scoreDisplayBox {
-        display: inline-block;
-        width: 35px;
-        height: 25px;
-    
-        font-size: 1rem;
-        text-align: center;
-        line-height: 25px;
-    
-        border: 1px solid white;
-        background-color: black;
-        padding: 10px
-    
-    }
-    .scoreDisplayBoxLeft { border-radius: 20px 0px 0px 20px;}
-    .scoreDisplayBoxRight { border-radius: 0px 20px 20px 0px;}
-    .scoreDisplayBoxContainer {
-        text-align: center;
-        display: block;
-    } 
+
+    .bottomNavBtns { width: calc(100% - 1.5rem); margin: 40px 12px; }
+    .gameInfoBtn, .testBtn { font-size: .9rem;}
+    .gameInfoBtn {margin-right: 8px; }
 }
 
 @media screen and (max-width: 750px) and (min-height: 835px) {
@@ -197,6 +183,6 @@
 }
 
 @media screen and (max-width: 290px) {
-    .scoreDisplayBoxLeft { border-radius: 0px;}
-    .scoreDisplayBoxRight { border-radius: 0px;}
+    .scoreDisplayBoxLeft { border-radius: 8px 8px 0px 0px;}
+    .scoreDisplayBoxRight { border-radius: 0px 0px 8px 8px;}
 }
