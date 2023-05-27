@@ -13,14 +13,14 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
     return (
         <div className="page2Container positionRelative">
 
-            <div className='textAlignCenter page2Block'>
+            <div className='page2Block'>
                 <div className='MasteryAverageContainer'>
                     <div className='MasteryAverageText'>Mastery Level</div>
                     <input className='btnPlain MasteryAverageTextBox' type="text" value={`${100 - keysetInfo.masteryLvl}%`} readOnly />
                 </div>
             </div>
 
-            <div className="textAlignCenter page2Block">
+            <div className="page2Block">
                     <div className='MasteryAverageContainer'>
                     <div className='MasteryAverageText'>Average Accuracy</div>
                     <input className='btnPlain MasteryAverageTextBox' type="text" value={`${keysetInfo.avgAccuracy}%`} readOnly />
@@ -47,7 +47,7 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
                     :   <div className="singleNoteScoreInfoContainer page2Block">
                             {keysetInfo.orderByScore.map((note)=> {
                                 return (
-                                    <div key={note.note} className="displayInlineBlock scoreDisplayBoxContainer">
+                                    <div key={note.note} className="scoreDisplayBoxContainer">
                                         <span>{note.note}: </span>
                                         <div className="displayInlineBlock">
                                             <div className="scoreDisplayBox scoreDisplayBoxLeft">{note.acc}%</div>
