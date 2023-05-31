@@ -5,6 +5,7 @@
     min-height: 740px;
     background-color: black;
     z-index:-2;
+    overflow: hidden;
 }
 
 .setupGuideContainer{

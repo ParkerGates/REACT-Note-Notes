@@ -1,16 +1,23 @@
 .page3Container {
-    height: calc(100vh - 12rem);
+    height: calc(100vh - 11.5rem);
     position: relative;
 }
 .configbtnContainer {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
+}
+.configFullForm{
+    border: 2px solid rosybrown;
 }
 .configbtn {
     padding: 10px;
+    width: 5rem;
     z-index: 1;
+    white-space: nowrap;
 }
+.configbtnLong { width: 7rem; }
 
 
 .configSpecificsContainer {
@@ -109,9 +116,17 @@
 @media screen and (max-height: 835px) {
     .page3Container {
         height: 39rem;
+        border: 2px solid red;
     }
-    .configbottomNavBtns {
-        bottom: -2rem;
-    }
+    .configbottomNavBtns { bottom: -2rem; }
+}
 
+@media screen and (max-width: 550px) {
+    .configbottomNavBtns {
+        bottom: 3px;
+        width: calc(100% - 2.15rem); margin: 40px 12px;
+    }
+    .configTestBtn {
+        font-size: .9rem;
+    }
 }

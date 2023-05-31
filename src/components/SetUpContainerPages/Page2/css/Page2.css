@@ -46,7 +46,7 @@
     width: 20rem;
 }
 .avgHr {
-    width: 100%;
+    width: 110%;
     height: 1px;
     color:white;
     background-color: white;
@@ -128,7 +128,7 @@
 
 
 
-
+@media screen and (max-height: 1200px) { .avgHr { width: 95%;} }
 
 @media screen and (max-height: 835px) {
     .page2Container {
@@ -140,17 +140,21 @@
 
 @media screen and (max-width: 750px) {
     .page2Container {
-        height: calc(100vh - 10.5rem);
-        min-height: 40rem;
+        height: calc(100vh - 11.5rem);
+        min-height: 39rem;
     }
+    .avgHr { width: 80%;}
 }
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 550px) {
     .MasteryAverageTextBox { width: 100%; }
     .MasteryAverageText { text-align: start; }
     .MasteryAverageContainer {
         margin: 0px 0px 10px;
         width: calc(100% - 0px);
+    }
+    .page2Container {
+        min-height: 39rem;
     }
     .page2Block {
         margin: 0px 0px 0px;
