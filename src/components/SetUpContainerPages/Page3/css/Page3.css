@@ -10,6 +10,8 @@
 }
 .configFullForm{
     border: 2px solid rosybrown;
+    overflow: auto;
+    height: calc(100vh - 18rem);
 }
 .configbtn {
     padding: 10px;
@@ -117,6 +119,10 @@
     .page3Container {
         height: 39rem;
         border: 2px solid red;
+    }
+    .configFullForm{
+        border: 2px solid teal;
+        height: 35rem;
     }
     .configbottomNavBtns { bottom: -2rem; }
 }
