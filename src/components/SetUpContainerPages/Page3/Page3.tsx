@@ -55,6 +55,10 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
     const saveAsDefault = () => {
         setBtnState({...btnState, gameInfoChanged:false});
         contextData.contextDispatch({type:"update-default-game-settings", gameSettings:gameInfo});
+
+        const myTimeout = setTimeout(() => {
+            setBtnState({...btnState, gameInfoChanged:null});
+        }, 3000);
     }
 
 
@@ -144,7 +148,7 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                         }
                         { btnState.gameType === "set" &&
                         <div className="configSpecificsContainer">
-                            <label className="configSpecificsTitle">Card Amount</label>
+                            <label className="configSpecificsTitle">Cards</label>
                             <input type="text" className="configSpecificsInput" value={limitedGameCount} readOnly />{/*--------------------------------------------------------------*/}
                             <button
                                 className="btnPlain configSpecificsBtn"
@@ -234,10 +238,10 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                         <div className="configTestBtnContainer">
                             <span className="configSaveSettings">                        
                                 { btnState.gameInfoChanged === null && ""}
-                                { btnState.gameInfoChanged === false && <>saved</> }
+                                { btnState.gameInfoChanged === false && <span>saved</span> }
                                 { btnState.gameInfoChanged === true && 
                                     <>
-                                        <span style={{zIndex:"1"}}>Set final as default</span>
+                                        <span id="setAsDefault" style={{zIndex:"1"}}>Set final as default</span>
                                         <button
                                             className="btnPlain configSaveBtn"
                                             onClick={saveAsDefault}

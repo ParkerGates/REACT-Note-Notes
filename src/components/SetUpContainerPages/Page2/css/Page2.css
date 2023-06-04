@@ -147,7 +147,7 @@
 }
 
 @media screen and (max-width: 550px) {
-    .MasteryAverageTextBox { width: 100%; }
+    .MasteryAverageTextBox { width: calc(100% - 3px); }
     .MasteryAverageText { text-align: start; }
     .MasteryAverageContainer {
         margin: 0px 0px 10px;

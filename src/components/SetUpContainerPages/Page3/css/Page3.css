@@ -9,7 +9,6 @@
     gap: 10px;
 }
 .configFullForm{
-    border: 2px solid rosybrown;
     overflow: auto;
     height: calc(100vh - 18rem);
 }
@@ -30,7 +29,6 @@
     border: 1px dashed white;
     border-radius: 20px;
     padding: 6px 15px;
-    margin-left: 10px
 }
 .configSpecificsTitle { margin-right: 10px; }
 .configSpecificsInput {
@@ -101,10 +99,11 @@
     position:absolute;
     bottom: 0px;
     width: calc(100% - 4rem);
-    margin: 40px 30px;
+    margin: 40px 28px;
     
 }
 .backbtn {
+    position: relative; top: .5px;
     font-size: 1.8rem;
     border: none;
     background-color: black;
@@ -117,14 +116,12 @@
 
 @media screen and (max-height: 835px) {
     .page3Container {
-        height: 39rem;
-        border: 2px solid red;
+        min-height: 39rem;
     }
     .configFullForm{
-        border: 2px solid teal;
         height: 35rem;
     }
-    .configbottomNavBtns { bottom: -2rem; }
+    .configbottomNavBtns { bottom: -2.3rem; }
 }
 
 @media screen and (max-width: 550px) {
@@ -134,5 +131,18 @@
     }
     .configTestBtn {
         font-size: .9rem;
+    }
+}
+
+@media screen and (max-width: 550px) and (max-height: 835px) {
+    .configbottomNavBtns { /*---------------------------------------------------------------------------------------------*/
+        bottom: -2.1rem;
+        width: calc(100% - 2.15rem); margin: 40px 12px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    #setAsDefault {
+        display: none;
     }
 }
