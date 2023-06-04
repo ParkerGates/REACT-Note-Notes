@@ -5,6 +5,7 @@
     min-height: 740px;
     background-color: black;
     z-index:-2;
+    overflow: hidden;
 }
 
 .setupGuideContainer{
@@ -64,9 +65,11 @@
     position: fixed;
     z-index: 0;
     width: 60vw;
+    max-height: 20rem;
+    height: 25vw;
+    min-height: 13rem;
     left: 20vw;
     bottom: 2rem;
-    
 }
 
 
@@ -89,7 +92,6 @@
         width: 60vw;
         left: 20vw;
         bottom: -1vh;
-        
     }
     .dotsSetup {
         position: absolute;
@@ -120,6 +122,14 @@
         font-weight: 100;
         position: relative;
         bottom: .5rem;
+    }
+
+    .bloomSetup {
+        position: absolute;
+        width: 80vw;
+        height: 13rem;
+        left: 10vw;
+        bottom: -1vh;
     }
 }
 
