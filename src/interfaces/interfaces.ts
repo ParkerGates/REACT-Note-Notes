@@ -29,6 +29,7 @@ export interface iContextState {
 export interface iFlashcardNotePayload {
     find: iNote;
     options: string[];
+    lockedIn: boolean;
 }
 
 export interface iGameSettings {

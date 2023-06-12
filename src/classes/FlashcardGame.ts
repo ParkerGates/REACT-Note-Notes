@@ -26,7 +26,8 @@ export default class FlashcardGame {
 
         const payload: iFlashcardNotePayload = {
             find: chosenNote,
-            options: this.createOptionsArray(this.keySetNotes.indexOf(chosenNote))
+            options: this.createOptionsArray(this.keySetNotes.indexOf(chosenNote)),
+            lockedIn: false
         }
         return payload;
     }

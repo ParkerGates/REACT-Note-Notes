@@ -20,7 +20,7 @@ export default function Flashcards() {
 
     //Game State Values
     const [sessionStats, setSessionStats] = useState<iSingleGameStats>({});
-    const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});
+    const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[], lockedIn:false});
     const [gameState, setGameState] = useState<iFlashcardGameState>({
         currentState: "no-game",
         countdown: 3,
@@ -62,6 +62,7 @@ export default function Flashcards() {
  
  
     const handleSelectedOption = (correctIndex: string, selectedIndex: string): void => {
+        setCardPayload({...cardPayload, lockedIn: true});
         let cardTime = {...timer.getTotalTimeValues()};
         timer.stop();
 
@@ -142,6 +143,7 @@ export default function Flashcards() {
                             <FlashcardOptions 
                                 find={cardPayload.find}
                                 options={cardPayload.options}
+                                lockedIn={cardPayload.lockedIn}
                                 inputType={contextData.contextState.gameSettings.inputType}
                                 handleSelectedOption={handleSelectedOption}
                             />

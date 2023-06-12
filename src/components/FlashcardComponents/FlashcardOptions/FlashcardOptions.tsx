@@ -5,33 +5,28 @@ import "./imageOptions.css";
 interface Props {
     find: string;
     options: string[];
+    lockedIn: boolean;
     inputType: string;
     handleSelectedOption: (rightIndex: string, selectedIndex: string) => void;
 }
 
 
-const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Props) => {
+const FlashcardOptions = ({find, options, lockedIn, inputType, handleSelectedOption}: Props) => {
     const findIndex = options.indexOf(find);
 
     useEffect(()=> {
-        // if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
-        // else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
 
         return () => {
-            console.log("end listener");
             document.removeEventListener("keyup", numberInput);
             document.removeEventListener("keyup", arrowInput);
         }
     }, [])
 
     useEffect(()=>{
-        console.log("start");
         if (inputType === "number-keys") {
-            console.log("start listener");
             document.addEventListener("keyup", numberInput);
         }
         else if (inputType === "arrow-keys") {
-            console.log("start listener");
             document.addEventListener("keyup", arrowInput);
         }
     }, [options, inputType])
@@ -49,7 +44,8 @@ const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Prop
                                 id={String(optionIndex)}
                                 key={option + optionIndex}
                                 className="btnPlain flashcardOptionBtns"
-                                onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}>
+                                onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}
+                                disabled={lockedIn}>
                                 {option}
                             </button>
                     )})
@@ -63,7 +59,7 @@ const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Prop
                                 key={option + optionIndex}
                                 className="btnPlain flashcardOptionBtns"
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}
-                                >
+                                disabled={lockedIn}>
                                 {option}
                             </button>
                     )})
@@ -76,25 +72,32 @@ const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Prop
                             id="0"
                             className="arrow-keys-tile"
                             onClick={() => {handleSelectedOption(`${findIndex}`,`${0}`)}}
-                        >{options[0]}</button>
+                            disabled={lockedIn}>
+                                {options[0]}
+                        </button>
                         <div></div>
 
                         <button
                             id="1"
                             className="arrow-keys-tile"
                             onClick={() => {handleSelectedOption(`${findIndex}`,`${1}`)}}
-                        >{options[1]}</button>
+                            disabled={lockedIn}>
+                                {options[1]}
+                            </button>
                         <button
                             id="3"
                             className="arrow-keys-tile"
                             onClick={() => {handleSelectedOption(`${findIndex}`,`${3}`)}}
-                            disabled={options.length < 4 ? true : false}
-                        >{options[3] || ""}</button>
+                            disabled={(options.length < 4 ? true : false) || lockedIn}>
+                                {options[3] || ""}
+                        </button>
                         <button
                             id="2"
                             className="arrow-keys-tile"
                             onClick={() => {handleSelectedOption(`${findIndex}`,`${2}`)}}
-                        >{options[2]}</button>
+                            disabled={lockedIn}>
+                                {options[2]}
+                        </button>
                     </div>
                 }
             </div>
