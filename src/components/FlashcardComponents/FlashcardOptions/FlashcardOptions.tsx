@@ -18,14 +18,22 @@ const FlashcardOptions = ({find, options, inputType, handleSelectedOption}: Prop
         // else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
 
         return () => {
+            console.log("end listener");
             document.removeEventListener("keyup", numberInput);
             document.removeEventListener("keyup", arrowInput);
         }
     }, [])
 
     useEffect(()=>{
-        if (inputType === "number-keys") document.addEventListener("keyup", numberInput);
-        else if (inputType === "arrow-keys") document.addEventListener("keyup", arrowInput);
+        console.log("start");
+        if (inputType === "number-keys") {
+            console.log("start listener");
+            document.addEventListener("keyup", numberInput);
+        }
+        else if (inputType === "arrow-keys") {
+            console.log("start listener");
+            document.addEventListener("keyup", arrowInput);
+        }
     }, [options, inputType])
 
 

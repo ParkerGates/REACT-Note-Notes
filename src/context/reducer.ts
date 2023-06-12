@@ -47,7 +47,7 @@ const reducer = (state:any , action:any) => {
             return newState;
 
         case "guestSignInToggle":
-            newState = {...initialState, guest: !state.guest, noteData: guestNoteData }
+            newState = {...initialState, guest: !state.guest, noteData: guestNoteDataTESTING }
             return newState;
 
         case "reset":

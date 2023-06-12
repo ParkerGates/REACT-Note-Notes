@@ -37,6 +37,8 @@ const shuffle = (array) => {
     return array;
 }
 
+
+//Returns an array[strings] with the 8 worst scored notes
 const getTroubleNoteRange = (normalRange: string[], noteData: iNoteData): string[] => {
     const troubleKeyset: string[] = []
     let notesByScore: {note: string,score:number}[] = []

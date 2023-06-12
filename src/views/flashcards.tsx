@@ -17,17 +17,22 @@ export default function Flashcards() {
     const contextData = useContextData();
     const game = new FlashcardGame(contextData.contextState.gameSettings, contextData.contextState.noteData);
     const [timer, isTargetAchived] = useTimer({precision: "secondTenths", updateWhenTargetAchieved: true});
-    const [sessionStats, setSessionStats] = useState<iSingleGameStats>({});
-    console.log(contextData.contextState.gameSettings)  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!ConsoleLog
 
+    //Game State Values
+    const [sessionStats, setSessionStats] = useState<iSingleGameStats>({});
     const [cardPayload, setCardPayload] = useState<iFlashcardNotePayload>({find:"",options:[]});
     const [gameState, setGameState] = useState<iFlashcardGameState>({
         currentState: "no-game",
         countdown: 3,
-        gameType: {type:"limitless"},
+        gameType: contextData.contextState.gameSettings.gameType,
     });
 
-    const [timedGame, timedGameIsDone] = useTimer({countdown: true, startValues: { seconds: 10 }, updateWhenTargetAchieved: true});
+    //Game Type Values
+    const [timedGame, timedGameIsDone] = useTimer({
+        countdown: true,
+        startValues: { seconds: contextData.contextState.gameSettings.gameType.action },
+        updateWhenTargetAchieved: true
+    });
     const [limitedGameCount, setLimitedGameCount] = useState(0);
 
 
@@ -50,7 +55,7 @@ export default function Flashcards() {
  
     const nextCard = ():void  => {
         resetShownAnswer();
-        game.probabilityNumber = contextData.contextState.probabilityPool;
+        game.probabilityNumber = contextData.contextState.probabilityPool; //---------------------------------?????
         setCardPayload(game.getNote(contextData.contextState.noteData, cardPayload.find));
         timer.start({ startValues: [0,0,0,0,0], target: {seconds: 5}, precision: 'secondTenths'});
     }
@@ -100,7 +105,6 @@ export default function Flashcards() {
     useEffect(() => {
         game.countProbabilityPool(contextData.contextState.noteData);
         contextData.contextDispatch({type: "update-probability-pool", assign:game.probabilityNumber});
-        setGameState({...gameState, gameType:contextData.contextState.gameSettings.gameType});
     }, [])
 
 
@@ -109,7 +113,7 @@ export default function Flashcards() {
         if (timedGameIsDone === true) {
             setGameState((prevState) => {return {...prevState, currentState:"post-game"}});
         }
-        if (limitedGameCount === 3) {
+        if (limitedGameCount >= gameState.gameType.action) {
             setGameState((prevState) => {return {...prevState, currentState:"post-game"}});
         }
     }, [timedGameIsDone, limitedGameCount]);

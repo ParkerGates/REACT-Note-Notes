@@ -4,7 +4,6 @@ import { shuffle } from "../utilities/utilities"
 import TimeQueue from '../utilities/timeQueue';
 
 export default class FlashcardGame {
-    private keySetName: "treble" | "bass";
     private keySetNotes: string[];
     public probabilityNumber: number;
 
@@ -15,7 +14,6 @@ export default class FlashcardGame {
     constructor(gameSettings: iGameSettings, noteData: iNoteData) {
         this.gameSettings = gameSettings;
 
-        this.keySetName = gameSettings.keyset;
         this.keySetNotes = FlashcardGame.noteRange(gameSettings.keyset, gameSettings.cardType, noteData);
         this.probabilityNumber = 0;
 
@@ -61,6 +59,7 @@ export default class FlashcardGame {
     private createOptionsArray(selectedIndex: number): string[] {
         const optionAmount: number = this.gameSettings.optionAmount;
         const randomOffset: number = Math.floor(Math.random() * optionAmount) + 1
+
         let maxIndex: number = selectedIndex + randomOffset;
         let minIndex: number = selectedIndex - (optionAmount - randomOffset);
 
@@ -128,12 +127,13 @@ export default class FlashcardGame {
 
     //Public Utility Methods
     //==================================================================
+    //accumulates note score, returns total
     public countProbabilityPool(noteData: iNoteData): number {
         let probabilityNumber = 0;
 
-        for (let i = 0; i < this.keySetNotes.length; i++) {
-            probabilityNumber += noteData[this.keySetNotes[i]].score
-        }
+        this.keySetNotes.forEach((item, index) => {
+            probabilityNumber += noteData[item].score
+        })
 
         this.probabilityNumber = probabilityNumber;
         return probabilityNumber
