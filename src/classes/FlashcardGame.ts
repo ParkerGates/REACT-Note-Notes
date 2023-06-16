@@ -48,7 +48,7 @@ export default class FlashcardGame {
         let accScore: number = calcAccuracyScore(updatedNoteData.acc,updatedNoteData.dataSize);
         const timeScore: number = calcTimeScore(updatedNoteData.avgTime);
 
-        updatedNoteData.score = accScore + timeScore;
+        updatedNoteData.score = Number((accScore + timeScore).toFixed(1));
         return updatedNoteData;
     }
 
@@ -105,6 +105,7 @@ export default class FlashcardGame {
         let newNoteChosen: iNote = "";
 
         let findNum: number = Number((Math.random() * this.probabilityNumber).toFixed(1));
+        let findNumOriginal: number = findNum; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         for (let i:number = 0; i < this.keySetNotes.length; i++) {
             findNum -= noteData[this.keySetNotes[i]].score;
@@ -116,11 +117,13 @@ export default class FlashcardGame {
                 }
                 else {
                     newNoteChosen = this.keySetNotes[i] as iNote;
+                    console.log(`${newNoteChosen}, ${findNum}, ${findNumOriginal} ${this.probabilityNumber}`);
                     return newNoteChosen;
                 }
             }
         }
-        return newNoteChosen;
+        console.log("does this work?");
+        return this.keySetNotes[this.keySetNotes.length - 1] as iNote;
     }
 
 

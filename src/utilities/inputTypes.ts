@@ -1,5 +1,4 @@
 function numberInput(e:any): void {
-    console.log("fire Num");
     if (e.code === "Digit1") {
         document.getElementById('0')?.click();
         document.removeEventListener("keyup", numberInput);
@@ -27,7 +26,6 @@ function numberInput(e:any): void {
 }
 
 function arrowInput(e: any): void {
-    console.log("fire Arrow");
     if (e.code === "ArrowUp") {
         document.getElementById('0')?.click();
         document.removeEventListener("keyup", arrowInput);

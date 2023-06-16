@@ -20,9 +20,12 @@ const reducer = (state:any , action:any) => {
         //action {note, correct, time}
             newState = _.cloneDeep(state);
             newSingleNoteData = FlashcardGame.updateNoteData(action.note, action.correct, action.time, newState.noteData[action.note]);
-
+            
             newState.noteData[action.note] = newSingleNoteData;
-            newState.probabilityPool = (newState.noteData[action.note].score - state.noteData[action.note].score) + state.probabilityPool;
+            
+            newState.probabilityPool = Number(((newState.noteData[action.note].score - state.noteData[action.note].score) + state.probabilityPool).toFixed(1));
+            // console.log(state.noteData[action.note].score,newState.noteData[action.note].score);
+            // console.log(state.probabilityPool, (newState.noteData[action.note].score - state.noteData[action.note].score), newState.probabilityPool);
             return newState;
 
         case "new-state":
@@ -47,7 +50,7 @@ const reducer = (state:any , action:any) => {
             return newState;
 
         case "guestSignInToggle":
-            newState = {...initialState, guest: !state.guest, noteData: guestNoteDataTESTING }
+            newState = {...initialState, guest: !state.guest, noteData: newNoteData }
             return newState;
 
         case "reset":

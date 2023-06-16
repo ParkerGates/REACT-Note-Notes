@@ -19,8 +19,8 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
         inputType: contextData.contextState.defaultGameSettings.inputType,
         gameInfoChanged: null
     });
-    const [limitedGameCount, setLimitedGameCount] = useState<number>(5);
-    const [timedGameCount, setTimedGameCount] = useState<number>(20);
+    const [limitedGameCount, setLimitedGameCount] = useState<number>(20);
+    const [timedGameCount, setTimedGameCount] = useState<number>(3);
 
 
     const setSettingOption = (catagory:string, type:string|number) => {
@@ -103,10 +103,10 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
             case "limitless":
                 return null;
             case "timed":
-                setTimedGameCount(5);
-                return 5;
+                setTimedGameCount(3);
+                return 3;
             case "set":
-                setLimitedGameCount(20);
+                setTimedGameCount(20);
                 return 20;
             default:
                 return null;
@@ -133,7 +133,7 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                         { btnState.gameType === "timed" &&
                         <div className="configSpecificsContainer">
                             <label className="configSpecificsTitle">Time</label>
-                            <input type="text" className="configSpecificsInput" value={`${timedGameCount}s`} readOnly />{/*--------------------------------------------------------------*/}
+                            <input type="text" className="configSpecificsInput" value={`${timedGameCount}m`} readOnly />{/*--------------------------------------------------------------*/}
                             <button 
                                 className="btnPlain configSpecificsBtn"
                                 onClick={()=>setTimeIncrement('increment')}

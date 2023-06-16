@@ -30,7 +30,7 @@ export default function Flashcards() {
     //Game Type Values
     const [timedGame, timedGameIsDone] = useTimer({
         countdown: true,
-        startValues: { seconds: contextData.contextState.gameSettings.gameType.action },
+        startValues: { minutes: contextData.contextState.gameSettings.gameType.action },
         updateWhenTargetAchieved: true
     });
     const [limitedGameCount, setLimitedGameCount] = useState(0);
@@ -151,7 +151,7 @@ export default function Flashcards() {
                         { (gameState.gameType.type === "limitless" || gameState.gameType.type === null) &&
                             <button
                                 className="flashcardEndGameBtn" 
-                                onClick={()=>{setGameState((prevState) => {return {...prevState, currentState:"post-game"}})}}>
+                                onClick={()=>{setGameState((prevState) => {console.log(contextData.contextState.noteData);return {...prevState, currentState:"post-game"}})}}>
                                     End Game
                             </button>
                         }
