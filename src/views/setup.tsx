@@ -31,7 +31,6 @@ export default function Setup() {
 
     const launchGame = () => {
         data.contextDispatch({type:"update-game-settings", gameSettings:gameData});
-        console.log(gameData);
         navigate("/flashcards", {replace: true});  
     }
 

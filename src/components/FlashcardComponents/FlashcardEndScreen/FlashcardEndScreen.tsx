@@ -16,7 +16,7 @@ export default function FlashcardEndScreen({stats}: Props) {
             <div className="endGameScoresContainer">
                 { testedNotes.map((item) => {
                     return (
-                        <div className="endGameNoteScoreContainer">
+                        <div className="endGameNoteScoreContainer" key={item}>
                             <span>{item} </span>
                             <span> {stats[item].right}-{stats[item].amount} </span>
                             <span> {Math.floor(stats[item].right / stats[item].amount * 100)}</span>

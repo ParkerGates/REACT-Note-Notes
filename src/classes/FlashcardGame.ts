@@ -4,7 +4,6 @@ import { shuffle } from "../utilities/utilities"
 import TimeQueue from '../utilities/timeQueue';
 
 export default class FlashcardGame {
-    private keySetName: "treble" | "bass";
     private keySetNotes: string[];
     public probabilityNumber: number;
 
@@ -15,7 +14,6 @@ export default class FlashcardGame {
     constructor(gameSettings: iGameSettings, noteData: iNoteData) {
         this.gameSettings = gameSettings;
 
-        this.keySetName = gameSettings.keyset;
         this.keySetNotes = FlashcardGame.noteRange(gameSettings.keyset, gameSettings.cardType, noteData);
         this.probabilityNumber = 0;
 
@@ -28,7 +26,8 @@ export default class FlashcardGame {
 
         const payload: iFlashcardNotePayload = {
             find: chosenNote,
-            options: this.createOptionsArray(this.keySetNotes.indexOf(chosenNote))
+            options: this.createOptionsArray(this.keySetNotes.indexOf(chosenNote)),
+            lockedIn: false
         }
         return payload;
     }
@@ -49,7 +48,7 @@ export default class FlashcardGame {
         let accScore: number = calcAccuracyScore(updatedNoteData.acc,updatedNoteData.dataSize);
         const timeScore: number = calcTimeScore(updatedNoteData.avgTime);
 
-        updatedNoteData.score = accScore + timeScore;
+        updatedNoteData.score = Number((accScore + timeScore).toFixed(1));
         return updatedNoteData;
     }
 
@@ -61,6 +60,7 @@ export default class FlashcardGame {
     private createOptionsArray(selectedIndex: number): string[] {
         const optionAmount: number = this.gameSettings.optionAmount;
         const randomOffset: number = Math.floor(Math.random() * optionAmount) + 1
+
         let maxIndex: number = selectedIndex + randomOffset;
         let minIndex: number = selectedIndex - (optionAmount - randomOffset);
 
@@ -105,6 +105,7 @@ export default class FlashcardGame {
         let newNoteChosen: iNote = "";
 
         let findNum: number = Number((Math.random() * this.probabilityNumber).toFixed(1));
+        let findNumOriginal: number = findNum; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         for (let i:number = 0; i < this.keySetNotes.length; i++) {
             findNum -= noteData[this.keySetNotes[i]].score;
@@ -116,11 +117,13 @@ export default class FlashcardGame {
                 }
                 else {
                     newNoteChosen = this.keySetNotes[i] as iNote;
+                    console.log(`${newNoteChosen}, ${findNum}, ${findNumOriginal} ${this.probabilityNumber}`);
                     return newNoteChosen;
                 }
             }
         }
-        return newNoteChosen;
+        console.log("does this work?");
+        return this.keySetNotes[this.keySetNotes.length - 1] as iNote;
     }
 
 
@@ -128,12 +131,13 @@ export default class FlashcardGame {
 
     //Public Utility Methods
     //==================================================================
+    //accumulates note score, returns total
     public countProbabilityPool(noteData: iNoteData): number {
         let probabilityNumber = 0;
 
-        for (let i = 0; i < this.keySetNotes.length; i++) {
-            probabilityNumber += noteData[this.keySetNotes[i]].score
-        }
+        this.keySetNotes.forEach((item, index) => {
+            probabilityNumber += noteData[item].score
+        })
 
         this.probabilityNumber = probabilityNumber;
         return probabilityNumber

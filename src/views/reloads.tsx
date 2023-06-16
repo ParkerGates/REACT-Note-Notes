@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 export default function Reloads() {
@@ -8,7 +8,6 @@ export default function Reloads() {
 
     useEffect(()=>{
         navigate(`/${location}`, {replace: true});
-        console.log("please", location);
     },[])
 
     return(<></>);

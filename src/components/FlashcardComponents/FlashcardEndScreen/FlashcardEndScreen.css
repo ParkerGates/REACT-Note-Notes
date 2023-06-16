@@ -3,7 +3,12 @@
 }
 
 .endGameScoresContainer {
-    
+    height: calc(100% - 95px);
+    overflow-y: hidden;
+}
+
+.endGameScoresContainer:hover {
+    overflow-y: scroll;
 }
 
 .endGameContainer {
