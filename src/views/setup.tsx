@@ -50,7 +50,7 @@ export default function Setup() {
                 <img className="bloomSetup" src={Bloom} />
                 {currentPage === 1 && <SetUpPage1 onNoteInfoChange={setKeysetInfo} onGameDataChange={setGameData} pageNav={pageNav}/>}
                 {currentPage === 2 && <SetUpPage2 keysetInfo={keysetInfo} pageNav={pageNav} launchGame={launchGame}/>}
-                {currentPage === 3 && <SetUpPage3 gameInfo={gameData} setGameInfo={setGameData} pageNav={pageNav} launchGame={launchGame}/>}
+                {currentPage === 3 && <SetUpPage3 keysetInfo={keysetInfo} gameInfo={gameData} setGameInfo={setGameData} pageNav={pageNav} launchGame={launchGame}/>}
                 
             </div>
             <div className="botBarContainerSetup">

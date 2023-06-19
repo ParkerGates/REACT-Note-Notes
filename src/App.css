@@ -34,6 +34,11 @@ body {
   border-radius: 25px;
 }
 
+.btnDisabled {
+  border: 2px solid rgb(58, 58, 58);
+  color: rgb(136, 136, 136);
+}
+
 .btnGradiant {
   color: white;
   background-image: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 231));

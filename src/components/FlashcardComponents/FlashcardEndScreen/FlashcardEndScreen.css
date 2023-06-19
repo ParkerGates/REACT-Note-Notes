@@ -8,7 +8,7 @@
 }
 
 .endGameScoresContainer:hover {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .endGameContainer {
