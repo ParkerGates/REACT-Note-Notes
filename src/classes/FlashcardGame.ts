@@ -36,7 +36,7 @@ export default class FlashcardGame {
     static updateNoteData(note: iNote, correct: boolean, time: number, prior: iSingleNoteData): iSingleNoteData {
         const updatedNoteData: iSingleNoteData = {
             note: note,
-            acc: correct === true ? clamp(prior.acc + 1, 1, 19) : clamp(prior.acc - 1, 1, 19),
+            acc: this.getAccScore(correct, prior),
             dataSize: prior.dataSize >= 20 ? 20 : prior.dataSize + 1,
             time: TimeQueue.enqueue(prior.time, time),
             avgTime: 0,
@@ -129,6 +129,18 @@ export default class FlashcardGame {
         if (randomNote !== priorNoteChosen) { return randomNote; }
         else if (priorNoteChosen !== this.keySetNotes[this.keySetNotes.length-1]) { return this.keySetNotes[this.keySetNotes.length-1] as iNote; }
         else { return this.keySetNotes[this.keySetNotes.length-2] as iNote }
+    }
+
+    static getAccScore = (correct: boolean, prior: iSingleNoteData) => {
+        let newAcc: number;
+        if (prior.dataSize + 1 >= 20) {
+            newAcc = correct === true ? clamp(prior.acc + 1, 1, 20) : clamp(prior.acc - 1, 1, 20);
+            return newAcc;
+        }
+        else {
+            newAcc = correct === true ? clamp(prior.acc + 1, 1, 20) : prior.acc;
+            return newAcc
+        }
     }
 
 
