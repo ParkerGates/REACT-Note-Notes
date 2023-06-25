@@ -57,10 +57,11 @@ const FlashcardOptions = ({find, options, lockedIn, inputType, handleSelectedOpt
                             <button
                                 id={String(optionIndex)}
                                 key={option + optionIndex}
-                                className="btnPlain flashcardOptionBtns"
+                                className="btnPlain flashcardOptionBtns flashcardOptionNumberKeys"
                                 onClick={() => {handleSelectedOption(`${findIndex}`,`${optionIndex}`)}}
                                 disabled={lockedIn}>
-                                {option}
+                                    <span className="keyNumber">{optionIndex + 1}</span>
+                                    <span>{option}</span>
                             </button>
                     )})
                 }

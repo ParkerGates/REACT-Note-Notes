@@ -30,4 +30,20 @@
     padding: 10px;
     border-radius: 10px;
     margin: 2px 5px;
+    width: 3rem;
+    height: 3rem;
+}
+
+.flashcardOptionNumberKeys {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyNumber {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    font-size: .8rem;
+    color: rgb(186, 186, 186);
 }

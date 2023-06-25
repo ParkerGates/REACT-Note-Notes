@@ -89,7 +89,10 @@ export default function Flashcards() {
     }
 
 
-    const resetShownAnswer = () => cardPayload.options.forEach((item, index) => document.getElementById(String(index)).style.backgroundColor = "");
+    const resetShownAnswer = () => {
+        if (document.getElementById('1') === null) return;
+        cardPayload.options.forEach((item, index) => document.getElementById(String(index)).style.backgroundColor = "");
+    }
 
 
     const updateSessionStats = (note: iNote, correct: boolean) => {
@@ -111,10 +114,8 @@ export default function Flashcards() {
 
     //GameType End State Triggers
     useEffect(() => {
-        if (timedGameIsDone === true) {
-            setGameState((prevState) => {return {...prevState, currentState:"post-game"}});
-        }
-        if (limitedGameCount >= gameState.gameType.action) {
+        if (timedGameIsDone === true || limitedGameCount >= gameState.gameType.action) {
+            timer.stop();
             setGameState((prevState) => {return {...prevState, currentState:"post-game"}});
         }
     }, [timedGameIsDone, limitedGameCount]);
@@ -151,7 +152,11 @@ export default function Flashcards() {
                         { (gameState.gameType.type === "limitless" || gameState.gameType.type === null) &&
                             <button
                                 className="flashcardEndGameBtn" 
-                                onClick={()=>{setGameState((prevState) => {console.log(contextData.contextState.noteData);return {...prevState, currentState:"post-game"}})}}>
+                                onClick={()=>{setGameState((prevState) => {
+                                    console.log(contextData.contextState.noteData);
+                                    timer.stop();
+                                    return {...prevState, currentState:"post-game"}}
+                                )}}>
                                     End Game
                             </button>
                         }

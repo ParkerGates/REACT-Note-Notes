@@ -8,10 +8,12 @@ const firebaseGET = async (db, userId) => {
     }
 }
 
-const firebaseUPDATE = async (db, userId) => {
-    const cloudData = doc(db, "Users", userId);
+const firebaseDataUPDATE = async (db, userId, noteData) => {
+    console.log(userId, noteData);
+    const cloudData = await doc(db, "Users", userId);
+
     await updateDoc(cloudData, {
-        guest: "whoa"
+        noteData: noteData
     });
 
 }
@@ -48,4 +50,4 @@ const firebaseRESET = (db, userId) => {
 //     if (aim.exists()){}
 // }
 
-export { firebaseGET, firebasePOST, firebaseNEW, firebaseUPDATE, firebaseRESET };
+export { firebaseGET, firebasePOST, firebaseNEW, firebaseDataUPDATE, firebaseRESET };
