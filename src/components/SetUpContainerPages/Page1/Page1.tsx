@@ -31,7 +31,7 @@ export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}
         let noteByScore: iSingleNoteData[] = [];
 
         for (let i = 0; i < keysetArray.length; i++) {
-            if (contextData.contextState.noteData[keysetArray[i]].dataSize >= 1) {
+            if (contextData.contextState.noteData[keysetArray[i]].dataSize >= 3) {
                 avgAccAddUp += (contextData.contextState.noteData[keysetArray[i]].acc / contextData.contextState.noteData[keysetArray[i]].dataSize)
                 avgTimeAddUp += contextData.contextState.noteData[keysetArray[i]].avgTime;
                 avgScoreAddUp += contextData.contextState.noteData[keysetArray[i]].score;

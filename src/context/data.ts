@@ -1,6 +1,6 @@
 import { iNoteData } from "../interfaces/interfaces";
 
-let noteData: iNoteData = {    
+const noteData: iNoteData = {    
     g2: {note: "g2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
     a2: {note: "a2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
     b2: {note: "b2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
@@ -23,7 +23,7 @@ let noteData: iNoteData = {
     e5: {note: "e5", acc: 3, dataSize: 3, time:[2.2,1.6,2], avgTime: 1.9, score: 4.9 },
     f5: {note: "f5", acc: 1, dataSize: 3, time:[1,2.4,1.1], avgTime: 1.5, score: 4.8 },
 }
-let newNoteData: iNoteData = {    
+const newNoteData: iNoteData = {    
     g2: {note: "g2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
     a2: {note: "a2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
     b2: {note: "b2", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
@@ -47,7 +47,7 @@ let newNoteData: iNoteData = {
     f5: {note: "f5", acc: 0, dataSize: 0, time:[], avgTime: 0, score: 5},
 }
 
-let guestNoteData: iNoteData = {    
+const guestNoteData: iNoteData = {    
     g2: {note: "g2", acc: 2, dataSize: 5, time:[1.2,2.3,1.2,1.7,1.1], avgTime: 1.5, score: 4.8 },
     a2: {note: "a2", acc: 1, dataSize: 5, time:[1.2,1.4,5,1.2,1.4], avgTime: 2, score: 5 },
     b2: {note: "b2", acc: 2, dataSize: 4, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 4.6 },
@@ -71,29 +71,29 @@ let guestNoteData: iNoteData = {
     f5: {note: "f5", acc: 1, dataSize: 3, time:[1,2.4,1.1], avgTime: 1.5, score: 4.8 },
 }
 
-let guestNoteDataTESTING: iNoteData = {    
-    g2: {note: "g2", acc: 7, dataSize: 10, time:[1,1,1,1,1], avgTime: 1, score: 3.8 },
-    a2: {note: "a2", acc: 7, dataSize: 10, time:[1.2,1.4,5,1.2,1.4], avgTime: 2, score: 3.5 },
-    c3: {note: "c3", acc: 7, dataSize: 10, time:[1.2,2.3,1.2,1.7,1.1], avgTime: 1.5, score: 2.8 },
-    b2: {note: "b2", acc: 7, dataSize: 10, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 2.6 },
-    d3: {note: "d3", acc: 8, dataSize: 10, time:[0.7,1.6,1.1,1.3], avgTime: 1.2, score: 2.6 },
-    e3: {note: "e3", acc: 7, dataSize: 10, time:[1,1,1,1], avgTime: 1.1, score: 3.6 },
-    f3: {note: "f3", acc: 8, dataSize: 10, time:[1.2,1.4,5,1.2,1.4], avgTime: 2, score: 2.5 },
-    g3: {note: "g3", acc: 7, dataSize: 10, time:[1,1,1,1], avgTime: 1, score: 3.6 },
-    a3: {note: "a3", acc: 7, dataSize: 10, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 2.6 },
-    b3: {note: "b3", acc: 8, dataSize: 10, time:[1.2,2.3,1.2,1.7,1.1], avgTime: 1.5, score: 2.8 },
-    c4: {note: "c4", acc: 7, dataSize: 10, time:[1, 1, 1, 1, 1], avgTime: 1, score: 3.9 },
-    d4: {note: "d4", acc: 7, dataSize: 10, time:[1.4, 2.7, 1.3], avgTime: 1.8, score: 3.9 },
-    e4: {note: "e4", acc: 7, dataSize: 10, time:[1.2, 1.2], avgTime: 1.2, score: 3.6 },
-    f4: {note: "f4", acc: 7, dataSize: 10, time:[1.2,1.4,5,1.2,1.4], avgTime: 2, score: 3.5 },
-    g4: {note: "g4", acc: 7, dataSize: 10, time:[1.2,2.3,1.2,1.7,1.1], avgTime: 1.5, score: 3.8 },
-    a4: {note: "a4", acc: 8, dataSize: 10, time:[2,1.1,1,1.8], avgTime: 1.5, score: 3.8 },
-    b4: {note: "b4", acc: 7, dataSize: 10, time:[1.7,2.5,1.4,2.2], avgTime: 1.9, score: 2.9 },
-    c5: {note: "c5", acc: 7, dataSize: 10, time:[0.7,1.6,1.1,1.3], avgTime: 1.2, score: 2.6 },
-    d5: {note: "d5", acc: 8, dataSize: 10, time:[1.4,1.3,0.8,1], avgTime: 1.1, score: 2.6 },
-    e5: {note: "e5", acc: 7, dataSize: 10, time:[2.2,1.6,2], avgTime: 1.9, score: 2.9 },
-    f5: {note: "f5", acc: 7, dataSize: 10, time:[1,2.4,1.1], avgTime: 1.5, score: 2.8 },
+const guestNoteDataDefault: iNoteData = {
+    g2: {note: "g2", acc: 6, dataSize: 9, time: [3.5,3.9,3.2,2.7,4.5,2.7,5,5,5], avgTime: 3.9, score: 5.1},
+    a2: {note: "a2", acc: 11, dataSize: 13, time: [3.8,3.1,2.5,4.9,2.3,5,5,5,5,5], avgTime: 4.2, score: 4.1},
+    b2: {note: "b2", acc: 9, dataSize: 18, time: [4.7,5,5,5,3.9,5,5,5,5,5], avgTime: 4.9, score: 7},
+    c3: {note: "c3", acc: 8, dataSize: 9, time: [3.9,3.8,2.8,5,4,4.2,4.8,4.5,4.1], avgTime: 4.1, score: 3.7},
+    d3: {note: "d3", acc: 6, dataSize: 9, time: [2,2.8,3.9,3.6,4.3,5,4.5,5,5], avgTime: 4, score: 5.2},
+    e3: {note: "e3", acc: 7, dataSize: 10, time: [1.5,3.3,3.1,4.2,4.6,4,5,5,5,5], avgTime: 4.1, score: 5},
+    f3: {note: "f3", acc: 10, dataSize: 13, time: [3.4,4.2,4.8,5,5,5,4.5,5,5,5], avgTime: 4.7, score: 5},
+    g3: {note: "g3", acc: 10, dataSize: 18, time: [5,4.3,4.3,5,5,5,5,4,5,5], avgTime: 4.8, score: 6.5},
+    a3: {note: "a3", acc: 7, dataSize: 11, time: [2.4,3.7,3.2,2.9,5,5,4.3,5,5,5], avgTime: 4.2, score: 5.5},
+    b3: {note: "b3", acc: 10, dataSize: 15, time: [3.3,2.9,4.3,5,4.9,5,3.9,5,5,5], avgTime: 4.4, score: 5.4},
+    c4: {note: "c4", acc: 11, dataSize: 17, time: [5,4.8,3.8,4.7,5,4.9,5,5,5,5], avgTime: 4.8, score: 5.9},
+    d4: {note: "d4", acc: 5, dataSize: 7, time: [2.4,2.8,2.3,2.2,5,5,4.5], avgTime: 3.5, score: 4.5},
+    e4: {note: "e4", acc: 9, dataSize: 13, time: [3.2,4.4,4.1,5,3.8,3.8,4.1,4.8,2.5,5], avgTime: 4.1, score: 5.1},
+    f4: {note: "f4", acc: 11, dataSize: 16, time: [4,4.3,3.4,4.7,4.9,5,3.9,5,5,4.1], avgTime: 4.4, score: 5.3},
+    g4: {note: "g4", acc: 6, dataSize: 9,time: [3.2,3.4,3.4,2.5,4.2,3.9,4.8,5,5], avgTime: 3.9, score: 5.1},
+    a4: {note: "a4", acc: 8, dataSize: 11, time: [5,3.2,5,3.8,4.4,4.4,3.8,1.7,4.3,5], avgTime: 4.1, score: 4.8},
+    b4: {note: "b4", acc: 8, dataSize: 9, time: [5,2.3,4.3,4.1,1.8,3.7,5,4.6,4.9], avgTime: 4, score: 3.7},
+    c5: {note: "c5", acc: 8, dataSize: 12, time: [2.4,2.5,4.7,4.8,4,3.6,3.5,5,5,5], avgTime: 4, score: 5.2},
+    d5: {note: "d5", acc: 5, dataSize: 9, time: [4.2,5,2.3,3.7,4.6,4.2,5,3.7,5], avgTime: 4.2, score: 6.1},
+    e5: {note: "e5", acc: 6, dataSize: 6, time: [2.4,2.8,3.3,4.2,4.1,5], avgTime: 3.6, score: 2.6},
+    f5: {note: "f5", acc: 6, dataSize: 9, time: [2.3,2.1,2.1,1.5,3,5,4.4,5,5], avgTime: 3.4, score: 4.7},
 }
 
-export { noteData, newNoteData, guestNoteData, guestNoteDataTESTING }
+export { noteData, newNoteData, guestNoteData, guestNoteDataDefault }
 export default noteData;

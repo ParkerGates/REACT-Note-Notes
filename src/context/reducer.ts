@@ -1,4 +1,4 @@
-import { noteData, newNoteData, guestNoteData, guestNoteDataTESTING } from './data'
+import { noteData, newNoteData, guestNoteData, guestNoteDataDefault } from './data'
 import FlashcardGame from '../classes/FlashcardGame';
 import { iContextState, iSingleNoteData } from '../interfaces/interfaces';
 const _ = require('lodash');
@@ -50,7 +50,7 @@ const reducer = (state:any , action:any) => {
             return newState;
 
         case "guestSignInToggle":
-            newState = {...initialState, guest: !state.guest, noteData: newNoteData }
+            newState = {...initialState, guest: !state.guest, noteData: guestNoteDataDefault } //newNoteData guestNoteDataDefault
             return newState;
 
         case "reset":

@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { useContextData } from "../../../context/context";
-import { iGameSettings } from '../../../interfaces/interfaces';
+import { iGameSettings, iKeysetScoreInfo } from '../../../interfaces/interfaces';
 import './css/Page3.css';
 
 interface Props {
+    keysetInfo: iKeysetScoreInfo;
     gameInfo: iGameSettings;
     setGameInfo: Function;
     pageNav: (direction: "forward" | "back") => void;
     launchGame: () => void;
 }
 
-export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}: Props) {
+export default function SetUpPage3({keysetInfo, gameInfo, setGameInfo, pageNav, launchGame}: Props) {
     const contextData = useContextData();
     const [btnState, setBtnState] = useState({
         gameType: contextData.contextState.defaultGameSettings.gameType.type,
@@ -173,18 +174,30 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                         <hr className="configHr" />
                     </div>
                     <div className="configbtnContainer">
-                        <button className={`btnPlain configbtn ${btnState.optionAmount === 3?"active":""}`} onClick={()=>{setSettingOption("OptionAmount",3)}}>3</button>
-                        <button className={`btnPlain configbtn ${btnState.optionAmount === 4?"active":""}`} onClick={()=>{setSettingOption("OptionAmount",4)}}>4</button>
                         <button
-                            className={`btnPlain configbtn ${btnState.optionAmount === 5?"active":""}`}
+                            className={`btnPlain configbtn ${btnState.optionAmount === 3?"active":""}`}
+                            onClick={()=>{setSettingOption("OptionAmount",3)}}>
+                                3
+                            </button>
+                        <button
+                            className={`btnPlain configbtn ${btnState.optionAmount === 4?"active":""}`}
+                            onClick={()=>{setSettingOption("OptionAmount",4)}}>
+                                4
+                            </button>
+                        <button
+                            className={`btnPlain configbtn ${btnState.optionAmount === 5?"active":""}
+                                        ${btnState.inputType === "arrow-keys" && "btnDisabled"}`}
                             onClick={()=>{setSettingOption("OptionAmount",5)}}
-                            disabled={btnState.inputType === "arrow-keys" ? true : false}
-                        >5</button>
+                            disabled={btnState.inputType === "arrow-keys" ? true : false}>
+                                5
+                            </button>
                         <button
-                            className={`btnPlain configbtn ${btnState.optionAmount === 6?"active":""}`}
+                            className={`btnPlain configbtn ${btnState.optionAmount === 6?"active":""}
+                                        ${btnState.inputType === "arrow-keys" && "btnDisabled"}`}
                             onClick={()=>{setSettingOption("OptionAmount",6)}}
-                            disabled={btnState.inputType === "arrow-keys" ? true : false}
-                        >6</button>
+                            disabled={btnState.inputType === "arrow-keys" ? true : false}>
+                                6
+                            </button>
                     </div>
                 </div>
 
@@ -201,8 +214,9 @@ export default function SetUpPage3({gameInfo, setGameInfo, pageNav, launchGame}:
                             >all
                         </button>
                         <button
-                            className={`btnPlain configbtn configbtnLong ${btnState.cardType==="trouble"?"active":""}`}
+                            className={`btnPlain configbtn configbtnLong ${btnState.cardType==="trouble"?"active":""} ${keysetInfo.orderByScore.length === 0 && 'btnDisabled'}`}
                             onClick={()=>{setSettingOption("CardType","trouble")}}
+                            disabled={keysetInfo.orderByScore.length === 0}
                             >trouble only
                         </button>
                     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useContextData } from "../context/context";
+import { ContextData, useContextData } from "../context/context";
 import { useNavigate } from "react-router-dom";
 import { iGameSettings, iKeysetScoreInfo } from "../interfaces/interfaces";
 import SetUpPage1 from "../components/SetUpContainerPages/Page1/Page1";
@@ -33,7 +33,7 @@ export default function Setup() {
         data.contextDispatch({type:"update-game-settings", gameSettings:gameData});
         navigate("/flashcards", {replace: true});  
     }
-
+    console.log(data.contextState.noteData);
 
     return(
         <div style={{overflow:"hidden", position:"relative"}}>
@@ -50,7 +50,7 @@ export default function Setup() {
                 <img className="bloomSetup" src={Bloom} />
                 {currentPage === 1 && <SetUpPage1 onNoteInfoChange={setKeysetInfo} onGameDataChange={setGameData} pageNav={pageNav}/>}
                 {currentPage === 2 && <SetUpPage2 keysetInfo={keysetInfo} pageNav={pageNav} launchGame={launchGame}/>}
-                {currentPage === 3 && <SetUpPage3 gameInfo={gameData} setGameInfo={setGameData} pageNav={pageNav} launchGame={launchGame}/>}
+                {currentPage === 3 && <SetUpPage3 keysetInfo={keysetInfo} gameInfo={gameData} setGameInfo={setGameData} pageNav={pageNav} launchGame={launchGame}/>}
                 
             </div>
             <div className="botBarContainerSetup">
