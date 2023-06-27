@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useContextData } from "../../../context/context";
+import { useContextData, useFirestoreData } from "../../../context/context";
 import { iGameSettings, iKeysetScoreInfo } from '../../../interfaces/interfaces';
+import { firebaseDefaultsUPDATE } from '../../../firebase/firebase';
 import './css/Page3.css';
 
 interface Props {
@@ -12,7 +13,9 @@ interface Props {
 }
 
 export default function SetUpPage3({keysetInfo, gameInfo, setGameInfo, pageNav, launchGame}: Props) {
+    const fbd = useFirestoreData();
     const contextData = useContextData();
+
     const [btnState, setBtnState] = useState({
         gameType: contextData.contextState.defaultGameSettings.gameType.type,
         optionAmount: contextData.contextState.defaultGameSettings.optionAmount,
@@ -56,6 +59,9 @@ export default function SetUpPage3({keysetInfo, gameInfo, setGameInfo, pageNav, 
     const saveAsDefault = () => {
         setBtnState({...btnState, gameInfoChanged:false});
         contextData.contextDispatch({type:"update-default-game-settings", gameSettings:gameInfo});
+
+        const id: string = fbd.user.uid;
+        firebaseDefaultsUPDATE(fbd.db, id, gameInfo);
 
         const myTimeout = setTimeout(() => {
             setBtnState({...btnState, gameInfoChanged:null});
