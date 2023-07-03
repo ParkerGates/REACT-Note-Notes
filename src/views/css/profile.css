@@ -9,6 +9,7 @@
 
     width: 1200px;
     height: 80vh;
+    min-height: 550px;
 
     color: white;
     background-color: black;
@@ -86,7 +87,7 @@
 .profileResetBtn {
     width: 85%;
     background-image: linear-gradient(to right, rgb(243, 210, 36) , rgb(243, 123, 36));
-    margin: 20px;
+    margin: 10px auto 20px;
 }
 .profileDeleteBtn {
     width: 85%;
@@ -162,6 +163,7 @@
     padding: 0px 10px;
 
     background-color: black;
+    text-overflow: ellipsis;
 }
 
 .profilePageProfileImg {
@@ -215,11 +217,11 @@
 }
 
 @media screen and (max-width: 950px) {
-    .contentProfile { flex-direction: column; margin: 0px 10px; height: auto; padding-bottom: 10px; }
-    .profilePageSections { width: calc(100% - 2.4rem);; }
+    .contentProfile { flex-direction: column; margin: 0px 10px 10px; height: auto; padding-bottom: 10px; }
+    .profilePageSections { width: calc(100% - 2.4rem); }
     .profileDangerZoneContainer {
         position:static;
-        margin-top: 40px;  
+        margin: 40px auto 8px;
     }
 }
 
@@ -229,4 +231,18 @@
     .profilePageProfileImg { width: 50px; height: 50px; margin-right: 10px; }
     .profilePageUsernameHeading { bottom: 15px; font-size: 2rem; }
     .profileNoteInfoBubble { padding: .5rem 1.5rem; }
+    .profilePageSections { padding-top: 1.5rem; }
+}
+
+@media screen and (max-width: 500px) {
+    .profilePageUsernameHeading { display: none; }
+    .profilePageProfileImgAndNameContainer { min-width: 20px; }
+    .profilePageProfileImg { margin-right: 0px; }
+}
+
+@media screen and (max-width: 380px) {
+    .profileResetBtn, .profileDeleteBtn { font-size: .8rem; margin: 10px auto 10px;}
+    .profileDangerZoneContainer { height: 180px; }
+    .profileDangerZoneControl { bottom: 16px; }
+    .dangerZoneTitle { font-size: 1.1rem; }
 }
