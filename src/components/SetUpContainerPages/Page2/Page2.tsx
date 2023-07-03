@@ -78,7 +78,7 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
 
                     <div className="gameInfoTestBtnContainer">
                         <button className="btnPlain gameInfoBtn" onClick={()=>{pageNav("forward")}}>Config</button>
-                        <button className="btnGradiant testBtn" onClick={launchGame}>Test</button>
+                        <button className="btnGradiant testBtn animate__animated animate__heartBeat animate__delay-1s" onClick={launchGame}>Test</button>
                     </div>
                 </div>
             </div>

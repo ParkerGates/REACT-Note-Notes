@@ -56,7 +56,7 @@ function NavBar(props) {
     else {
         return (
             <div className="navPadding">
-                <nav className="navMobileContainer" style={{height: `${showNav === false ? "50px" : "calc(100vh - 40px)"}`}} >
+                <nav className="navMobileContainer" style={{height: `${showNav === false ? "50px" : "calc(100vh - 20px)"}`}} >
                     <div className="navMobileTopContainer">
                         <button className="hamBtn" onClick={()=>setShowNav(!showNav)}><i className="fa fa-bars ham"></i></button>
                         <Link to="/" onClick={onNavigation}><Logo size="Small" width="40px"/></Link>
@@ -74,7 +74,7 @@ function NavBar(props) {
                         <NavLink to="/" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Home</NavLink>
                     </div>
                     <div>
-                        <i className="	far fa-question-circle navMobileIconSpace" aria-hidden="true"></i>
+                        <i className="fa fa-map navMobileIconSpace" aria-hidden="true"></i>
                         <NavLink to="/about" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>About</NavLink>
                     </div>
                     { (fbd.user !== null || context.contextState.guest !== false) &&

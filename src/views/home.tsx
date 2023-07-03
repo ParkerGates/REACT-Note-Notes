@@ -46,7 +46,7 @@ function Home(props) {
                                         <button onClick={props.signIn} className="btnGradiant signupBtnHome">Sign Up</button>
                                     </>
                                     :
-                                    <Link to="/setup"><button className="btnGradiant signupBtnHome">Flashcards</button></Link>
+                                    <Link to="/setup"><button className="btnGradiant signupBtnHome animate__animated animate__heartBeat animate__delay-1s">Start Learning</button></Link>
                                 }
                             </div>
                         </div>
