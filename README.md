@@ -1,6 +1,6 @@
 # Welcome to Note Notes
 
-A music note flash card applications
+a music note flash card application
 
 Link to Parker Gates [Git Repository](https://github.com/ParkerGates/).
 
