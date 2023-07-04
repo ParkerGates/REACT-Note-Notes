@@ -69,13 +69,16 @@ export default function Flashcards() {
         if (correctIndex === selectedIndex) {
             contextData.contextDispatch({type: "update-data", note: cardPayload.options[selectedIndex], correct: true, time: cardTime.secondTenths});
             updateSessionStats(cardPayload.find, true);
-            document.getElementById(selectedIndex).style.backgroundColor = "green";
+            document.getElementById(selectedIndex).style.borderColor = "#26de79";
+            document.getElementById(selectedIndex).style.color = "#26de79";
         }
         else {
             contextData.contextDispatch({type: "update-data", note: cardPayload.options[correctIndex], correct: false, time: cardTime.secondTenths});
             updateSessionStats(cardPayload.find, false);
-            document.getElementById(correctIndex).style.backgroundColor = "green";
-            document.getElementById(selectedIndex).style.backgroundColor = "red";
+            document.getElementById(correctIndex).style.borderColor = "#26de79";
+            document.getElementById(correctIndex).style.color = "#26de79";
+            document.getElementById(selectedIndex).style.borderColor = "#cc1b4a";
+            document.getElementById(selectedIndex).style.color = "#cc1b4a";
         }
         waitOnAnswerBeforeNextCard(correctIndex);
     }
@@ -91,7 +94,10 @@ export default function Flashcards() {
 
     const resetShownAnswer = () => {
         if (document.getElementById('1') === null) return;
-        cardPayload.options.forEach((item, index) => document.getElementById(String(index)).style.backgroundColor = "");
+        cardPayload.options.forEach((item, index) => {
+            document.getElementById(String(index)).style.borderColor = "white";
+            document.getElementById(String(index)).style.color = "white"
+        });
     }
 
 

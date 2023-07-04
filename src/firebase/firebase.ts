@@ -9,14 +9,22 @@ const firebaseGET = async (db, userId) => {
 }
 
 const firebaseDataUPDATE = async (db, userId, noteData) => {
-    console.log(userId, noteData);
     const cloudData = await doc(db, "Users", userId);
 
     await updateDoc(cloudData, {
         noteData: noteData
     });
-
 }
+
+
+const firebaseDefaultsUPDATE = async (db, userId, defaults) => {
+    const cloudData = await doc(db, "Users", userId);
+
+    await updateDoc(cloudData, {
+        defaultGameSettings: defaults
+    });
+}
+
 
 const firebasePOST = (db, userId) => {
     return "";
@@ -50,4 +58,4 @@ const firebaseRESET = (db, userId) => {
 //     if (aim.exists()){}
 // }
 
-export { firebaseGET, firebasePOST, firebaseNEW, firebaseDataUPDATE, firebaseRESET };
+export { firebaseGET, firebasePOST, firebaseNEW, firebaseDataUPDATE, firebaseDefaultsUPDATE, firebaseRESET };

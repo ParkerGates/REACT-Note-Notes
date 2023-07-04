@@ -53,10 +53,11 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
 
             <div className="avgAccuracyRecallBlock">
                 { keysetInfo.orderByScore.length === 0
-                    ?   <div className="page2Block displayFlexCenter">
-                            <pre className='moreTestingRequired'>Test More To See Score...</pre>
+                    ?   <div className="page2Block testMoreBlock">
+                                <pre className='moreTestingRequired'>Test More To See Score...</pre>
+                                <pre className="test3ToSee">Test each note 3 times to see results</pre>
                         </div>
-
+                        
                     :   <div className="singleNoteScoreInfoContainer page2Block">
                             {keysetInfo.orderByScore.map((note)=> {
                                 return (
@@ -77,7 +78,7 @@ export default function SetUpPage2({keysetInfo, pageNav, launchGame}: Props) {
 
                     <div className="gameInfoTestBtnContainer">
                         <button className="btnPlain gameInfoBtn" onClick={()=>{pageNav("forward")}}>Config</button>
-                        <button className="btnGradiant testBtn" onClick={launchGame}>Test</button>
+                        <button className="btnGradiant testBtn animate__animated animate__heartBeat animate__delay-1s" onClick={launchGame}>Test</button>
                     </div>
                 </div>
             </div>

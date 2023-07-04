@@ -25,6 +25,7 @@
 .s1ContentHome {
     text-align: center;
     font-size: .9rem;
+    max-width: 350px;
 }
 .s1CallToActionHome {
     font-size: .8rem;
@@ -59,7 +60,7 @@
 
 
 /* SECTIONS======================================================*/
-.LogoHome { width: 200px;  height: 200px; position: relative; }
+.LogoHome { width: 230px;  height: 200px; position: relative; margin-bottom: 35px;}
 .section1Home {
         position: relative;
         height: 100%;
@@ -115,12 +116,23 @@
 
 }
 
+@media screen and (min-width: 750px) and (max-height: 800px) {
+    .section1Home { margin-top: 35px; }
+
+}
+
 
 /* MOBILE-MD========================================================*/
 @media screen and (min-width: 750px) {
-    .LogoHome { width: 250px; height: 280px; margin-top:12px}
+    .LogoHome { width: 300px; height: 280px; margin-top: 12px; margin-bottom: 30px; }
+    .ResponsiveFlexTest {
+       margin-top: 0px;
+    }
     .s1TitleHome { font-size: 2rem; }
-    .s1ContentHome { font-size: 1.2rem; }
+    .s1ContentHome {
+        font-size: 1.2rem;
+        max-width: 420px;
+    }
     .botHome {
         position: fixed;
         width: 105vw;
@@ -132,7 +144,7 @@
     }
     .bloomHome {
         width: 900px; height:250px;
-        top: -2rem; left: -21rem;
+        top: -2rem; left: -20rem;
     }
 }
 @media screen and (min-width: 750px) and (max-height: 700px) {
@@ -171,6 +183,7 @@
     .s1ContentHome {
         text-align: left;
         font-size: 1.2rem;
+        max-width: 100%;
     }
     .s1CallToActionHome {
         font-size: 1rem;

@@ -85,8 +85,6 @@
     bottom: 0px;
     width: calc(100% - 4rem);
     margin: 40px 30px;
-
-    /* border: 2px solid rgb(36, 243, 206); */
 }
 .backbtn {
     font-size: 1.8rem;
@@ -115,7 +113,11 @@
 }
 /* --------------------------------------------------------------- */
 
-
+.testMoreBlock {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 .moreTestingRequired {
     display: inline-block;
     text-align: center;
@@ -124,7 +126,9 @@
     width: auto;
     border-radius: 2rem;
     padding: 1rem;
+    margin: 1rem 10% .5rem;
 }
+.test3ToSee { font-size: .9rem; }
 
 
 
@@ -174,9 +178,21 @@
         gap: 10px;
     }
 
+    .moreTestingRequired {
+        width: calc(100% - 2.5rem);
+        margin: 1rem auto 5%;
+        font-size: 5vw;
+    }
+    .test3ToSee {
+        width: calc(100% - 40px);
+        margin: 0px 20px auto;
+        font-size: .8rem;
+        white-space: pre-wrap;
+    }
+
     .bottomNavBtns { width: calc(100% - 1.5rem); margin: 40px 12px; }
     .gameInfoBtn, .testBtn { font-size: .9rem;}
-    .gameInfoBtn {margin-right: 8px; }
+    .gameInfoBtn {margin-right: .8rem; }
 }
 
 @media screen and (max-width: 750px) and (min-height: 835px) {

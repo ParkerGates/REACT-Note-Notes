@@ -28,11 +28,12 @@ function NavBar(props) {
     if ( windowDimensions.width >= 750) {
         return (
             <nav className="navBarContainer navPadding">
-                <Link to="/"><div style={{backgroundColor:"black"}}><Logo size="Small" width="45px"/></div></Link>
+                <Link to="/"><div className="homeDesktopLogo" style={{backgroundColor:"black"}}><Logo size="Small" width="45px"/></div></Link>
 
                 <hr className="hrNB"/>
 
                 <div className="navBarItems">
+                    <NavLink to="/" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Home</NavLink>
                     <NavLink to="/about" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>About</NavLink>
                     { (fbd.user !== null || context.contextState.guest !== false) &&
                         <NavLink to="/setup" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Flashcard</NavLink>
@@ -56,7 +57,7 @@ function NavBar(props) {
     else {
         return (
             <div className="navPadding">
-                <nav className="navMobileContainer" style={{height: `${showNav === false ? "50px" : "calc(100vh - 40px)"}`}} >
+                <nav className="navMobileContainer" style={{height: `${showNav === false ? "50px" : "calc(100vh - 20px)"}`}} >
                     <div className="navMobileTopContainer">
                         <button className="hamBtn" onClick={()=>setShowNav(!showNav)}><i className="fa fa-bars ham"></i></button>
                         <Link to="/" onClick={onNavigation}><Logo size="Small" width="40px"/></Link>
@@ -64,7 +65,7 @@ function NavBar(props) {
                         { (fbd.user !== null || context.contextState.guest !== false)  ?
                             <Link to="/profile" onClick={onNavigation}><i className="fa fa-user-circle navMobileProfile" aria-hidden="true"></i></Link>
                             :
-                            <button onClick={props.signIn} className="loginNavBtn"><i className="fas fa-sign-in-alt navMobileLogin" aria-hidden="true"></i></button>
+                            <button onClick={props.signIn} className="loginNavBtn"><i className="fa fa-sign-in navMobileLogin" aria-hidden="true"></i></button>
                         }
                 
                     </div>
@@ -74,7 +75,7 @@ function NavBar(props) {
                         <NavLink to="/" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Home</NavLink>
                     </div>
                     <div>
-                        <i className="	far fa-question-circle navMobileIconSpace" aria-hidden="true"></i>
+                        <i className="fa fa-map navMobileIconSpace" aria-hidden="true"></i>
                         <NavLink to="/about" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>About</NavLink>
                     </div>
                     { (fbd.user !== null || context.contextState.guest !== false) &&
