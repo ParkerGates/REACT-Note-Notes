@@ -51,9 +51,7 @@ export default function SetUpPage1({onNoteInfoChange, onGameDataChange, pageNav}
         }
 
         avgAccAddUp = Math.ceil((avgAccAddUp / keysetArray.length) * 100);
-        console.log(avgAccAddUp);
         avgTimeAddUp = Number((avgTimeAddUp / keysetArray.length).toFixed(1));
-        console.log(avgTimeAddUp);
         
         let avgScorePercentage = Math.ceil((avgScoreAddUp - minScore) / (maxScore - minScore) * 100);
         avgScorePercentage = avgScorePercentage > 100 ? 100 : avgScorePercentage;

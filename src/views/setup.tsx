@@ -33,7 +33,7 @@ export default function Setup() {
         data.contextDispatch({type:"update-game-settings", gameSettings:gameData});
         navigate("/flashcards", {replace: true});  
     }
-    console.log(data.contextState.noteData);
+
 
     return(
         <div style={{overflow:"hidden", position:"relative"}}>

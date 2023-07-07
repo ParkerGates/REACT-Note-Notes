@@ -73,14 +73,12 @@ const getKeysetProgress = (context:any, keyset:"treble"|"bass") => {
         }
         else {
             // {masteryLvl: 0, avgAccuracy: 0, avgTime: 0, orderByScore: []}
-            console.log("no talent");
             return 0;
         }
     }
 
     let avgScorePercentage = Math.ceil((avgScoreAddUp - minScore) / (maxScore - minScore) * 100);
     avgScorePercentage = avgScorePercentage > 100 ? 100 : avgScorePercentage;
-    console.log(avgScorePercentage, 100 - avgScorePercentage);
 
     return (100 - avgScorePercentage);
 }

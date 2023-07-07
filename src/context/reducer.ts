@@ -24,8 +24,6 @@ const reducer = (state:any , action:any) => {
             newState.noteData[action.note] = newSingleNoteData;
             
             newState.probabilityPool = Number(((newState.noteData[action.note].score - state.noteData[action.note].score) + state.probabilityPool).toFixed(1));
-            // console.log(state.noteData[action.note].score,newState.noteData[action.note].score);
-            // console.log(state.probabilityPool, (newState.noteData[action.note].score - state.noteData[action.note].score), newState.probabilityPool);
             return newState;
 
         case "new-state":
