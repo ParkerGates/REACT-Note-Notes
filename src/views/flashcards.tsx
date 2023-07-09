@@ -159,7 +159,6 @@ export default function Flashcards() {
                             <button
                                 className="flashcardEndGameBtn" 
                                 onClick={()=>{setGameState((prevState) => {
-                                    console.log(contextData.contextState.noteData);
                                     timer.stop();
                                     return {...prevState, currentState:"post-game"}}
                                 )}}>
