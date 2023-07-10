@@ -59,6 +59,10 @@
     border-radius: 10px;
 }
 
+.flaschardNoteImg {
+    margin-bottom: 2vh;
+}
+
 
 .bloomFlashcards {
     position: absolute;
