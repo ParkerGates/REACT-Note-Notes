@@ -3,6 +3,7 @@ import { useContextData } from '../context/context';
 import { iFlashcardGameState, iFlashcardNotePayload, iNote, iSingleGameStats } from '../interfaces/interfaces';
 import { Link } from 'react-router-dom';
 import useTimer from 'easytimer-react-hook';
+import noteImgIndex from '../svgs/notes';
 import FlashcardGame from "../classes/FlashcardGame";
 import FlashcardCountdown from '../components/FlashcardComponents/FlashcardCountdown/FlashcardCountdown';
 import FlashcardOptions from '../components/FlashcardComponents/FlashcardOptions/FlashcardOptions';
@@ -127,14 +128,20 @@ export default function Flashcards() {
     }, [timedGameIsDone, limitedGameCount]);
 
 
-
  
+
     return(
         <div className="flashcardTestingContainer">
             
             <div className="flashcardCardDisplay">
                 { "pre-game" === gameState.currentState && <FlashcardCountdown countDownNumber={gameState.countdown}/> }
-                { "game" === gameState.currentState && cardPayload.find }
+                { "game" === gameState.currentState && 
+                    <img
+                        className="flaschardNoteImg"
+                        src={noteImgIndex[contextData.contextState.gameSettings.keyset+cardPayload.find]}
+                        alt={cardPayload.find}
+                    />
+                }
                 { "post-game" === gameState.currentState && <FlashcardEndScreen stats={sessionStats} /> }
             </div>
 
