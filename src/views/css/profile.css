@@ -46,7 +46,7 @@
 
 .profileNoteInfoTitle{
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: normal;
 }
 .profileNoteInfoHr {
     width: 100%;
@@ -70,7 +70,7 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 

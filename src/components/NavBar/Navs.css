@@ -29,7 +29,6 @@
     display: inline-block;
 
     color: white;
-    font-weight: 600;
     padding: 8px 10px;
 
     border-radius: 12px;
@@ -40,7 +39,6 @@
     color: white;
     white-space: nowrap;
     font-size: 1rem;
-    font-weight: bold;
     padding: 8px 5px;
 
     border: none;
@@ -52,6 +50,7 @@
     sans-serif;
 }
 
+.navBarItem, .activeNavBarItem { text-decoration: none; font-size: 1.1rem; }
 .navBarItems {
     display: flex;
     gap: 25px;
@@ -59,13 +58,14 @@
 .navBarItem {
     color: white;
     text-decoration: none;
+    font-weight: lighter;
 }
 .activeNavBarItem {
+    font-weight: bold;
     background: linear-gradient(to right, rgb(36, 119, 243) , rgb(36, 243, 206));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.navBarItem, .activeNavBarItem { text-decoration: none; font-weight: bold; }
 
 
 
