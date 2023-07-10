@@ -141,15 +141,15 @@ export default function SetUpPage3({keysetInfo, gameInfo, setGameInfo, pageNav, 
                         <div className="configSpecificsContainer">
                             <label className="configSpecificsTitle">Time</label>
                             <input type="text" className="configSpecificsInput" value={`${timedGameCount}m`} readOnly />{/*--------------------------------------------------------------*/}
-                            <button 
-                                className="btnPlain configSpecificsBtn"
-                                onClick={()=>setTimeIncrement('increment')}
-                                >^
-                            </button>
                             <button
                                 className="btnPlain configSpecificsBtn"
                                 onClick={()=>setTimeIncrement('decrement')}
-                                >v
+                                >&and;
+                            </button>
+                            <button 
+                                className="btnPlain configSpecificsBtn"
+                                onClick={()=>setTimeIncrement('increment')}
+                                >&or;
                             </button>
                         </div>
                         }
@@ -159,13 +159,13 @@ export default function SetUpPage3({keysetInfo, gameInfo, setGameInfo, pageNav, 
                             <input type="text" className="configSpecificsInput" value={limitedGameCount} readOnly />{/*--------------------------------------------------------------*/}
                             <button
                                 className="btnPlain configSpecificsBtn"
-                                onClick={()=>setCardIncrement('increment')}
-                                >^
+                                onClick={()=>setCardIncrement('decrement')}
+                                >&and;
                             </button>
                             <button
                                 className="btnPlain configSpecificsBtn"
-                                onClick={()=>setCardIncrement('decrement')}
-                                >v
+                                onClick={()=>setCardIncrement('increment')}
+                                >&or;
                             </button>
                         </div>
                         }
