@@ -26,8 +26,7 @@ function Home(props) {
                     <h1 className="s1TitleHome">Learn Music<br />Notes The Fast Way</h1>
 
                     <div className="s1ContentHome">
-                        Our guided learning flashcard system simplifies smooths out the learning the curve making learn sheet
-                        music as easy as 1 2 3
+                    Our guided flashcard learning system helps smooth out the learning process making learning sheet music as easy as 1 2 3
                     </div>
 
                     <div className="s1CallAndBtn">

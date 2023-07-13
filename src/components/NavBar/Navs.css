@@ -58,7 +58,7 @@
 .navBarItem {
     color: white;
     text-decoration: none;
-    font-weight: lighter;
+    font-weight: normal;
 }
 .activeNavBarItem {
     font-weight: bold;
