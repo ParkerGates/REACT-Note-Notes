@@ -50,7 +50,7 @@
     sans-serif;
 }
 
-.navBarItem, .activeNavBarItem { text-decoration: none; font-size: 1.1rem; }
+.navBarItem, .activeNavBarItem { text-decoration: none; font-size: 1.1rem; white-space: nowrap;}
 .navBarItems {
     display: flex;
     gap: 25px;

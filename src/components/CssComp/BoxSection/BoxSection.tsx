@@ -10,8 +10,7 @@ function BoxSection({title, children}: Props) {
 
     return(
         <>
-            <div className="titleBS"
-            >{title}</div>
+            <div className="titleBS">{title}</div>
             <div className="containerBS">
                 <div className="contentBS">
                     {children}

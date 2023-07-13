@@ -39,7 +39,7 @@ function NavBar(props) {
                         <NavLink to="/setup" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Flashcard</NavLink>
                     }
                     <NavLink to="/review" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Review</NavLink>
-                    <NavLink to="/showcase" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Showcase</NavLink>
+                    <NavLink to="/showcase" className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>How To</NavLink>
                 </div>
 
                 <hr className="hrNB" />
@@ -90,7 +90,7 @@ function NavBar(props) {
                     </div>
                     <div>
                         <i className="fa fa-eye navMobileIconSpace" aria-hidden="true"></i>
-                        <NavLink to="/showcase" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>Showcase</NavLink>
+                        <NavLink to="/showcase" onClick={onNavigation} className={({ isActive }) => isActive?"activeNavBarItem":"navBarItem"}>How To</NavLink>
                     </div>
                 </nav>
             </div>
