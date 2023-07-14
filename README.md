@@ -10,10 +10,10 @@ Link to Parker Gates [Git Repository](https://github.com/ParkerGates/).
 `npm start`
 
 ### What Is Note Notes
-Note notes is a flashcard application that aims to make learning to identify the notes on sheet music easier. It has light guided learning elements that will increase the chance of you seeing notes you guessed wrong on and will decrease the chance of seeing notes that you seem to already know. You are scored both on your accuracy as well as the time it take you to idenify a correct notes. The goals is to achieve a 100% mastery score in a keyset to achieve proficency.
+Note notes is a flashcard application that aims to make learning to identify the notes on sheet music easier. It has light guided learning elements that will increase the chance of you seeing notes you guessed wrong on and will decrease the chance of seeing notes that you seem to already know. You are scored both on your accuracy as well as the time it takes you to identify a correct notes. The goal is to achieve a 100% mastery score in a keyset to achieve proficiency.
 
 ### How Do I Use Note Notes
-If you would like a deminstration, on load select the 'How To' nav item. The page will show the user via guided images how to use the application. The flow of the app is as follows.
+If you would like a demonstration, on load select the 'How To' nav item. The page will show the user via guided images how to use the application. The flow of the app is as follows.
 
 1. Select Guest Account or Sign Up / Sign In
 2. Navigate to the `Flashcard` page
