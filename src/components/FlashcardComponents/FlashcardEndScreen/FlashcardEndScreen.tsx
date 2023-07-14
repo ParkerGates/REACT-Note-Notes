@@ -31,9 +31,9 @@ export default function FlashcardEndScreen({stats}: Props) {
                 { testedNotes.map((item) => {
                     return (
                         <div className="endGameNoteScoreContainer" key={item}>
-                            <span>{item} </span>
-                            <span> {stats[item].right}-{stats[item].amount} </span>
-                            <span> {Math.floor(stats[item].right / stats[item].amount * 100)}</span>
+                            <span className="endGameNoteScoreItem endGameScoreLeft">{item} </span>
+                            <span className="endGameNoteScoreItem"> {stats[item].right}/{stats[item].amount} </span>
+                            <span className="endGameNoteScoreItem endGameScoreRight"> {Math.floor(stats[item].right / stats[item].amount * 100)}%</span>
                         </div>
                     );
                 })}
