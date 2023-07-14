@@ -27,6 +27,15 @@
     margin: 8px;
 }
 
+.endGameNoteScoreItem {
+    display: inline-block;
+    text-align: center;
+    width: 2.8rem;
+    
+}
+.endGameScoreLeft {text-align: left;}
+.endGameScoreRight {text-align: right;}
+
 .endGameBtnContainer {
     display: flex;
     justify-content: space-between;
