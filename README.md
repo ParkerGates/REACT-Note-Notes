@@ -2,8 +2,8 @@
 
 A music note flashcard application
 
-Link to Parker Gates [Git Repository](https://github.com/ParkerGates/).
-Link to Note Notes [Git Repository](https://github.com/ParkerGates/REACT-Note-Notes).
+- Link to Parker Gates [Git Repository](https://github.com/ParkerGates/).
+- Link to Note Notes [Git Repository](https://github.com/ParkerGates/REACT-Note-Notes).
 
 ## Installation
 
