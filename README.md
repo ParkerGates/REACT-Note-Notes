@@ -24,6 +24,5 @@ If you would like a deminstration, on load select the 'How To' nav item. The pag
 7. End Game & Review Score
 
 
-###Thank you for trying out my little app
-:)
-
+### Thank you for trying out my little app :)
+Take care!
