@@ -9,6 +9,10 @@ body {
   justify-content: center;
 }
 
+.marginb {
+  margin-bottom: 2rem;
+}
+
 .displayInlineBlock {
   display: inline-block;
 }

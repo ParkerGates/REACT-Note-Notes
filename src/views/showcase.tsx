@@ -48,7 +48,7 @@ export default function Showcase() {
 
                             <h2 className="showcaseTitle">7: Review, Replay or Restart</h2>
                             <img className="desktopGif" src={InstrGif.DesktopEndGame} alt="End game gif" />
-                            <img className="mobileGif" src={InstrGif.MobileEndGame} alt="End ga,e gif" />
+                            <img className="mobileGif marginb" src={InstrGif.MobileEndGame} alt="End ga,e gif" />
                         </div>  
                 </div>
             </div>

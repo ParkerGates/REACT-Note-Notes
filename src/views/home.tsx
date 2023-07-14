@@ -30,7 +30,7 @@ function Home(props) {
                     </div>
 
                     <div className="s1CallAndBtn">
-                        <div className="s1CallToActionHome">Lets Hop To It!</div>
+                        <div className="s1CallToActionHome">Let's Hop To It!</div>
 
                         <div className="s1BtnContainerHome">
                             { fbd.user === null && context.contextState.guest === false ?
