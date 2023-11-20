@@ -2,13 +2,13 @@
 
 A music note flashcard application
 
-- Link to Parker Gates [Git Repository](https://github.com/ParkerGates/).
+- Link to Parker Gates [Github](https://github.com/ParkerGates/).
 - Link to Note Notes [Git Repository](https://github.com/ParkerGates/REACT-Note-Notes).
 
 ## Installation
 
-`npm install`
-`npm start`
+- `npm install`
+- `npm start`
 
 ### What Is Note Notes
 Note notes is a flashcard application that aims to make learning to identify the notes on sheet music easier. It has light guided learning elements that will increase the chance of you seeing notes you guessed wrong on and will decrease the chance of seeing notes that you seem to already know. You are scored both on your accuracy as well as the time it takes you to identify a correct notes. The goal is to achieve a 100% mastery score in a keyset to achieve proficiency.
